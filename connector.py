@@ -12,7 +12,8 @@ logger = get_logger('apivoid')
 class apivoid(Connector):
     def execute(self, config, operation, params, **kwargs):
         try:
-            operation = operations.get(operation)
+            params.update({"operation":operation})              
+            operation = operations.get(operation)        
             return operation(config, params)
         except Exception as err:
             logger.error('apivoid:{}'.format(err))

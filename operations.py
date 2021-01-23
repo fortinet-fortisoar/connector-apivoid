@@ -107,10 +107,11 @@ def _api_request(endpoint, config, req_params=None, method='get'):
     except Exception as Err:
         raise ConnectorError(Err)
 
+
 def _get_threat_intel(config, params):
     try:
         url_params = {}
-        req_type = _get_input(params, "req_type")
+        req_type = _get_input(params, "operation")
         req_value = _get_input(params, "req_value")
         if not validation_function_map[req_type](req_value):
             raise ConnectorError("Invalid {0} input paramter: {1}".format(req_type,req_value))
@@ -140,19 +141,19 @@ def _check_health(config):
             raise ConnectorError(str(err))
 
 operations = {
-    'get_threatlog_domain_reputation':_get_threat_intel,
-    'get_domain_reputation':_get_threat_intel,
-    'get_ip_reputation': _get_threat_intel,
-    'get_url_screenshot':_get_threat_intel,
-    'get_url_reputation':_get_threat_intel,
-    'get_domain_age':_get_threat_intel,
-    'get_domain_trustworthiness':_get_threat_intel,
-    'get_domain_parked':_get_threat_intel,
-    'get_url_status':_get_threat_intel,
-    'get_email_reputation':_get_threat_intel,
-    'get_dns_propagation':_get_threat_intel,
-    'get_url_html':_get_threat_intel,
-    'get_ssl_info':_get_threat_intel
+"threatlog":_get_threat_intel,
+"domainbl":_get_threat_intel,
+"iprep":_get_threat_intel,
+"screenshot":_get_threat_intel,
+"urlrep":_get_threat_intel,
+"domainage":_get_threat_intel,
+"sitetrust":_get_threat_intel,
+"parkeddomain":_get_threat_intel,
+"urlstatus":_get_threat_intel,
+"emailverify":_get_threat_intel,
+"dnspropagation":_get_threat_intel,
+"urltohtml":_get_threat_intel,
+"sslinfo":_get_threat_intel 
 }
 
 validation_function_map = {

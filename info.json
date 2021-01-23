@@ -45,7 +45,7 @@
   },
   "operations": [
     {
-      "operation": "get_threatlog_domain_reputation",
+      "operation": "threatlog",
       "title": "Get ThreatLog Domain Reputation",
       "description": "Query ThreatLog.com database of malicious domains",
       "enabled": true,
@@ -58,18 +58,9 @@
           "type": "text",
           "name": "req_value",
           "value": "domain.com"
-        },
-        {
-          "title": "Request Type",
-          "required": true,
-          "editable": false,
-          "visible": true,
-          "type": "text",
-          "name": "req_type",
-          "value": "threatlog"
-        }        
+        }  
       ],
-      "annotation": "get_threatlog_domain_reputation",
+      "annotation": "threatlog",
       "category": "investigation",
       "output_schema": {
         "result": "",
@@ -77,7 +68,7 @@
       }
     },
     {
-      "operation": "get_domain_reputation",
+      "operation": "domainbl",
       "title": "Get Domain Reputation",
       "description": "Check if a domain name is blacklisted by trusted sources",
       "enabled": true,
@@ -90,18 +81,9 @@
           "type": "text",
           "name": "req_value",
           "value": "domain.com"
-        },
-        {
-          "title": "Request Type",
-          "required": true,
-          "editable": false,
-          "visible": true,
-          "type": "text",
-          "name": "req_type",
-          "value": "domainbl"
         }
       ],
-      "annotation": "get_domain_reputation",
+      "annotation": "domainbl",
       "category": "investigation",
       "output_schema": {
         "result": "",
@@ -109,7 +91,7 @@
       }
     },
     {
-      "operation": "get_ip_reputation",
+      "operation": "iprep",
       "title": "Get IP Reputation",
       "description": "Check the reputation and geolocation of an IPv4 address",
       "enabled": true,
@@ -122,18 +104,9 @@
           "type": "text",
           "name": "req_value",
           "value": "192.0.2.12"
-        },
-        {
-          "title": "Request Type",
-          "required": true,
-          "editable": false,
-          "visible": true,
-          "type": "text",
-          "name": "req_type",
-          "value": "iprep"
-        }               
+        }              
       ],
-      "annotation": "get_ip_reputation",
+      "annotation": "iprep",
       "category": "investigation",
       "output_schema": {
         "result": "",
@@ -141,7 +114,7 @@
       }
     },
     {
-      "operation": "get_url_screenshot",
+      "operation": "screenshot",
       "title": "Get URL Screenshot",
       "description": "Take high-quality screenshots of any web page and URL",
       "enabled": true,
@@ -154,18 +127,9 @@
           "type": "text",
           "name": "req_value",
           "value": "https://www.domain.com/en/"
-        },
-        {
-          "title": "Request Type",
-          "required": true,
-          "editable": false,
-          "visible": true,
-          "type": "text",
-          "name": "req_type",
-          "value": "screenshot"
-        } 
+        }
       ],
-      "annotation": "get_url_screenshot",
+      "annotation": "screenshot",
       "category": "investigation",
       "output_schema": {
         "result": "",
@@ -173,7 +137,7 @@
       }
     },
     {
-      "operation": "get_url_reputation",
+      "operation": "urlrep",
       "title": "Get URL Reputation",
       "description": "Identify potentially unsafe and phishing URLs.",
       "enabled": true,
@@ -186,18 +150,9 @@
           "type": "text",
           "name": "req_value",
           "value": "https://www.domain.com/en/"
-        },
-        {
-          "title": "Request Type",
-          "required": true,
-          "editable": false,
-          "visible": true,
-          "type": "text",
-          "name": "req_type",
-          "value": "urlrep"
         }
       ],
-      "annotation": "get_url_reputation",
+      "annotation": "urlrep",
       "category": "investigation",
       "output_schema": {
         "result": "",
@@ -205,7 +160,7 @@
       }
     },
     {
-      "operation": "get_domain_age",
+      "operation": "domainage",
       "title": "Get Domain Age ",
       "description": "Get domain registration date and domain age in days",
       "enabled": true,
@@ -218,18 +173,9 @@
           "type": "text",
           "name": "req_value",
           "value": "domain.com"
-        },
-        {
-          "title": "Request Type",
-          "required": true,
-          "editable": false,
-          "visible": true,
-          "type": "text",
-          "name": "req_type",
-          "value": "domainage"
         }
       ],
-      "annotation": "get_domain_age",
+      "annotation": "domainage",
       "category": "investigation",
       "output_schema": {
         "result": "",
@@ -237,7 +183,7 @@
       }
     },
     {
-      "operation": "get_domain_trustworthiness",
+      "operation": "sitetrust",
       "title": "Get Domain Trustworthiness",
       "description": "Provides important details about a website to check if it is legit.",
       "enabled": true,
@@ -250,18 +196,9 @@
           "type": "text",
           "name": "req_value",
           "value": "domain.com"
-        },
-        {
-          "title": "Request Type",
-          "required": true,
-          "editable": false,
-          "visible": true,
-          "type": "text",
-          "name": "req_type",
-          "value": "sitetrust"
         }
       ],
-      "annotation": "get_domain_trustworthiness",
+      "annotation": "sitetrust",
       "category": "investigation",
       "output_schema": {
         "result": "",
@@ -269,7 +206,7 @@
       }
     },
     {
-      "operation": "get_domain_parked",
+      "operation": "parkeddomain",
       "title": "Get Domain Parked Status",
       "description": "Check if a domain name is parked/for sale/Inavtive.",
       "enabled": true,
@@ -282,18 +219,9 @@
           "type": "text",
           "name": "req_value",
           "value": "domain.com"
-        },
-        {
-          "title": "Request Type",
-          "required": true,
-          "editable": false,
-          "visible": true,
-          "type": "text",
-          "name": "req_type",
-          "value": "parkeddomain"
         }
       ],
-      "annotation": "get_domain_parked",
+      "annotation": "parkeddomain",
       "category": "investigation",
       "output_schema": {
         "result": "",
@@ -301,7 +229,7 @@
       }
     },
     {
-      "operation": "get_url_status",
+      "operation": "urlstatus",
       "title": "Get URL Status",
       "description": "Check if an URL is online or offline (down or not accessible).",
       "enabled": true,
@@ -314,18 +242,9 @@
           "type": "text",
           "name": "req_value",
           "value": "https://www.domain.com/en/"
-        },
-        {
-          "title": "Request Type",
-          "required": true,
-          "editable": false,
-          "visible": true,
-          "type": "text",
-          "name": "req_type",
-          "value": "urlstatus"
         }
       ],
-      "annotation": "get_url_status",
+      "annotation": "urlstatus",
       "category": "investigation",
       "output_schema": {
         "result": "",
@@ -333,7 +252,7 @@
       }
     },        
     {
-      "operation": "get_email_reputation",
+      "operation": "emailverify",
       "title": "Get Email Reputation",
       "description": "Find out if the email is disposable, suspicious/risky, valid format, and more.",
       "enabled": true,
@@ -346,18 +265,9 @@
           "type": "text",
           "name": "req_value",
           "value": "info@somedomain.com"
-        },
-        {
-          "title": "Request Type",
-          "required": true,
-          "editable": false,
-          "visible": true,
-          "type": "text",
-          "name": "req_type",
-          "value": "emailverify"
         }
       ],
-      "annotation": "get_email_reputation",
+      "annotation": "emailverify",
       "category": "investigation",
       "output_schema": {
         "result": "",
@@ -365,7 +275,7 @@
       }
     },
     {
-      "operation": "get_dns_propagation",
+      "operation": "dnspropagation",
       "title": "Get DNS Propagation",
       "description": "Check if DNS records of a domain have propagated globally.",
       "enabled": true,
@@ -378,15 +288,6 @@
           "type": "text",
           "name": "req_value",
           "value": "domain.com"
-        },
-        {
-          "title": "Request Type",
-          "required": true,
-          "editable": false,
-          "visible": true,
-          "type": "text",
-          "name": "req_type",
-          "value": "dnspropagation"
         },
         {
           "title": "Record Type",
@@ -411,7 +312,7 @@
           "value": "MX"
         }        
       ],
-      "annotation": "get_dns_propagation",
+      "annotation": "dnspropagation",
       "category": "investigation",
       "output_schema": {
         "result": "",
@@ -419,7 +320,7 @@
       }
     },
     {
-      "operation": "get_url_html",
+      "operation": "urltohtml",
       "title": "Get URL HTML",
       "description": "Capture the HTML page source after JavaScript has been executed.",
       "enabled": true,
@@ -432,18 +333,9 @@
           "type": "text",
           "name": "req_value",
           "value": "https://www.domain.com/en/"
-        },
-        {
-          "title": "Request Type",
-          "required": true,
-          "editable": false,
-          "visible": true,
-          "type": "text",
-          "name": "req_type",
-          "value": "urltohtml"
         }
       ],
-      "annotation": "",
+      "annotation": "urltohtml",
       "category": "investigation",
       "output_schema": {
         "result": "",
@@ -451,7 +343,7 @@
       }
     },
     {
-      "operation": "get_ssl_info",
+      "operation": "sslinfo",
       "title": "Get SSL Info",
       "description": "Check if a website's SSL certificate is valid, expired or blacklisted.",
       "enabled": true,
@@ -464,18 +356,9 @@
           "type": "text",
           "name": "req_value",
           "value": "www.domain.com"
-        },
-        {
-          "title": "Request Type",
-          "required": true,
-          "editable": false,
-          "visible": true,
-          "type": "text",
-          "name": "req_type",
-          "value": "sslinfo"
         }
       ],
-      "annotation": "get_ssl_info",
+      "annotation": "sslinfo",
       "category": "investigation",
       "output_schema": {
         "result": "",
