@@ -1,3 +1,2 @@
 ### Note
-initial version with static params from the GUI
-next commit should have a different param transmission method
+operation value is used as a selector for request type
