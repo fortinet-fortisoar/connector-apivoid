@@ -2,128 +2,53 @@
   "type": "workflow_collections",
   "data": [
     {
-      "@context": "/api/3/contexts/WorkflowCollection",
       "@type": "WorkflowCollection",
-      "name": "00 - Drafts",
-      "description": null,
+      "name": "Sample - apivoid - 1.0.0",
+      "description": "Apivoid connector provides several threat intelligence services ranging from IP/URL/Domain reputation to domain age and website screenshots",
       "visible": true,
       "image": null,
-      "id": 66,
-      "createDate": 1589786307,
-      "modifyDate": 1589786307,
+      "uuid": "0f63ad10-3ea5-43a6-9f70-b3c68d640b26",
       "recordTags": [],
       "workflows": [
         {
           "@type": "Workflow",
           "triggerLimit": null,
-          "name": "Get APIVoid Reputation",
+          "name": "Get IP Reputation",
           "aliasName": null,
-          "description": null,
-          "collection": "/api/3/workflow_collections/7dcb0208-09a9-4f95-a278-888cb7178bc5",
-          "tag": null,
-          "isActive": true,
+          "description": "Check the reputation and geolocation of an IPv4 address",
+          "collection": "/api/3/workflow_collections/0f63ad10-3ea5-43a6-9f70-b3c68d640b26",
+          "tag": "#apivoid",
+          "isActive": false,
           "singleRecordExecution": false,
           "remoteExecutableFlag": false,
           "parameters": [],
           "synchronous": false,
-          "triggerStep": "/api/3/workflow_steps/81d040a8-b0f6-4b93-b86c-09079a9665d9",
+          "triggerStep": "/api/3/workflow_steps/af36ea99-ff65-4408-b3fb-9c2bca2f3bc6",
           "steps": [
             {
               "@type": "WorkflowStep",
-              "name": "Get Domain Parked Status",
+              "name": "Alerts",
               "description": null,
               "arguments": {
-                "name": "apivoid",
-                "when": "{{vars.input.records[0].typeofindicator.itemValue == 'Domain'}}",
-                "config": "29cc2036-aa10-4097-b306-0bfb254b1dff",
-                "params": {
-                  "req_value": "domain.com"
+                "route": "8b90acab-7fe0-4a52-9b0c-e6f7dcb67ecb",
+                "title": "apivoid: Get IP Reputation",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
                 },
-                "version": "1.0.0",
-                "connector": "apivoid",
-                "operation": "parkeddomain",
-                "operationTitle": "Get Domain Parked Status",
-                "pickFromTenant": false,
-                "step_variables": []
+                "noRecordExecution": true,
+                "singleRecordExecution": false
               },
               "status": null,
-              "left": "125",
-              "top": "1110",
-              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
-              "uuid": "102698c0-4b06-4748-a62d-881b476ced77"
-            },
-            {
-              "@type": "WorkflowStep",
-              "name": "Get URL Reputation",
-              "description": null,
-              "arguments": {
-                "name": "apivoid",
-                "when": "{{vars.input.records[0].typeofindicator.itemValue == 'URL'}}",
-                "config": "29cc2036-aa10-4097-b306-0bfb254b1dff",
-                "params": {
-                  "req_value": "{{vars.input.records[0].value}}"
-                },
-                "version": "1.0.0",
-                "connector": "apivoid",
-                "operation": "urlrep",
-                "operationTitle": "Get URL Reputation",
-                "pickFromTenant": false,
-                "step_variables": []
-              },
-              "status": null,
-              "left": "125",
-              "top": "705",
-              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
-              "uuid": "23946b69-f153-43c5-8a84-0ca9d2939985"
-            },
-            {
-              "@type": "WorkflowStep",
-              "name": "Get Domain Reputation from ThreatLog",
-              "description": null,
-              "arguments": {
-                "name": "apivoid",
-                "when": "{{vars.input.records[0].typeofindicator.itemValue == 'Domain'}}",
-                "config": "29cc2036-aa10-4097-b306-0bfb254b1dff",
-                "params": {
-                  "req_value": "{{vars.input.records[0].value}}"
-                },
-                "version": "1.0.0",
-                "connector": "apivoid",
-                "operation": "threatlog",
-                "operationTitle": "Get ThreatLog Domain Reputation",
-                "pickFromTenant": false,
-                "step_variables": []
-              },
-              "status": null,
-              "left": "125",
-              "top": "165",
-              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
-              "uuid": "271e5d2b-9ba7-4a04-ae2c-3f18a7ed67c8"
-            },
-            {
-              "@type": "WorkflowStep",
-              "name": "Get DNS Propagation",
-              "description": null,
-              "arguments": {
-                "name": "apivoid",
-                "when": "{{vars.input.records[0].typeofindicator.itemValue == 'Domain'}}",
-                "config": "29cc2036-aa10-4097-b306-0bfb254b1dff",
-                "params": {
-                  "req_value": "{{vars.input.records[0].value}}",
-                  "dns_record_type": "MX"
-                },
-                "version": "1.0.0",
-                "connector": "apivoid",
-                "operation": "dnspropagation",
-                "operationTitle": "Get DNS Propagation",
-                "pickFromTenant": false,
-                "step_variables": []
-              },
-              "status": null,
-              "left": "125",
-              "top": "1515",
-              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
-              "uuid": "3b97c795-6597-473f-a8b3-725e8c0b8ba7"
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "uuid": "af36ea99-ff65-4408-b3fb-9c2bca2f3bc6"
             },
             {
               "@type": "WorkflowStep",
@@ -131,47 +56,860 @@
               "description": null,
               "arguments": {
                 "name": "apivoid",
-                "when": "{{vars.input.records[0].typeofindicator.itemValue == 'IP Address'}}",
-                "config": "29cc2036-aa10-4097-b306-0bfb254b1dff",
+                "config": "''",
                 "params": {
-                  "req_value": "{{vars.input.records[0].value}}"
+                  "req_value": ""
                 },
                 "version": "1.0.0",
                 "connector": "apivoid",
                 "operation": "iprep",
                 "operationTitle": "Get IP Reputation",
-                "pickFromTenant": false,
-                "step_variables": []
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
               },
               "status": null,
-              "left": "125",
-              "top": "435",
+              "left": "188",
+              "top": "120",
               "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
-              "uuid": "3c92885c-1830-4d87-a1de-96cb0f0e6944"
-            },
+              "uuid": "f2553ac5-ec18-4b78-8081-a31dffb0841a"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "fca7c0f9-c21b-4702-9f37-8a6be690ef1a",
+              "name": "Alerts -> Get IP Reputation",
+              "label": null,
+              "isExecuted": false,
+              "targetStep": "/api/3/workflow_steps/f2553ac5-ec18-4b78-8081-a31dffb0841a",
+              "sourceStep": "/api/3/workflow_steps/af36ea99-ff65-4408-b3fb-9c2bca2f3bc6"
+            }
+          ],
+          "versions": null,
+          "lastModifyDate": 1612518477,
+          "priority": null,
+          "uuid": "0607e81f-baca-4712-94ef-2b9a806dff3c",
+          "recordTags": [
+            "apivoid"
+          ],
+          "isPrivate": false,
+          "owners": []
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Get URL Screenshot",
+          "aliasName": null,
+          "description": "Take high-quality screenshots of any web page and URL",
+          "collection": "/api/3/workflow_collections/0f63ad10-3ea5-43a6-9f70-b3c68d640b26",
+          "tag": "#apivoid",
+          "isActive": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/c04f1a91-46f5-4828-b690-75e226c00dd9",
+          "steps": [
             {
               "@type": "WorkflowStep",
-              "name": "Is Domain Blacklisted",
+              "name": "Get URL Screenshot",
               "description": null,
               "arguments": {
                 "name": "apivoid",
-                "when": "{{vars.input.records[0].typeofindicator.itemValue == 'Domain'}}",
-                "config": "29cc2036-aa10-4097-b306-0bfb254b1dff",
+                "config": "''",
                 "params": {
-                  "req_value": "{{vars.input.records[0].value}}"
+                  "req_value": ""
+                },
+                "version": "1.0.0",
+                "connector": "apivoid",
+                "operation": "screenshot",
+                "operationTitle": "Get URL Screenshot",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "status": null,
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "uuid": "5f52ddc0-574c-4005-8642-fae6cf5dc704"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Alerts",
+              "description": null,
+              "arguments": {
+                "route": "ed0568cc-9d55-4eda-9032-421ef7f8a1ee",
+                "title": "apivoid: Get URL Screenshot",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "uuid": "c04f1a91-46f5-4828-b690-75e226c00dd9"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "457c6bc1-8607-4806-8a40-59a24da0c683",
+              "name": "Alerts -> Get URL Screenshot",
+              "label": null,
+              "isExecuted": false,
+              "targetStep": "/api/3/workflow_steps/5f52ddc0-574c-4005-8642-fae6cf5dc704",
+              "sourceStep": "/api/3/workflow_steps/c04f1a91-46f5-4828-b690-75e226c00dd9"
+            }
+          ],
+          "versions": null,
+          "lastModifyDate": 1612518806,
+          "priority": null,
+          "uuid": "0e4df63c-afd4-4a9b-acaf-3ed768fe44e6",
+          "recordTags": [
+            "apivoid"
+          ],
+          "isPrivate": false,
+          "owners": []
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Get Email Reputation",
+          "aliasName": null,
+          "description": "Find out if the email is disposable, suspicious/risky, valid format, and more.",
+          "collection": "/api/3/workflow_collections/0f63ad10-3ea5-43a6-9f70-b3c68d640b26",
+          "tag": "#apivoid",
+          "isActive": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/658e87e7-5c78-485c-bd56-c1a50a54fefc",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Get Email Reputation",
+              "description": null,
+              "arguments": {
+                "name": "apivoid",
+                "config": "''",
+                "params": {
+                  "req_value": ""
+                },
+                "version": "1.0.0",
+                "connector": "apivoid",
+                "operation": "emailverify",
+                "operationTitle": "Get Email Reputation",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "status": null,
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "uuid": "00647934-1235-4552-b3ec-225f506ef025"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Alerts",
+              "description": null,
+              "arguments": {
+                "route": "f1baf621-18d8-42d1-96f4-c5dbca37d1ef",
+                "title": "apivoid: Get Email Reputation",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "uuid": "658e87e7-5c78-485c-bd56-c1a50a54fefc"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "ba9d19a7-84ff-4440-ac85-4a3188a785b5",
+              "name": "Alerts -> Get Email Reputation",
+              "label": null,
+              "isExecuted": false,
+              "targetStep": "/api/3/workflow_steps/00647934-1235-4552-b3ec-225f506ef025",
+              "sourceStep": "/api/3/workflow_steps/658e87e7-5c78-485c-bd56-c1a50a54fefc"
+            }
+          ],
+          "versions": null,
+          "lastModifyDate": 1612518536,
+          "priority": null,
+          "uuid": "1bd865be-61e0-4325-9991-bb9c58443b03",
+          "recordTags": [
+            "apivoid"
+          ],
+          "isPrivate": false,
+          "owners": []
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Get URL Status",
+          "aliasName": null,
+          "description": "Check if an URL is online or offline (down or not accessible).",
+          "collection": "/api/3/workflow_collections/0f63ad10-3ea5-43a6-9f70-b3c68d640b26",
+          "tag": "#apivoid",
+          "isActive": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/d7478fe8-22b7-404e-9ab4-b88be94bd831",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Get URL Status",
+              "description": null,
+              "arguments": {
+                "name": "apivoid",
+                "config": "''",
+                "params": {
+                  "req_value": ""
+                },
+                "version": "1.0.0",
+                "connector": "apivoid",
+                "operation": "urlstatus",
+                "operationTitle": "Get URL Status",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "status": null,
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "uuid": "92f13700-1255-4090-afe8-84a812ce0931"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Alerts",
+              "description": null,
+              "arguments": {
+                "route": "ca351f5f-5187-42c7-9080-7fd01d005519",
+                "title": "apivoid: Get URL Status",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "uuid": "d7478fe8-22b7-404e-9ab4-b88be94bd831"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "9e9234d6-87e3-4824-a7f1-1b41dfa79b95",
+              "name": "Alerts -> Get URL Status",
+              "label": null,
+              "isExecuted": false,
+              "targetStep": "/api/3/workflow_steps/92f13700-1255-4090-afe8-84a812ce0931",
+              "sourceStep": "/api/3/workflow_steps/d7478fe8-22b7-404e-9ab4-b88be94bd831"
+            }
+          ],
+          "versions": null,
+          "lastModifyDate": 1612518834,
+          "priority": null,
+          "uuid": "2309b6a9-fa26-4df8-a166-3d77720ff4aa",
+          "recordTags": [
+            "apivoid"
+          ],
+          "isPrivate": false,
+          "owners": []
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Get URL Reputation",
+          "aliasName": null,
+          "description": "Identify potentially unsafe and phishing URLs.",
+          "collection": "/api/3/workflow_collections/0f63ad10-3ea5-43a6-9f70-b3c68d640b26",
+          "tag": "#apivoid",
+          "isActive": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/4f135486-badf-4fd8-b92c-e1028885811e",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Alerts",
+              "description": null,
+              "arguments": {
+                "route": "89427e59-18e8-494b-bb8f-80acba91553a",
+                "title": "apivoid: Get URL Reputation",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "uuid": "4f135486-badf-4fd8-b92c-e1028885811e"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Get URL Reputation",
+              "description": null,
+              "arguments": {
+                "name": "apivoid",
+                "config": "''",
+                "params": {
+                  "req_value": ""
+                },
+                "version": "1.0.0",
+                "connector": "apivoid",
+                "operation": "urlrep",
+                "operationTitle": "Get URL Reputation",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "status": null,
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "uuid": "f8e668ea-66ec-4ce3-bf00-2c56a90a6be1"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "f9a1544a-9311-4861-808c-3f4bfeaa8755",
+              "name": "Alerts -> Get URL Reputation",
+              "label": null,
+              "isExecuted": false,
+              "targetStep": "/api/3/workflow_steps/f8e668ea-66ec-4ce3-bf00-2c56a90a6be1",
+              "sourceStep": "/api/3/workflow_steps/4f135486-badf-4fd8-b92c-e1028885811e"
+            }
+          ],
+          "versions": null,
+          "lastModifyDate": 1612518750,
+          "priority": null,
+          "uuid": "37b8728e-cf6c-4dcb-ab2c-8f36dc0d0912",
+          "recordTags": [
+            "apivoid"
+          ],
+          "isPrivate": false,
+          "owners": []
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Get DNS Propagation",
+          "aliasName": null,
+          "description": "Check if DNS records of a domain have propagated globally.",
+          "collection": "/api/3/workflow_collections/0f63ad10-3ea5-43a6-9f70-b3c68d640b26",
+          "tag": "#apivoid",
+          "isActive": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/62be08b5-3f55-469f-a637-dd9987080045",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Alerts",
+              "description": null,
+              "arguments": {
+                "route": "fe57bb23-2ee2-4f71-95d3-baf8cc57336f",
+                "title": "apivoid: Get DNS Propagation",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "uuid": "62be08b5-3f55-469f-a637-dd9987080045"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Get DNS Propagation",
+              "description": null,
+              "arguments": {
+                "name": "apivoid",
+                "config": "''",
+                "params": {
+                  "req_value": "",
+                  "dns_record_type": "MX"
+                },
+                "version": "1.0.0",
+                "connector": "apivoid",
+                "operation": "dnspropagation",
+                "operationTitle": "Get DNS Propagation",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "status": null,
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "uuid": "a1996d47-4f89-408f-a08a-809849622b32"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "14699720-8c93-40d4-8874-a4d0cfbc6c6c",
+              "name": "Alerts -> Get DNS Propagation",
+              "label": null,
+              "isExecuted": false,
+              "targetStep": "/api/3/workflow_steps/a1996d47-4f89-408f-a08a-809849622b32",
+              "sourceStep": "/api/3/workflow_steps/62be08b5-3f55-469f-a637-dd9987080045"
+            }
+          ],
+          "versions": null,
+          "lastModifyDate": 1612518451,
+          "priority": null,
+          "uuid": "4269daf2-5132-46be-a824-4197aa472fe4",
+          "recordTags": [
+            "apivoid"
+          ],
+          "isPrivate": false,
+          "owners": []
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Get Domain Age ",
+          "aliasName": null,
+          "description": "Get domain registration date and domain age in days",
+          "collection": "/api/3/workflow_collections/0f63ad10-3ea5-43a6-9f70-b3c68d640b26",
+          "tag": "#apivoid",
+          "isActive": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/270a710d-2d04-484e-a0ab-c093b6cd9d06",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Alerts",
+              "description": null,
+              "arguments": {
+                "route": "caf32a70-3846-466a-9cd1-fcd499815172",
+                "title": "apivoid: Get Domain Age ",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "uuid": "270a710d-2d04-484e-a0ab-c093b6cd9d06"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Get Domain Age ",
+              "description": null,
+              "arguments": {
+                "name": "apivoid",
+                "config": "''",
+                "params": {
+                  "req_value": ""
+                },
+                "version": "1.0.0",
+                "connector": "apivoid",
+                "operation": "domainage",
+                "operationTitle": "Get Domain Age ",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "status": null,
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "uuid": "d180b6cf-b067-4665-8319-ca4b186c5622"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "3be5f2f7-caec-4eb0-bcd9-f6b94aa3c2ac",
+              "name": "Alerts -> Get Domain Age ",
+              "label": null,
+              "isExecuted": false,
+              "targetStep": "/api/3/workflow_steps/d180b6cf-b067-4665-8319-ca4b186c5622",
+              "sourceStep": "/api/3/workflow_steps/270a710d-2d04-484e-a0ab-c093b6cd9d06"
+            }
+          ],
+          "versions": null,
+          "lastModifyDate": 1612518464,
+          "priority": null,
+          "uuid": "444888e6-cbce-4306-93eb-d885192cd182",
+          "recordTags": [
+            "apivoid"
+          ],
+          "isPrivate": false,
+          "owners": []
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Get URL HTML",
+          "aliasName": null,
+          "description": "Capture the HTML page source after JavaScript has been executed.",
+          "collection": "/api/3/workflow_collections/0f63ad10-3ea5-43a6-9f70-b3c68d640b26",
+          "tag": "#apivoid",
+          "isActive": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/09950b38-bc92-4b0a-a3dd-62e0ccb8b48c",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Alerts",
+              "description": null,
+              "arguments": {
+                "route": "abcd9dba-745d-458c-a675-dfdd39e407a1",
+                "title": "apivoid: Get URL HTML",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "uuid": "09950b38-bc92-4b0a-a3dd-62e0ccb8b48c"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Get URL HTML",
+              "description": null,
+              "arguments": {
+                "name": "apivoid",
+                "config": "''",
+                "params": {
+                  "req_value": ""
+                },
+                "version": "1.0.0",
+                "connector": "apivoid",
+                "operation": "urltohtml",
+                "operationTitle": "Get URL HTML",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "status": null,
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "uuid": "2aec4e69-42ac-4de9-b73c-169b3cd37fec"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "a089a2a7-aa5f-459e-8d21-9b9eb070a358",
+              "name": "Alerts -> Get URL HTML",
+              "label": null,
+              "isExecuted": false,
+              "targetStep": "/api/3/workflow_steps/2aec4e69-42ac-4de9-b73c-169b3cd37fec",
+              "sourceStep": "/api/3/workflow_steps/09950b38-bc92-4b0a-a3dd-62e0ccb8b48c"
+            }
+          ],
+          "versions": null,
+          "lastModifyDate": 1612518717,
+          "priority": null,
+          "uuid": "4e017218-ab6b-4f2c-8f2b-06920e8eda37",
+          "recordTags": [
+            "apivoid"
+          ],
+          "isPrivate": false,
+          "owners": []
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Get Domain Trustworthiness",
+          "aliasName": null,
+          "description": "Provides important details about a website to check if it is legit.",
+          "collection": "/api/3/workflow_collections/0f63ad10-3ea5-43a6-9f70-b3c68d640b26",
+          "tag": "#apivoid",
+          "isActive": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/c1c42774-e1ec-4ea9-8833-b259e747ff03",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Get Domain Trustworthiness",
+              "description": null,
+              "arguments": {
+                "name": "apivoid",
+                "config": "''",
+                "params": {
+                  "req_value": ""
+                },
+                "version": "1.0.0",
+                "connector": "apivoid",
+                "operation": "sitetrust",
+                "operationTitle": "Get Domain Trustworthiness",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "status": null,
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "uuid": "a8e86228-ae28-4fba-ba94-afcf6212d144"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Alerts",
+              "description": null,
+              "arguments": {
+                "route": "9d564815-7236-4d2f-8517-feb9a678adc5",
+                "title": "apivoid: Get Domain Trustworthiness",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "uuid": "c1c42774-e1ec-4ea9-8833-b259e747ff03"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "c5f56368-95d4-4766-99d1-a38253205dcd",
+              "name": "Alerts -> Get Domain Trustworthiness",
+              "label": null,
+              "isExecuted": false,
+              "targetStep": "/api/3/workflow_steps/a8e86228-ae28-4fba-ba94-afcf6212d144",
+              "sourceStep": "/api/3/workflow_steps/c1c42774-e1ec-4ea9-8833-b259e747ff03"
+            }
+          ],
+          "versions": null,
+          "lastModifyDate": 1612518523,
+          "priority": null,
+          "uuid": "6aa7e569-8e52-45d3-a3c9-46221fdebe30",
+          "recordTags": [
+            "apivoid"
+          ],
+          "isPrivate": false,
+          "owners": []
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Get Domain Reputation",
+          "aliasName": null,
+          "description": "Check if a domain name is blacklisted by trusted sources",
+          "collection": "/api/3/workflow_collections/0f63ad10-3ea5-43a6-9f70-b3c68d640b26",
+          "tag": "#apivoid",
+          "isActive": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/31bc230d-5916-4182-bb12-dfd1609c7363",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Alerts",
+              "description": null,
+              "arguments": {
+                "route": "9fcefee2-76ec-42ba-bed1-7687e448234f",
+                "title": "apivoid: Get Domain Reputation",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "uuid": "31bc230d-5916-4182-bb12-dfd1609c7363"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Get Domain Reputation",
+              "description": null,
+              "arguments": {
+                "name": "apivoid",
+                "config": "''",
+                "params": {
+                  "req_value": ""
                 },
                 "version": "1.0.0",
                 "connector": "apivoid",
                 "operation": "domainbl",
                 "operationTitle": "Get Domain Reputation",
-                "pickFromTenant": false,
-                "step_variables": []
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
               },
               "status": null,
-              "left": "125",
-              "top": "300",
+              "left": "188",
+              "top": "120",
               "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
-              "uuid": "456a9b3f-4e12-4755-beb5-80b5fe78919f"
+              "uuid": "517878e1-e8ee-4fda-beb3-1a84a33ec20f"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "09f73b0f-40f1-48a0-9e30-61a0dba8736e",
+              "name": "Alerts -> Get Domain Reputation",
+              "label": null,
+              "isExecuted": false,
+              "targetStep": "/api/3/workflow_steps/517878e1-e8ee-4fda-beb3-1a84a33ec20f",
+              "sourceStep": "/api/3/workflow_steps/31bc230d-5916-4182-bb12-dfd1609c7363"
+            }
+          ],
+          "versions": null,
+          "lastModifyDate": 1612518502,
+          "priority": null,
+          "uuid": "b0b3b847-e509-4083-b0bc-cf82ccc77eea",
+          "recordTags": [
+            "apivoid"
+          ],
+          "isPrivate": false,
+          "owners": []
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Get SSL Info",
+          "aliasName": null,
+          "description": "Check if a website's SSL certificate is valid, expired or blacklisted.",
+          "collection": "/api/3/workflow_collections/0f63ad10-3ea5-43a6-9f70-b3c68d640b26",
+          "tag": "#apivoid",
+          "isActive": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/6284f3f7-ef3a-48d7-a8b0-b41496aac088",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Alerts",
+              "description": null,
+              "arguments": {
+                "route": "4d67a83a-1d12-47bd-9641-ac2c210d7301",
+                "title": "apivoid: Get SSL Info",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "uuid": "6284f3f7-ef3a-48d7-a8b0-b41496aac088"
             },
             {
               "@type": "WorkflowStep",
@@ -179,358 +917,222 @@
               "description": null,
               "arguments": {
                 "name": "apivoid",
-                "when": "{{vars.input.records[0].typeofindicator.itemValue == 'Domain'}}",
-                "config": "29cc2036-aa10-4097-b306-0bfb254b1dff",
+                "config": "''",
                 "params": {
-                  "req_value": "{{vars.input.records[0].value}}"
+                  "req_value": ""
                 },
                 "version": "1.0.0",
                 "connector": "apivoid",
                 "operation": "sslinfo",
                 "operationTitle": "Get SSL Info",
-                "pickFromTenant": false,
-                "step_variables": []
-              },
-              "status": null,
-              "left": "125",
-              "top": "1785",
-              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
-              "uuid": "5058d271-f3ea-41f3-857e-5ec17a1acf0f"
-            },
-            {
-              "@type": "WorkflowStep",
-              "name": "Get Domain Age",
-              "description": null,
-              "arguments": {
-                "name": "apivoid",
-                "when": "{{vars.input.records[0].typeofindicator.itemValue == 'Domain'}}",
-                "config": "29cc2036-aa10-4097-b306-0bfb254b1dff",
-                "params": {
-                  "req_value": "{{vars.input.records[0].value}}"
-                },
-                "version": "1.0.0",
-                "connector": "apivoid",
-                "operation": "domainage",
-                "operationTitle": "Get Domain Age",
-                "pickFromTenant": false,
-                "step_variables": []
-              },
-              "status": null,
-              "left": "125",
-              "top": "840",
-              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
-              "uuid": "53e484db-b7c4-4b8b-a075-2fe08fd6a22c"
-            },
-            {
-              "@type": "WorkflowStep",
-              "name": "Get URL Html",
-              "description": null,
-              "arguments": {
-                "name": "apivoid",
-                "when": "{{vars.input.records[0].typeofindicator.itemValue == 'URL'}}",
-                "config": "29cc2036-aa10-4097-b306-0bfb254b1dff",
-                "params": {
-                  "req_value": "{{vars.input.records[0].value}}"
-                },
-                "version": "1.0.0",
-                "connector": "apivoid",
-                "operation": "urltohtml",
-                "operationTitle": "Get URL HTML",
-                "pickFromTenant": false,
-                "step_variables": []
-              },
-              "status": null,
-              "left": "125",
-              "top": "1650",
-              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
-              "uuid": "558b0077-7a91-4975-94d2-fc28e041c5ad"
-            },
-            {
-              "@type": "WorkflowStep",
-              "name": "Get URL Status",
-              "description": null,
-              "arguments": {
-                "name": "apivoid",
-                "when": "{{vars.input.records[0].typeofindicator.itemValue == 'URL'}}",
-                "config": "29cc2036-aa10-4097-b306-0bfb254b1dff",
-                "params": {
-                  "req_value": "{{vars.input.records[0].value}}"
-                },
-                "version": "1.0.0",
-                "connector": "apivoid",
-                "operation": "urlstatus",
-                "operationTitle": "Get URL Status",
-                "pickFromTenant": false,
-                "step_variables": []
-              },
-              "status": null,
-              "left": "125",
-              "top": "1245",
-              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
-              "uuid": "63386b1c-50f0-4e60-9a06-eb71c1d25270"
-            },
-            {
-              "@type": "WorkflowStep",
-              "name": "Get Email Reputation",
-              "description": null,
-              "arguments": {
-                "name": "apivoid",
-                "when": "{{vars.input.records[0].typeofindicator.itemValue == 'Email Address'}}",
-                "config": "29cc2036-aa10-4097-b306-0bfb254b1dff",
-                "params": {
-                  "req_value": "{{vars.input.records[0].value}}"
-                },
-                "version": "1.0.0",
-                "connector": "apivoid",
-                "operation": "emailverify",
-                "operationTitle": "Get Email Reputation",
-                "pickFromTenant": false,
-                "step_variables": []
-              },
-              "status": null,
-              "left": "125",
-              "top": "1380",
-              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
-              "uuid": "7911a31c-bd3e-47e6-988e-c6b6ce05adb7"
-            },
-            {
-              "@type": "WorkflowStep",
-              "name": "Start",
-              "description": null,
-              "arguments": {
-                "route": "3fce81c1-78c9-42a4-9cff-9dac174360a6",
-                "resources": [
-                  "indicators"
-                ],
-                "inputVariables": [],
                 "step_variables": {
-                  "input": {
-                    "records": "{{vars.input.records}}"
-                  }
-                },
-                "displayConditions": {
-                  "alerts": {
-                    "sort": [],
-                    "limit": 30,
-                    "logic": "AND",
-                    "filters": []
-                  },
-                  "indicators": {
-                    "sort": [],
-                    "limit": 30,
-                    "logic": "AND",
-                    "filters": []
-                  }
-                },
-                "executeButtonText": "Execute",
-                "noRecordExecution": false,
-                "singleRecordExecution": true
+                  "output_data": "{{vars.result}}"
+                }
               },
               "status": null,
-              "left": "125",
-              "top": "30",
-              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
-              "uuid": "81d040a8-b0f6-4b93-b86c-09079a9665d9"
-            },
-            {
-              "@type": "WorkflowStep",
-              "name": "debug",
-              "description": null,
-              "arguments": {
-                "all": "{{vars}}"
-              },
-              "status": null,
-              "left": "125",
-              "top": "1920",
-              "stepType": "/api/3/workflow_step_types/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
-              "uuid": "8ab156e9-d228-4381-bd13-17f7b90c802a"
-            },
-            {
-              "@type": "WorkflowStep",
-              "name": "Get Domain Trsutworthiness",
-              "description": null,
-              "arguments": {
-                "name": "apivoid",
-                "when": "{{vars.input.records[0].typeofindicator.itemValue == 'Domain'}}",
-                "config": "29cc2036-aa10-4097-b306-0bfb254b1dff",
-                "params": {
-                  "req_value": "{{vars.input.records[0].value}}"
-                },
-                "version": "1.0.0",
-                "connector": "apivoid",
-                "operation": "sitetrust",
-                "operationTitle": "Get Domain Trustworthiness",
-                "pickFromTenant": false,
-                "step_variables": []
-              },
-              "status": null,
-              "left": "125",
-              "top": "975",
+              "left": "188",
+              "top": "120",
               "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
-              "uuid": "cc420a25-2c68-4cf8-8d38-d6daf3f61358"
-            },
-            {
-              "@type": "WorkflowStep",
-              "name": "Get URL Screenshot",
-              "description": null,
-              "arguments": {
-                "name": "apivoid",
-                "when": "{{vars.input.records[0].typeofindicator.itemValue == 'URL'}}",
-                "config": "29cc2036-aa10-4097-b306-0bfb254b1dff",
-                "params": {
-                  "req_value": "{{vars.input.records[0].value}}"
-                },
-                "version": "1.0.0",
-                "connector": "apivoid",
-                "operation": "screenshot",
-                "operationTitle": "Get URL Screenshot",
-                "pickFromTenant": false,
-                "step_variables": []
-              },
-              "status": null,
-              "left": "125",
-              "top": "570",
-              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
-              "uuid": "f4cf3981-a6b5-4ad5-91fa-8b1cbccd5217"
+              "uuid": "677c641e-b673-4cc4-babe-b6c7745e5939"
             }
           ],
           "routes": [
             {
               "@type": "WorkflowRoute",
-              "uuid": "cfbaf236-3afd-4a8c-bc8e-74c41abc3445",
-              "name": "Start -> get something",
+              "uuid": "fa37cc03-9079-47f2-8298-5ab058fc936e",
+              "name": "Alerts -> Get SSL Info",
               "label": null,
               "isExecuted": false,
-              "targetStep": "/api/3/workflow_steps/271e5d2b-9ba7-4a04-ae2c-3f18a7ed67c8",
-              "sourceStep": "/api/3/workflow_steps/81d040a8-b0f6-4b93-b86c-09079a9665d9"
-            },
-            {
-              "@type": "WorkflowRoute",
-              "uuid": "a0225217-2fe4-41bc-b250-a3b2e804d07a",
-              "name": "Get Domain Reputation from ThreatLog -> Is Domain Blacklisted",
-              "label": null,
-              "isExecuted": false,
-              "targetStep": "/api/3/workflow_steps/456a9b3f-4e12-4755-beb5-80b5fe78919f",
-              "sourceStep": "/api/3/workflow_steps/271e5d2b-9ba7-4a04-ae2c-3f18a7ed67c8"
-            },
-            {
-              "@type": "WorkflowRoute",
-              "uuid": "d7bb7524-6d41-4be8-bdc8-f29213630327",
-              "name": "Is Domain Blacklisted -> Get IP Reputation",
-              "label": null,
-              "isExecuted": false,
-              "targetStep": "/api/3/workflow_steps/3c92885c-1830-4d87-a1de-96cb0f0e6944",
-              "sourceStep": "/api/3/workflow_steps/456a9b3f-4e12-4755-beb5-80b5fe78919f"
-            },
-            {
-              "@type": "WorkflowRoute",
-              "uuid": "49017fbb-2cf4-4f8a-8dc3-43b69d297cf3",
-              "name": "Get IP Reputation -> Get URL Screenshot",
-              "label": null,
-              "isExecuted": false,
-              "targetStep": "/api/3/workflow_steps/f4cf3981-a6b5-4ad5-91fa-8b1cbccd5217",
-              "sourceStep": "/api/3/workflow_steps/3c92885c-1830-4d87-a1de-96cb0f0e6944"
-            },
-            {
-              "@type": "WorkflowRoute",
-              "uuid": "896f1f80-1cd4-4d7d-8d77-213a6ff150ff",
-              "name": "Get URL Screenshot -> Get URL Reputation",
-              "label": null,
-              "isExecuted": false,
-              "targetStep": "/api/3/workflow_steps/23946b69-f153-43c5-8a84-0ca9d2939985",
-              "sourceStep": "/api/3/workflow_steps/f4cf3981-a6b5-4ad5-91fa-8b1cbccd5217"
-            },
-            {
-              "@type": "WorkflowRoute",
-              "uuid": "cd679a23-c9b2-4db9-a8ed-832e10df5a1f",
-              "name": "Get URL Reputation -> Get Domain Age",
-              "label": null,
-              "isExecuted": false,
-              "targetStep": "/api/3/workflow_steps/53e484db-b7c4-4b8b-a075-2fe08fd6a22c",
-              "sourceStep": "/api/3/workflow_steps/23946b69-f153-43c5-8a84-0ca9d2939985"
-            },
-            {
-              "@type": "WorkflowRoute",
-              "uuid": "b32bcfeb-9694-4cbf-9e07-69bb42ace525",
-              "name": "Get Domain Age -> Get Domain Trsutworthiness",
-              "label": null,
-              "isExecuted": false,
-              "targetStep": "/api/3/workflow_steps/cc420a25-2c68-4cf8-8d38-d6daf3f61358",
-              "sourceStep": "/api/3/workflow_steps/53e484db-b7c4-4b8b-a075-2fe08fd6a22c"
-            },
-            {
-              "@type": "WorkflowRoute",
-              "uuid": "29ca438a-f53d-4d54-aef2-72a9937ec1b7",
-              "name": "Get Domain Trsutworthiness -> Get Domain Parked Status",
-              "label": null,
-              "isExecuted": false,
-              "targetStep": "/api/3/workflow_steps/102698c0-4b06-4748-a62d-881b476ced77",
-              "sourceStep": "/api/3/workflow_steps/cc420a25-2c68-4cf8-8d38-d6daf3f61358"
-            },
-            {
-              "@type": "WorkflowRoute",
-              "uuid": "0a0ad81b-ba40-40f1-bc3a-b9940cf9f7e3",
-              "name": "Get Domain Parked Status -> Get URL Status",
-              "label": null,
-              "isExecuted": false,
-              "targetStep": "/api/3/workflow_steps/63386b1c-50f0-4e60-9a06-eb71c1d25270",
-              "sourceStep": "/api/3/workflow_steps/102698c0-4b06-4748-a62d-881b476ced77"
-            },
-            {
-              "@type": "WorkflowRoute",
-              "uuid": "17a8837c-fda5-4661-96e8-1a76187d689b",
-              "name": "Get URL Status -> Copy 5 of Get Domain Reputation from ThreatLog",
-              "label": null,
-              "isExecuted": false,
-              "targetStep": "/api/3/workflow_steps/7911a31c-bd3e-47e6-988e-c6b6ce05adb7",
-              "sourceStep": "/api/3/workflow_steps/63386b1c-50f0-4e60-9a06-eb71c1d25270"
-            },
-            {
-              "@type": "WorkflowRoute",
-              "uuid": "57991235-5ff5-44b6-b704-829883ab08ef",
-              "name": "Get Email Reputation -> Get DNS Propagation",
-              "label": null,
-              "isExecuted": false,
-              "targetStep": "/api/3/workflow_steps/3b97c795-6597-473f-a8b3-725e8c0b8ba7",
-              "sourceStep": "/api/3/workflow_steps/7911a31c-bd3e-47e6-988e-c6b6ce05adb7"
-            },
-            {
-              "@type": "WorkflowRoute",
-              "uuid": "0f4966bc-a02b-4500-b087-8b4448ab55e0",
-              "name": "Get DNS Propagation -> Get URL Html",
-              "label": null,
-              "isExecuted": false,
-              "targetStep": "/api/3/workflow_steps/558b0077-7a91-4975-94d2-fc28e041c5ad",
-              "sourceStep": "/api/3/workflow_steps/3b97c795-6597-473f-a8b3-725e8c0b8ba7"
-            },
-            {
-              "@type": "WorkflowRoute",
-              "uuid": "1f835f10-8464-44e8-8645-997b9f00b2c3",
-              "name": "Get URL Html -> Get SSL Info",
-              "label": null,
-              "isExecuted": false,
-              "targetStep": "/api/3/workflow_steps/5058d271-f3ea-41f3-857e-5ec17a1acf0f",
-              "sourceStep": "/api/3/workflow_steps/558b0077-7a91-4975-94d2-fc28e041c5ad"
-            },
-            {
-              "@type": "WorkflowRoute",
-              "uuid": "408f0818-3983-4647-b27f-9e8623375650",
-              "name": "Get SSL Info -> debug",
-              "label": null,
-              "isExecuted": false,
-              "targetStep": "/api/3/workflow_steps/8ab156e9-d228-4381-bd13-17f7b90c802a",
-              "sourceStep": "/api/3/workflow_steps/5058d271-f3ea-41f3-857e-5ec17a1acf0f"
+              "targetStep": "/api/3/workflow_steps/677c641e-b673-4cc4-babe-b6c7745e5939",
+              "sourceStep": "/api/3/workflow_steps/6284f3f7-ef3a-48d7-a8b0-b41496aac088"
             }
           ],
           "versions": null,
-          "lastModifyDate": 1611408509,
+          "lastModifyDate": 1612518566,
           "priority": null,
-          "uuid": "314a23f4-1dba-4223-b319-a131419db660",
-          "recordTags": [],
+          "uuid": "bd19f4e4-9bb5-49b2-8e1c-e8ac5b071210",
+          "recordTags": [
+            "apivoid"
+          ],
+          "isPrivate": false,
+          "owners": []
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Get Domain Parked Status",
+          "aliasName": null,
+          "description": "Check if a domain name is parked/for sale/Inavtive.",
+          "collection": "/api/3/workflow_collections/0f63ad10-3ea5-43a6-9f70-b3c68d640b26",
+          "tag": "#apivoid",
+          "isActive": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/cfb3aca7-c836-480e-b8c6-4c9597f9e757",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Get Domain Parked Status",
+              "description": null,
+              "arguments": {
+                "name": "apivoid",
+                "config": "''",
+                "params": {
+                  "req_value": ""
+                },
+                "version": "1.0.0",
+                "connector": "apivoid",
+                "operation": "parkeddomain",
+                "operationTitle": "Get Domain Parked Status",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "status": null,
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "uuid": "98d3327c-3296-4ce7-a25f-5a0afb3dd410"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Alerts",
+              "description": null,
+              "arguments": {
+                "route": "bc9a6c9c-b624-4090-8833-0c3279ceac82",
+                "title": "apivoid: Get Domain Parked Status",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "uuid": "cfb3aca7-c836-480e-b8c6-4c9597f9e757"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "fa5b03e7-1a74-4efa-9c66-3133fc43bb37",
+              "name": "Alerts -> Get Domain Parked Status",
+              "label": null,
+              "isExecuted": false,
+              "targetStep": "/api/3/workflow_steps/98d3327c-3296-4ce7-a25f-5a0afb3dd410",
+              "sourceStep": "/api/3/workflow_steps/cfb3aca7-c836-480e-b8c6-4c9597f9e757"
+            }
+          ],
+          "versions": null,
+          "lastModifyDate": 1612518490,
+          "priority": null,
+          "uuid": "cb71b61b-e399-4a59-95b8-c32451ede8db",
+          "recordTags": [
+            "apivoid"
+          ],
+          "isPrivate": false,
+          "owners": []
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Get ThreatLog Domain Reputation",
+          "aliasName": null,
+          "description": "Query ThreatLog.com database of malicious domains",
+          "collection": "/api/3/workflow_collections/0f63ad10-3ea5-43a6-9f70-b3c68d640b26",
+          "tag": "#apivoid",
+          "isActive": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/02aa7be1-f0d4-4abf-b845-fc8203ce3b3c",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Alerts",
+              "description": null,
+              "arguments": {
+                "route": "43cd0d1f-41c4-4603-a5c9-cf8f973aefc7",
+                "title": "apivoid: Get ThreatLog Domain Reputation",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "uuid": "02aa7be1-f0d4-4abf-b845-fc8203ce3b3c"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Get ThreatLog Domain Reputation",
+              "description": null,
+              "arguments": {
+                "name": "apivoid",
+                "config": "''",
+                "params": {
+                  "req_value": ""
+                },
+                "version": "1.0.0",
+                "connector": "apivoid",
+                "operation": "threatlog",
+                "operationTitle": "Get ThreatLog Domain Reputation",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "status": null,
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "uuid": "40ebe7e8-006c-422f-ae19-241058384c13"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "dd194bec-7759-4344-bffe-6ab7a100e5a2",
+              "name": "Alerts -> Get ThreatLog Domain Reputation",
+              "label": null,
+              "isExecuted": false,
+              "targetStep": "/api/3/workflow_steps/40ebe7e8-006c-422f-ae19-241058384c13",
+              "sourceStep": "/api/3/workflow_steps/02aa7be1-f0d4-4abf-b845-fc8203ce3b3c"
+            }
+          ],
+          "versions": null,
+          "lastModifyDate": 1612518661,
+          "priority": null,
+          "uuid": "d914b414-bb23-4f9b-81ad-24195a8e3f91",
+          "recordTags": [
+            "apivoid"
+          ],
           "isPrivate": false,
           "owners": []
         }
       ]
     }
+  ],
+  "exported_tags": [
+    "apivoid"
   ]
 }
