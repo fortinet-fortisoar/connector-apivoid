@@ -6,12 +6,16 @@
 
 from integrations.crudhub import maybe_json_or_raise
 from connectors.core.connector import get_logger, ConnectorError
+from django.conf import settings
+from integrations.crudhub import make_request
 import requests
 import socket
 import validators
+import os
 
 logger = get_logger('apivoid')
 
+TMP_LOC = os.path.dirname(os.path.realpath(__file__)) + "/apivoid"
 ENDPOINT = '/{}/v1/pay-as-you-go/'
 
 endpoints_map = {
@@ -74,6 +78,7 @@ def _get_input(params, key, type=str):
             return ret_val
         return None
 
+
 def _get_config(config):
     verify_ssl = config.get("verify_ssl", None)
     server_url = _get_input(config, "server")
@@ -92,7 +97,8 @@ def _api_request(endpoint, config, req_params=None, method='get'):
             req_params = {}        
         req_params.update({'key':api_key})
         api_response = requests.request(method=method, url=url, params=req_params, verify=verify_ssl)
-        #logger.debug('\nreq data:\n{0}\n'.format(dump.dump_all(api_response).decode('utf-8')))
+        logger.debug("api_response: response_code :{0}  response_message:{1}".format(api_response.status_code,
+                                                                                     api_response.text))
         response = maybe_json_or_raise(api_response)
         if 'error' not in response:
             return response
@@ -103,6 +109,62 @@ def _api_request(endpoint, config, req_params=None, method='get'):
             format(str(url), response))
     except Exception as Err:
         raise ConnectorError(Err)
+
+def upload_file_to_cyops(file_name, file_content, file_description):
+    try:
+        # Conditional import based on the FortiSOAR version.
+        try:
+            from integrations.crudhub import make_file_upload_request
+            response = make_file_upload_request(file_name, file_content, 'application/octet-stream')
+
+        except:
+            from cshmac.requests import HmacAuth
+            from integrations.crudhub import maybe_json_or_raise
+            from requests import post
+
+            url = settings.CRUD_HUB_URL + '/api/3/files'
+            auth = HmacAuth(url, 'POST', settings.APPLIANCE_PUBLIC_KEY,
+                            settings.APPLIANCE_PRIVATE_KEY,
+                            settings.APPLIANCE_PUBLIC_KEY.encode('utf-8'))
+            files = {'file': (file_name, file_content, {'Expire': 0})}
+            response = post(url, auth=auth, files=files, verify=False)
+            response = maybe_json_or_raise(response)
+
+        logger.info('File upload complete {0}'.format(str(response)))
+        file_id = response['@id']
+        attach_response = make_request('/api/3/attachments', 'POST',
+                                       {'name': file_name, 'file': file_id, 'description': file_description })
+        logger.info('attach file completed: {0}'.format(attach_response))
+        return attach_response
+    except Exception as err:
+        logger.exception('An exception occurred {0}'.format(str(err)))
+        raise ConnectorError('An exception occurred {0}'.format(str(err)))
+
+
+def handle_upload_file_to_cyops(file_details, file_path):
+    try:
+        file_name = file_details.get("file_name")
+        file_description = file_details.get("file_description")
+        file_content = open(file_path, "rb")
+        attach_response = upload_file_to_cyops(file_name, file_content, file_description)
+        logger.debug('{0}'.format(str(type(attach_response))))
+        os.remove(file_path)
+        return attach_response
+    except Exception as err:
+        os.remove(file_path)
+        logger.exception('An exception occurred {0}'.format(str(err)))
+        raise ConnectorError('An exception occurred {0}'.format(str(err)))
+
+
+def _save_file(filename, response):
+    tmp_path = TMP_LOC
+    import base64
+    imgdata = base64.b64decode(response)
+    if not os.path.isdir(tmp_path):
+        os.mkdir(tmp_path)
+    with open("{0}/{1}".format(tmp_path, filename), "wb") as file_to_write:
+        file_to_write.write(imgdata)
+    return "{0}/{1}".format(tmp_path, filename)
 
 
 def _get_threat_intel(config, params):
@@ -115,9 +177,16 @@ def _get_threat_intel(config, params):
         if 'dnspropagation' in req_type:
             url_params.update({'dns_type':_get_input(params, "dns_record_type")})
         url_params.update({endpoints_map[req_type]:req_value})    
-        return {"result":_api_request(ENDPOINT.format(req_type), config,url_params),
-                "status": "Success"}
-         
+        resp = _api_request(ENDPOINT.format(req_type), config,url_params)
+
+        file_name = req_value.split("/")[2] + ".png"
+        file_details = {
+            "file_name": file_name,
+            "file_description": "apivoid- Screenshot captured for URL {0}".format(req_value)
+        }
+        temp_path = _save_file(file_name, resp['data']['base64_file'])
+        attachment_resp = handle_upload_file_to_cyops(file_details, temp_path)
+        return attachment_resp
     except Exception as Err:
         logger.error(str(Err))
         raise ConnectorError(str(Err))   
