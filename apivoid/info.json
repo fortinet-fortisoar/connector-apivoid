@@ -9,7 +9,7 @@
   "category": "ThreatIntelligence",
   "icon_small_name": "small_icon.png",
   "icon_large_name": "large_icon.png",
-  "help_online": "https://docs.fortinet.com/document/apivoid/1.0.1/apivoid/49/apivoid-v1-0-0",
+  "help_online": "https://docs.fortinet.com/document/fortisoar/1.0.0/apivoid/96/apivoid-v1-0-0",
   "help_file": "apivoid.pdf",
   "configuration": {
     "fields": [
@@ -21,8 +21,7 @@
         "visible": true,
         "type": "text",
         "value": "endpoint.apivoid.com",
-        "description": "IP address or FQDN of the Apivoid cloud Platform."
-
+        "description": "IP address or FQDN of the apivoid cloud platform."
       },
       {
         "title": "API Key",
@@ -31,7 +30,7 @@
         "editable": true,
         "visible": true,
         "type": "password",
-        "description": "API Key from Apivoid.com"
+        "description": "API key that is configured for your account from apivoid.com for using the apivoid APIs. "
       },
       {
         "title": "Verify SSL",
@@ -41,8 +40,7 @@
         "visible": true,
         "type": "checkbox",
         "value": true,
-        "decsription": "Specifies whether the SSL certificate for the server is to be verified or not. By default, this option is set as True.,"
-
+        "decsription": "Specifies whether the SSL certificate for the server is to be verified or not. \nBy default, this option is set as True."
       }
     ]
   },
@@ -50,7 +48,7 @@
     {
       "operation": "threatlog",
       "title": "Get ThreatLog Domain Reputation",
-      "description": "Query ThreatLog.com database of malicious domains",
+      "description": "Queries the ThreatLog.com database of malicious domains based on the domain name specified, and if a matching domain is found, then the operation retrieves its reputation from ThreatLog.com.",
       "enabled": true,
       "parameters": [
         {
@@ -61,8 +59,8 @@
           "type": "text",
           "name": "req_value",
           "placeholder": "domain.com",
-          "description": "Specify the domain name."
-        }  
+          "description": "Name of the domain that you want to query for in the ThreatLog.com database and whose reputation you want to retrieve from ThreatLog.com."
+        }
       ],
       "annotation": "threatlog",
       "category": "investigation",
@@ -74,7 +72,7 @@
     {
       "operation": "domainbl",
       "title": "Get Domain Reputation",
-      "description": "Check if a domain name is blacklisted by trusted sources",
+      "description": "Name of the domain that you want to check for blacklisting by trusted sources and whose reputation you want to retrieve from apivoid.",
       "enabled": true,
       "parameters": [
         {
@@ -98,7 +96,7 @@
     {
       "operation": "iprep",
       "title": "Get IP Reputation",
-      "description": "Check the reputation and geolocation of an IPv4 address",
+      "description": "IP address whose geolocation and reputation you want to retrieve from apivoid.",
       "enabled": true,
       "parameters": [
         {
@@ -110,7 +108,7 @@
           "name": "req_value",
           "placeholder": "192.0.2.12",
           "description": "IP address for which you want to retrieve reputation information."
-        }              
+        }
       ],
       "annotation": "iprep",
       "category": "investigation",
@@ -122,7 +120,7 @@
     {
       "operation": "screenshot",
       "title": "Get URL Screenshot",
-      "description": "Take high-quality screenshots of any web page and URL",
+      "description": "Allows you to take high-quality screenshots of any specified web page or URL. ",
       "enabled": true,
       "parameters": [
         {
@@ -139,14 +137,70 @@
       "annotation": "screenshot",
       "category": "investigation",
       "output_schema": {
-        "result": "",
-        "status": ""
+        "data": {
+          "id": "",
+          "@id": "",
+          "file": {
+            "id": "",
+            "@id": "",
+            "file": [],
+            "size": "",
+            "@type": "",
+            "@context": "",
+            "filename": "",
+            "metadata": [],
+            "mimeType": "",
+            "thumbnail": "",
+            "uploadDate": ""
+          },
+          "name": "",
+          "type": "",
+          "@type": "",
+          "@context": "",
+          "createDate": "",
+          "createUser": {
+            "id": "",
+            "@id": "",
+            "name": "",
+            "@type": "",
+            "avatar": "",
+            "userId": "",
+            "userType": "",
+            "@settings": "",
+            "createDate": "",
+            "createUser": "",
+            "modifyDate": "",
+            "modifyUser": ""
+          },
+          "modifyDate": "",
+          "modifyUser": {
+            "id": "",
+            "@id": "",
+            "name": "",
+            "@type": "",
+            "avatar": "",
+            "userId": "",
+            "userType": "",
+            "@settings": "",
+            "createDate": "",
+            "createUser": "",
+            "modifyDate": "",
+            "modifyUser": ""
+          },
+          "recordTags": "",
+          "description": ""
+        },
+        "status": "",
+        "_status": "",
+        "message": "",
+        "operation": "",
+        "request_id": ""
       }
     },
     {
       "operation": "urlrep",
       "title": "Get URL Reputation",
-      "description": "Identify potentially unsafe and phishing URLs.",
+      "description": "Identifies potentially unsafe and phishing URLs and retrieves the reputation of the specified URL from apivoid.",
       "enabled": true,
       "parameters": [
         {
@@ -170,7 +224,7 @@
     {
       "operation": "domainage",
       "title": "Get Domain Age ",
-      "description": "Get domain registration date and domain age in days",
+      "description": "Retrieves the domain registration date and domain age, in days, from apivoid based on the domain name you have specified.",
       "enabled": true,
       "parameters": [
         {
@@ -181,7 +235,7 @@
           "type": "text",
           "name": "req_value",
           "placeholder": "domain.com",
-          "description": "Domain name for which you want to retrieve registration date and domain age."
+          "description": "Name of the domain name whose registration date and domain age, in days, you want to retrieve from apivoid."
         }
       ],
       "annotation": "domainage",
@@ -194,7 +248,7 @@
     {
       "operation": "sitetrust",
       "title": "Get Domain Trustworthiness",
-      "description": "Provides important details about a website to check if it is legit.",
+      "description": "Retrieves important details about the specified domain from apivoid to check whether the specified domain is legit. ",
       "enabled": true,
       "parameters": [
         {
@@ -205,7 +259,7 @@
           "type": "text",
           "name": "req_value",
           "placeholder": "domain.com",
-          "description": "Name of the domain."
+          "description": "Name of the domain whose trustworthiness (check whether or not it is legit) information you want to retrieve from apivoid. "
         }
       ],
       "annotation": "sitetrust",
@@ -218,7 +272,7 @@
     {
       "operation": "parkeddomain",
       "title": "Get Domain Parked Status",
-      "description": "Check if a domain name is parked/for sale/Inavtive.",
+      "description": "Retrieves the parked status information, i,e, parked, for sale, or Inactive, for the specified domain from apivoid. ",
       "enabled": true,
       "parameters": [
         {
@@ -229,7 +283,7 @@
           "type": "text",
           "name": "req_value",
           "placeholder": "domain.com",
-          "description": "Name of the domain."
+          "description": "Name of the domain whose parked status information, i.e., parked, for sale, or inactive, you want to retrieve from apivoid. "
         }
       ],
       "annotation": "parkeddomain",
@@ -242,7 +296,7 @@
     {
       "operation": "urlstatus",
       "title": "Get URL Status",
-      "description": "Check if an URL is online or offline (down or not accessible).",
+      "description": "Retrieves the URL status information, i,e, online or offline (down or not accessible), for the specified URL from apivoid. ",
       "enabled": true,
       "parameters": [
         {
@@ -253,7 +307,7 @@
           "type": "text",
           "name": "req_value",
           "placeholder": "https://www.domain.com/en/",
-          "description": "URL for which you want to check."
+          "description": "URL whose status information, i.e., online or offline (down or not accessible) you want to retrieve from apivoid. "
         }
       ],
       "annotation": "urlstatus",
@@ -262,11 +316,11 @@
         "result": "",
         "status": ""
       }
-    },        
+    },
     {
       "operation": "emailverify",
       "title": "Get Email Reputation",
-      "description": "Find out if the email is disposable, suspicious/risky, valid format, and more.",
+      "description": "Retrieves the reputation for the specified email ID from apivoid, and provides information about the email , i.e., whether the email is disposable, suspicious/risky, has a valid format, etc. ",
       "enabled": true,
       "parameters": [
         {
@@ -277,7 +331,7 @@
           "type": "text",
           "name": "req_value",
           "placeholder": "info@somedomain.com",
-          "description": "Email ID for which you want to retrieve reputation information."
+          "description": "Email ID whose reputation information you want to retrieve from apivoid."
         }
       ],
       "annotation": "emailverify",
@@ -290,7 +344,7 @@
     {
       "operation": "dnspropagation",
       "title": "Get DNS Propagation",
-      "description": "Check if DNS records of a domain have propagated globally.",
+      "description": "Checks if the DNS records of the specified domain have been propagated globally.",
       "enabled": true,
       "parameters": [
         {
@@ -301,7 +355,7 @@
           "type": "text",
           "name": "req_value",
           "placeholder": "domain.com",
-          "description": "Specify the domain name."
+          "description": "Name of the domain whose DNS records propagation you want to check in apivoid. "
         },
         {
           "title": "Record Type",
@@ -310,21 +364,21 @@
           "editable": true,
           "type": "select",
           "options": [
-                        "A",
-                        "AAAA",
-                        "NS",
-                        "MX",
-                        "TXT",
-                        "SRV",
-                        "SOA",
-                        "CNAME",
-                        "SPF",
-                        "CAA"
-                    ],
-          "description": "DNS records type: A, AAAA, NS, MX, TXT, SRV, PTR, SOA, CNAME, SPF, CAA",
+            "A",
+            "AAAA",
+            "NS",
+            "MX",
+            "TXT",
+            "SRV",
+            "SOA",
+            "CNAME",
+            "SPF",
+            "CAA"
+          ],
+          "description": "Type of DNS records you want to check for in apivoid. You can choose from the following options: A, AAAA, NS, MX, TXT, SRV, PTR, SOA, CNAME, SPF, or CAA.",
           "name": "dns_record_type",
           "value": "MX"
-        }        
+        }
       ],
       "annotation": "dnspropagation",
       "category": "investigation",
@@ -336,7 +390,7 @@
     {
       "operation": "urltohtml",
       "title": "Get URL HTML",
-      "description": "Capture the HTML page source after JavaScript has been executed.",
+      "description": "Captures the HTML page source after JavaScript has been executed for a specified URL. ",
       "enabled": true,
       "parameters": [
         {
@@ -347,7 +401,7 @@
           "type": "text",
           "name": "req_value",
           "placeholder": "https://www.domain.com/en/",
-          "description": "Specify the URL whose HTML page needs to be captured."
+          "description": "URL whose HTML page source you want to capture."
         }
       ],
       "annotation": "urltohtml",
@@ -360,7 +414,7 @@
     {
       "operation": "sslinfo",
       "title": "Get SSL Info",
-      "description": "Check if a website's SSL certificate is valid, expired or blacklisted.",
+      "description": "Retrieves information about the SSL certificate, i.e., whether the certificate is valid, expired, or blacklisted from apivoid, for the specified website. ",
       "enabled": true,
       "parameters": [
         {
@@ -371,7 +425,7 @@
           "type": "text",
           "name": "req_value",
           "placeholder": "www.domain.com",
-          "description": "Specify the website whose SSL info needs to be validated."
+          "description": "Website whose SSL information, i.e., whether the SSL certificate is valid, expired, or blacklisted, needs to be validated and retrieved from apivoid."
         }
       ],
       "annotation": "sslinfo",
