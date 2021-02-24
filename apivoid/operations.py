@@ -176,20 +176,30 @@ def _get_threat_intel(config, params):
             raise ConnectorError("Invalid {0} input paramter: {1}".format(req_type,req_value))
         if 'dnspropagation' in req_type:
             url_params.update({'dns_type':_get_input(params, "dns_record_type")})
-        url_params.update({endpoints_map[req_type]:req_value})    
-        resp = _api_request(ENDPOINT.format(req_type), config,url_params)
+        url_params.update({endpoints_map[req_type]:req_value})
+        return {"result": _api_request(ENDPOINT.format(req_type), config, url_params),
+                "status": "Success"}
+    except Exception as Err:
+        logger.error(str(Err))
+        raise ConnectorError(str(Err))
 
+def get_screenshot(config, params):
+    try:
+        req_value = _get_input(params, "req_value")
+        resp = _get_threat_intel(config, params)
+        #add file in attachment module
         file_name = req_value.split("/")[2] + ".png"
         file_details = {
             "file_name": file_name,
             "file_description": "apivoid- Screenshot captured for URL {0}".format(req_value)
         }
-        temp_path = _save_file(file_name, resp['data']['base64_file'])
+        temp_path = _save_file(file_name, resp['result']['data']['base64_file'])
         attachment_resp = handle_upload_file_to_cyops(file_details, temp_path)
         return attachment_resp
     except Exception as Err:
         logger.error(str(Err))
-        raise ConnectorError(str(Err))   
+        raise ConnectorError(str(Err))
+
 
 def _check_health(config):
     try:
@@ -210,7 +220,7 @@ operations = {
 "threatlog":_get_threat_intel,
 "domainbl":_get_threat_intel,
 "iprep":_get_threat_intel,
-"screenshot":_get_threat_intel,
+"screenshot":get_screenshot,
 "urlrep":_get_threat_intel,
 "domainage":_get_threat_intel,
 "sitetrust":_get_threat_intel,
