@@ -8,7 +8,6 @@ from connectors.core.connector import Connector, get_logger, ConnectorError
 from connectors.cyops_utilities.builtins import make_cyops_request
 from .operations import operations, _check_health
 logger = get_logger('apivoid')
-MACRO_LIST = ["IP_Enrichment_Playbooks_IRIs", "URL_Enrichment_Playbooks_IRIs", "Domain_Enrichment_Playbooks_IRIs", "Email_Enrichment_Playbooks_IRIs"]
 
 
 class apivoid(Connector):

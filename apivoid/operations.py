@@ -17,6 +17,7 @@ logger = get_logger('apivoid')
 
 TMP_LOC = os.path.dirname(os.path.realpath(__file__)) + "/apivoid"
 ENDPOINT = '/{}/v1/pay-as-you-go/'
+MACRO_LIST = ["IP_Enrichment_Playbooks_IRIs", "URL_Enrichment_Playbooks_IRIs", "Domain_Enrichment_Playbooks_IRIs", "Email_Enrichment_Playbooks_IRIs"]
 
 endpoints_map = {
     "threatlog": "host",
