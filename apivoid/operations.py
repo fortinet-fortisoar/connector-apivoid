@@ -19,32 +19,36 @@ TMP_LOC = os.path.dirname(os.path.realpath(__file__)) + "/apivoid"
 ENDPOINT = '/{}/v1/pay-as-you-go/'
 
 endpoints_map = {
-"threatlog":"host",
-"domainbl":"host",
-"iprep":"ip",
-"screenshot":"url",
-"urlrep":"url",
-"domainage":"host",
-"sitetrust":"host",
-"parkeddomain":"host",
-"urlstatus":"url",
-"emailverify":"email",
-"dnspropagation":"host",
-"urltohtml":"url",
-"sslinfo":"host"
+    "threatlog": "host",
+    "domainbl": "host",
+    "iprep": "ip",
+    "screenshot": "url",
+    "urlrep": "url",
+    "domainage": "host",
+    "sitetrust": "host",
+    "parkeddomain": "host",
+    "urlstatus": "url",
+    "emailverify": "email",
+    "dnspropagation": "host",
+    "urltohtml": "url",
+    "sslinfo": "host"
 }
+
 
 def _is_valid_domain(domain):
     """Returns True if input string is a valid domain or fqdn (domain.com)."""
     return validators.domain(domain)
 
+
 def _is_valid_url(url):
     """Returns True if input string is a valid url (http://domain.com)."""
     return validators.url(url)
 
+
 def _is_valid_email(email):
     """Returns True if input string is a valid email (someone@domain.com)."""
     return validators.email(email)
+
 
 def _is_valid_ip(ip):
     """Returns True if input string is ipv4/ipv6."""
@@ -59,6 +63,7 @@ def _is_valid_ip(ip):
         if e.args[0] == socket.EAI_NONAME:
             return False
         raise ConnectorError(e)
+
 
 def _get_input(params, key, type=str):
     ret_val = params.get(key, None)
@@ -83,19 +88,20 @@ def _get_config(config):
     verify_ssl = config.get("verify_ssl", None)
     server_url = _get_input(config, "server")
     api_key = _get_input(config, "api_key")
-    #logger.debug('{}\n{}\n{}\n{}\n'.format(server_url, api_key, verify_ssl,config))
+    # logger.debug('{}\n{}\n{}\n{}\n'.format(server_url, api_key, verify_ssl,config))
     if server_url[:7] != 'http://' and server_url[:8] != 'https://':
-        server_url = 'https://{}'.format(server_url)     
+        server_url = 'https://{}'.format(server_url)
     return server_url, api_key, verify_ssl
+
 
 def _api_request(endpoint, config, req_params=None, method='get'):
     ''' returns json or str '''
     try:
         server_url, api_key, verify_ssl = _get_config(config)
-        url = server_url + endpoint       
+        url = server_url + endpoint
         if req_params is None:
-            req_params = {}        
-        req_params.update({'key':api_key})
+            req_params = {}
+        req_params.update({'key': api_key})
         api_response = requests.request(method=method, url=url, params=req_params, verify=verify_ssl)
         logger.debug("api_response: response_code :{0}  response_message:{1}".format(api_response.status_code,
                                                                                      api_response.text))
@@ -104,11 +110,12 @@ def _api_request(endpoint, config, req_params=None, method='get'):
             return response
         else:
             logger.error('Fail To request API \n{0}\n response is : \n{1}\n'.
-            format(str(url), response))
+                         format(str(url), response))
             raise ConnectorError('Fail To request API \n{0}\n response is : \n{1}\n'.
-            format(str(url), response))
+                                 format(str(url), response))
     except Exception as Err:
         raise ConnectorError(Err)
+
 
 def upload_file_to_cyops(file_name, file_content, file_description):
     try:
@@ -133,7 +140,7 @@ def upload_file_to_cyops(file_name, file_content, file_description):
         logger.info('File upload complete {0}'.format(str(response)))
         file_id = response['@id']
         attach_response = make_request('/api/3/attachments', 'POST',
-                                       {'name': file_name, 'file': file_id, 'description': file_description })
+                                       {'name': file_name, 'file': file_id, 'description': file_description})
         logger.info('attach file completed: {0}'.format(attach_response))
         return attach_response
     except Exception as err:
@@ -173,21 +180,22 @@ def _get_threat_intel(config, params):
         req_type = _get_input(params, "operation")
         req_value = _get_input(params, "req_value")
         if not validation_function_map[req_type](req_value):
-            raise ConnectorError("Invalid {0} input paramter: {1}".format(req_type,req_value))
+            raise ConnectorError("Invalid {0} input paramter: {1}".format(req_type, req_value))
         if 'dnspropagation' in req_type:
-            url_params.update({'dns_type':_get_input(params, "dns_record_type")})
-        url_params.update({endpoints_map[req_type]:req_value})
+            url_params.update({'dns_type': _get_input(params, "dns_record_type")})
+        url_params.update({endpoints_map[req_type]: req_value})
         return {"result": _api_request(ENDPOINT.format(req_type), config, url_params),
                 "status": "Success"}
     except Exception as Err:
         logger.error(str(Err))
         raise ConnectorError(str(Err))
 
+
 def get_screenshot(config, params):
     try:
         req_value = _get_input(params, "req_value")
         resp = _get_threat_intel(config, params)
-        #add file in attachment module
+        # add file in attachment module
         file_name = req_value.split("/")[2] + ".png"
         file_details = {
             "file_name": file_name,
@@ -203,7 +211,7 @@ def get_screenshot(config, params):
 
 def _check_health(config):
     try:
-        result = _api_request(ENDPOINT.format("iprep")+'?stats', config,req_params={"ip":"1.1.1.1"})
+        result = _api_request(ENDPOINT.format("iprep") + '?stats', config, req_params={"ip": "1.1.1.1"})
         if result:
             return True
         else:
@@ -216,34 +224,35 @@ def _check_health(config):
         else:
             raise ConnectorError(str(err))
 
+
 operations = {
-"threatlog":_get_threat_intel,
-"domainbl":_get_threat_intel,
-"iprep":_get_threat_intel,
-"screenshot":get_screenshot,
-"urlrep":_get_threat_intel,
-"domainage":_get_threat_intel,
-"sitetrust":_get_threat_intel,
-"parkeddomain":_get_threat_intel,
-"urlstatus":_get_threat_intel,
-"emailverify":_get_threat_intel,
-"dnspropagation":_get_threat_intel,
-"urltohtml":_get_threat_intel,
-"sslinfo":_get_threat_intel 
+    "threatlog": _get_threat_intel,
+    "domainbl": _get_threat_intel,
+    "iprep": _get_threat_intel,
+    "screenshot": get_screenshot,
+    "urlrep": _get_threat_intel,
+    "domainage": _get_threat_intel,
+    "sitetrust": _get_threat_intel,
+    "parkeddomain": _get_threat_intel,
+    "urlstatus": _get_threat_intel,
+    "emailverify": _get_threat_intel,
+    "dnspropagation": _get_threat_intel,
+    "urltohtml": _get_threat_intel,
+    "sslinfo": _get_threat_intel
 }
 
 validation_function_map = {
-"threatlog":_is_valid_domain,
-"domainbl":_is_valid_domain,
-"iprep":_is_valid_ip,
-"screenshot":_is_valid_url,
-"urlrep":_is_valid_url,
-"domainage":_is_valid_domain,
-"sitetrust":_is_valid_domain,
-"parkeddomain":_is_valid_domain,
-"urlstatus":_is_valid_url,
-"emailverify":_is_valid_email,
-"dnspropagation":_is_valid_domain,
-"urltohtml":_is_valid_url,
-"sslinfo":_is_valid_domain
+    "threatlog": _is_valid_domain,
+    "domainbl": _is_valid_domain,
+    "iprep": _is_valid_ip,
+    "screenshot": _is_valid_url,
+    "urlrep": _is_valid_url,
+    "domainage": _is_valid_domain,
+    "sitetrust": _is_valid_domain,
+    "parkeddomain": _is_valid_domain,
+    "urlstatus": _is_valid_url,
+    "emailverify": _is_valid_email,
+    "dnspropagation": _is_valid_domain,
+    "urltohtml": _is_valid_url,
+    "sslinfo": _is_valid_domain
 }
