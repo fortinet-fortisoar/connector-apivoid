@@ -5,12 +5,11 @@
   "publisher": "Fortinet",
   "cs_approved": true,
   "cs_compatible": true,
-  "version": "1.0.0",
-  "category": "ThreatIntelligence",
+  "version": "1.0.1",
+  "category": "Threat Intelligence",
   "icon_small_name": "small_icon.png",
   "icon_large_name": "large_icon.png",
-  "help_online": "https://docs.fortinet.com/document/fortisoar/1.0.0/apivoid/96/apivoid-v1-0-0",
-  "help_file": "apivoid.pdf",
+  "help_online": "",
   "configuration": {
     "fields": [
       {
@@ -40,7 +39,7 @@
         "visible": true,
         "type": "checkbox",
         "value": true,
-        "decsription": "Specifies whether the SSL certificate for the server is to be verified or not. \nBy default, this option is set as True."
+        "description": "Specifies whether the SSL certificate for the server is to be verified or not. \nBy default, this option is set as True."
       }
     ]
   },

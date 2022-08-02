@@ -2,12 +2,17 @@
   "type": "workflow_collections",
   "data": [
     {
+      "@context": "/api/3/contexts/WorkflowCollection",
       "@type": "WorkflowCollection",
-      "name": "Sample - apivoid - 1.0.0",
-      "description": "Apivoid connector provides several threat intelligence services ranging from IP/URL/Domain reputation to domain age and website screenshots",
+      "name": "Sample - apivoid - 1.0.1",
+      "description": "Sample playbooks for \"apivoid\" connector. If you are planning to use any of the sample playbooks in your environment, ensure that you clone those playbooks and move them to a different collection, since the sample playbook collection gets deleted during connector upgrade and delete.",
       "visible": true,
-      "image": null,
-      "uuid": "0f63ad10-3ea5-43a6-9f70-b3c68d640b26",
+      "image": "/api/3/images/340701a8-0770-4796-9ed3-2cbe8af26966",
+      "id": 75,
+      "createDate": 1659431427.072901,
+      "modifyDate": 1659431427.072901,
+      "deletedAt": null,
+      "importedBy": [],
       "recordTags": [],
       "workflows": [
         {
@@ -15,14 +20,17 @@
           "triggerLimit": null,
           "name": "Get IP Reputation",
           "aliasName": null,
-          "description": "Check the reputation and geolocation of an IPv4 address",
-          "collection": "/api/3/workflow_collections/0f63ad10-3ea5-43a6-9f70-b3c68d640b26",
           "tag": "#apivoid",
+          "description": "Check the reputation and geolocation of an IPv4 address",
           "isActive": false,
+          "debug": false,
           "singleRecordExecution": false,
           "remoteExecutableFlag": false,
           "parameters": [],
           "synchronous": false,
+          "lastModifyDate": 1612518477,
+          "collection": "/api/3/workflow_collections/0f63ad10-3ea5-43a6-9f70-b3c68d640b26",
+          "versions": [],
           "triggerStep": "/api/3/workflow_steps/af36ea99-ff65-4408-b3fb-9c2bca2f3bc6",
           "steps": [
             {
@@ -45,9 +53,10 @@
                 "singleRecordExecution": false
               },
               "status": null,
-              "left": "20",
               "top": "20",
+              "left": "20",
               "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
               "uuid": "af36ea99-ff65-4408-b3fb-9c2bca2f3bc6"
             },
             {
@@ -60,7 +69,7 @@
                 "params": {
                   "req_value": ""
                 },
-                "version": "1.0.0",
+                "version": "1.0.1",
                 "connector": "apivoid",
                 "operation": "iprep",
                 "operationTitle": "Get IP Reputation",
@@ -69,46 +78,52 @@
                 }
               },
               "status": null,
-              "left": "188",
               "top": "120",
+              "left": "188",
               "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
               "uuid": "f2553ac5-ec18-4b78-8081-a31dffb0841a"
             }
           ],
           "routes": [
             {
               "@type": "WorkflowRoute",
-              "uuid": "fca7c0f9-c21b-4702-9f37-8a6be690ef1a",
               "name": "Alerts -> Get IP Reputation",
+              "targetStep": "/api/3/workflow_steps/f2553ac5-ec18-4b78-8081-a31dffb0841a",
+              "sourceStep": "/api/3/workflow_steps/af36ea99-ff65-4408-b3fb-9c2bca2f3bc6",
               "label": null,
               "isExecuted": false,
-              "targetStep": "/api/3/workflow_steps/f2553ac5-ec18-4b78-8081-a31dffb0841a",
-              "sourceStep": "/api/3/workflow_steps/af36ea99-ff65-4408-b3fb-9c2bca2f3bc6"
+              "uuid": "fca7c0f9-c21b-4702-9f37-8a6be690ef1a"
             }
           ],
-          "versions": null,
-          "lastModifyDate": 1612518477,
+          "groups": [],
           "priority": null,
           "uuid": "0607e81f-baca-4712-94ef-2b9a806dff3c",
+          "id": 842,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
           "recordTags": [
             "apivoid"
-          ],
-          "isPrivate": false,
-          "owners": []
+          ]
         },
         {
           "@type": "Workflow",
           "triggerLimit": null,
           "name": "Get URL Screenshot",
           "aliasName": null,
-          "description": "Take high-quality screenshots of any web page and URL",
-          "collection": "/api/3/workflow_collections/0f63ad10-3ea5-43a6-9f70-b3c68d640b26",
           "tag": "#apivoid",
+          "description": "Take high-quality screenshots of any web page and URL",
           "isActive": false,
+          "debug": false,
           "singleRecordExecution": false,
           "remoteExecutableFlag": false,
           "parameters": [],
           "synchronous": false,
+          "lastModifyDate": 1612518806,
+          "collection": "/api/3/workflow_collections/0f63ad10-3ea5-43a6-9f70-b3c68d640b26",
+          "versions": [],
           "triggerStep": "/api/3/workflow_steps/c04f1a91-46f5-4828-b690-75e226c00dd9",
           "steps": [
             {
@@ -121,7 +136,7 @@
                 "params": {
                   "req_value": ""
                 },
-                "version": "1.0.0",
+                "version": "1.0.1",
                 "connector": "apivoid",
                 "operation": "screenshot",
                 "operationTitle": "Get URL Screenshot",
@@ -130,9 +145,10 @@
                 }
               },
               "status": null,
-              "left": "188",
               "top": "120",
+              "left": "188",
               "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
               "uuid": "5f52ddc0-574c-4005-8642-fae6cf5dc704"
             },
             {
@@ -155,46 +171,401 @@
                 "singleRecordExecution": false
               },
               "status": null,
-              "left": "20",
               "top": "20",
+              "left": "20",
               "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
               "uuid": "c04f1a91-46f5-4828-b690-75e226c00dd9"
             }
           ],
           "routes": [
             {
               "@type": "WorkflowRoute",
-              "uuid": "457c6bc1-8607-4806-8a40-59a24da0c683",
               "name": "Alerts -> Get URL Screenshot",
+              "targetStep": "/api/3/workflow_steps/5f52ddc0-574c-4005-8642-fae6cf5dc704",
+              "sourceStep": "/api/3/workflow_steps/c04f1a91-46f5-4828-b690-75e226c00dd9",
               "label": null,
               "isExecuted": false,
-              "targetStep": "/api/3/workflow_steps/5f52ddc0-574c-4005-8642-fae6cf5dc704",
-              "sourceStep": "/api/3/workflow_steps/c04f1a91-46f5-4828-b690-75e226c00dd9"
+              "uuid": "457c6bc1-8607-4806-8a40-59a24da0c683"
             }
           ],
-          "versions": null,
-          "lastModifyDate": 1612518806,
+          "groups": [],
           "priority": null,
           "uuid": "0e4df63c-afd4-4a9b-acaf-3ed768fe44e6",
+          "id": 843,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
           "recordTags": [
             "apivoid"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Email Address > API Void > Enrichment",
+          "aliasName": null,
+          "tag": null,
+          "description": "Retrieve the reputation of indicator of type ‘Email Address’ using API Void.",
+          "isActive": true,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [
+            "indicator_value",
+            "style_colors"
           ],
+          "synchronous": false,
+          "lastModifyDate": 1659431472,
+          "collection": "/api/3/workflow_collections/0f63ad10-3ea5-43a6-9f70-b3c68d640b26",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/eb002d72-6ee9-4eb9-922f-ec424ccabbdd",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "step_variables": {
+                  "input": {
+                    "params": []
+                  }
+                }
+              },
+              "status": null,
+              "top": "30",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62",
+              "group": null,
+              "uuid": "eb002d72-6ee9-4eb9-922f-ec424ccabbdd"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Compute API Void Summary",
+              "description": null,
+              "arguments": {
+                "params": {
+                  "value": "<table class=\"no-border\">\n    <tr>\n        <th colspan=\"5\" class=\"no-background padding-0\">\n            <div class=\"font-size-11 ng-binding padding-bottom-sm\">\n                <h4 style=\"color: orange;\"\n                    class=\"body-default-bgcolor margin-bottom-0 padding-bottom-md padding-left-md padding-top-md text-align-left\">\n                    API Void Detection Summary</h4>\n            </div>\n        </th>\n    </tr>\n    <tr class=\"solid-border\">\n        <td>\n            <div small class=\"control-label\">Score</div>\n            <div class=\"card-container-body margin-left-0\" style=\"width: 100px;\">\n                <div>{% if vars.steps.Get_Email_Reputation.data.result.data.score >= (vars.malicious_score.split('-')[1] | int) %}</div>\n                <div class=\"body-default-bgcolor card-number padding-left-md\"\n                    style=\"border-left: 5px solid {{vars.input.params.style_colors.Malicious}};padding: 11px;font-size: 18px !important;\">\n                    {{vars.steps.Get_Email_Reputation.data.result.data.score}}</div>\n                <div>{% elif vars.steps.Get_Email_Reputation.data.result.data.score <= (vars.suspicious_score.split('-')[0] | int) and vars.steps.Get_Email_Reputation.data.result.data.score >= (vars.suspicious_score.split('-')[1] | int) %}</div>\n                <div class=\"body-default-bgcolor card-number padding-left-md\"\n                        style=\"border-left: 5px solid {{vars.input.params.style_colors.Suspicious}};padding: 11px;font-size: 18px !important;\">\n                            {{vars.steps.Get_Email_Reputation.data.result.data.score}}</div>\n                        <div>{% elif vars.steps.Get_Email_Reputation.data.result.data.score == vars.good_score %}</div>\n                        <div class=\"body-default-bgcolor card-number padding-left-md\"\n                            style=\"border-left: 5px solid {{vars.input.params.style_colors.Good}};padding: 11px;font-size: 18px !important;\">\n                            {{vars.steps.Get_Email_Reputation.data.result.data.score}}</div>\n                        <div>{% else %}</div>\n                        <div class=\"body-default-bgcolor card-number padding-left-md\"\n                            style=\"border-left: 5px solid {{vars.input.params.style_colors['No Reputation Available']}};padding: 11px;font-size: 18px !important;\">\n                            {{vars.steps.Get_Email_Reputation.data.result.data.score}}</div>\n                        <div>{% endif %}</div>\n                </div>\n        </td>\n        <td>\n            <div small class=\"control-label\">Disposable</div>\n            <div class=\"card-container-body margin-left-0\" style=\"width: 100px;\">\n                <div>{% if vars.steps.Get_Email_Reputation.data.result.data.disposable %}</div>\n                <div class=\"body-default-bgcolor card-number padding-left-md\"\n                    style=\"border-left: 5px solid {{vars.input.params.style_colors.Malicious}};padding: 11px;font-size: 18px !important;\">\n                    {{vars.steps.Get_Email_Reputation.data.result.data.disposable}}</div>\n                <div>{% else %}</div>\n                <div class=\"body-default-bgcolor card-number padding-left-md\"\n                    style=\"border-left: 5px solid {{vars.input.params.style_colors.Good}};padding: 11px;font-size: 18px !important;\">\n                    {{vars.steps.Get_Email_Reputation.data.result.data.disposable}}</div>\n                <div>{% endif %}</div>\n            </div>\n        </td>\n        <td>\n            <div small class=\"control-label\">SPF Records</div>\n            <div class=\"card-container-body margin-left-0\" style=\"width: 100px;\">\n                <div>{% if vars.steps.Get_Email_Reputation.data.result.data.has_spf_records %}</div>\n                <div class=\"body-default-bgcolor card-number padding-left-md\"\n                    style=\"border-left: 5px solid {{vars.input.params.style_colors.Malicious}};padding: 11px;font-size: 18px !important;\">\n                    {{vars.steps.Get_Email_Reputation.data.result.data.has_spf_records}}</div>\n                <div>{% else %}</div>\n                <div class=\"body-default-bgcolor card-number padding-left-md\"\n                    style=\"border-left: 5px solid {{vars.input.params.style_colors.Good}};padding: 11px;font-size: 18px !important;\">\n                    {{vars.steps.Get_Email_Reputation.data.result.data.has_spf_records}}</div>\n                <div>{% endif %}</div>\n            </div>\n        </td>\n        <td>\n            <div small class=\"control-label\">Suspicious Username</div>\n            <div class=\"card-container-body margin-left-0\" style=\"width: 100px;\">\n                <div>{% if vars.steps.Get_Email_Reputation.data.result.data.suspicious_username %}</div>\n                <div class=\"body-default-bgcolor card-number padding-left-md\"\n                    style=\"border-left: 5px solid {{vars.input.params.style_colors.Malicious}};padding: 11px;font-size: 18px !important;\">\n                    {{vars.steps.Get_Email_Reputation.data.result.data.suspicious_username}}</div>\n                <div>{% else %}</div>\n                <div class=\"body-default-bgcolor card-number padding-left-md\"\n                    style=\"border-left: 5px solid {{vars.input.params.style_colors.Good}};padding: 11px;font-size: 18px !important;\">\n                    {{vars.steps.Get_Email_Reputation.data.result.data.suspicious_username}}</div>\n                <div>{% endif %}</div>\n            </div>\n        </td>\n        <td>\n            <div small class=\"control-label\">Suspicious Domain</div>\n            <div class=\"card-container-body margin-left-0\" style=\"width: 100px;\">\n                <div>{% if vars.steps.Get_Email_Reputation.data.result.data.suspicious_domain %}</div>\n                <div class=\"body-default-bgcolor card-number padding-left-md\"\n                    style=\"border-left: 5px solid {{vars.input.params.style_colors.Malicious}};padding: 11px;font-size: 18px !important;\">\n                    {{vars.steps.Get_Email_Reputation.data.result.data.suspicious_domain}}</div>\n                <div>{% else %}</div>\n                <div class=\"body-default-bgcolor card-number padding-left-md\"\n                    style=\"border-left: 5px solid {{vars.input.params.style_colors.Good}};padding: 11px;font-size: 18px !important;\">\n                    {{vars.steps.Get_Email_Reputation.data.result.data.suspicious_domain}}</div>\n                <div>{% endif %}</div>\n            </div>\n        </td>\n    </tr>\n</table>"
+                },
+                "version": "3.2.1",
+                "connector": "cyops_utilities",
+                "operation": "format_richtext",
+                "operationTitle": "Utils: Format as RichText",
+                "step_variables": []
+              },
+              "status": null,
+              "top": "435",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0109f35d-090b-4a2b-bd8a-94cbc3508562",
+              "group": null,
+              "uuid": "8ff14957-1946-4d86-b896-858d5507c7a0"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Configuration",
+              "description": null,
+              "arguments": {
+                "good_score": "0",
+                "useMockOutput": "{{globalVars.Demo_mode}}",
+                "indicator_value": "{{vars.input.params['indicator_value']}}",
+                "malicious_score": "100-70",
+                "suspicious_score": "69-1"
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
+              "group": null,
+              "uuid": "b465d6f7-9b20-4d1a-827d-420c62316ea7"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Get Email Reputation",
+              "description": null,
+              "arguments": {
+                "name": "apivoid",
+                "config": "ae0bbc6e-b511-4fa5-b906-8cf6e0b360a3",
+                "params": {
+                  "req_value": "{{vars.indicator_value}}"
+                },
+                "version": "1.0.1",
+                "connector": "apivoid",
+                "operation": "emailverify",
+                "mock_result": "{\n  \"data\": {\n    \"result\": {\n      \"data\": {\n        \"email\": \"{{vars.indicator_value}}\",\n        \"score\": 50,\n        \"domain\": \"gmail.com\",\n        \"username\": \"noreply\",\n        \"risky_tld\": false,\n        \"valid_tld\": true,\n        \"disposable\": false,\n        \"free_email\": true,\n        \"did_you_mean\": \"\",\n        \"is_spoofable\": false,\n        \"role_address\": true,\n        \"should_block\": true,\n        \"valid_format\": true,\n        \"has_a_records\": true,\n        \"police_domain\": false,\n        \"dmarc_enforced\": false,\n        \"domain_popular\": true,\n        \"has_mx_records\": true,\n        \"has_spf_records\": true,\n        \"china_free_email\": false,\n        \"dmarc_configured\": true,\n        \"suspicious_email\": false,\n        \"government_domain\": false,\n        \"suspicious_domain\": false,\n        \"dirty_words_domain\": false,\n        \"educational_domain\": false,\n        \"russian_free_email\": false,\n        \"suspicious_username\": true,\n        \"dirty_words_username\": false\n      },\n      \"success\": true,\n      \"elapsed_time\": \"0.03\",\n      \"credits_remained\": 12.96,\n      \"estimated_queries\": \"216\"\n    },\n    \"status\": \"Success\"\n  },\n  \"status\": \"Success\",\n  \"message\": \"\",\n  \"operation\": null\n}",
+                "operationTitle": "Get Email Reputation",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "300",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "82b1546a-01a6-4dcd-b505-561d4e87d477"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Return Output Data",
+              "description": null,
+              "arguments": {
+                "verdict": "{% if vars.steps.Get_Email_Reputation.data.result.data.score >= 70 %}{{\"Malicious\"}}{% elif vars.steps.Get_Email_Reputation.data.result.data.score < 70  and vars.steps.Get_Email_Reputation.data.result.data.score > 0  %}{{\"Suspicious\"}}{% elif vars.steps.Get_Email_Reputation.data.result.data.score == 0 %}{{\"Good\"}}{% else %}\n{{\"No Reputation Available\"}}{% endif %}",
+                "cti_name": "API Void",
+                "cti_score": "{{vars.steps.Get_Email_Reputation.data.result.data.score}}",
+                "source_data": "{\"APIVoid\": {{vars.steps.Get_Email_Reputation.data.result}} }",
+                "field_mapping": "{\"free_email\": {{vars.steps.Get_Email_Reputation.data.result.data.free_email}}, \"is_spoofable\": {{vars.steps.Get_Email_Reputation.data.result.data.is_spoofable}}, \"should_block\": {{vars.steps.Get_Email_Reputation.data.result.data.should_block}}, \"free_email\": {{vars.steps.Get_Email_Reputation.data.result.data.free_email}} }",
+                "enrichment_summary": "{{vars.steps.Compute_API_Void_Summary.data['formatted_string']}}"
+              },
+              "status": null,
+              "top": "570",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
+              "group": null,
+              "uuid": "1c73fae4-9684-48d8-bca5-0ea2b90dc9a7"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Compute VT Summary -> Return Output Data",
+              "targetStep": "/api/3/workflow_steps/1c73fae4-9684-48d8-bca5-0ea2b90dc9a7",
+              "sourceStep": "/api/3/workflow_steps/8ff14957-1946-4d86-b896-858d5507c7a0",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "29052f91-7dbc-4d08-8fbb-d63e08b60b32"
+            },
+            {
+              "@type": "WorkflowRoute",
+              "name": "Get Domain Reputation -> Compute API Void Summary",
+              "targetStep": "/api/3/workflow_steps/8ff14957-1946-4d86-b896-858d5507c7a0",
+              "sourceStep": "/api/3/workflow_steps/82b1546a-01a6-4dcd-b505-561d4e87d477",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "27906f1f-0395-4faf-919b-fe38ea49b362"
+            },
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start -> Configuration",
+              "targetStep": "/api/3/workflow_steps/b465d6f7-9b20-4d1a-827d-420c62316ea7",
+              "sourceStep": "/api/3/workflow_steps/eb002d72-6ee9-4eb9-922f-ec424ccabbdd",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "a2ed2c8b-257a-46fa-894b-fcf485f2824c"
+            },
+            {
+              "@type": "WorkflowRoute",
+              "name": "Configuration -> Get Email Reputation",
+              "targetStep": "/api/3/workflow_steps/82b1546a-01a6-4dcd-b505-561d4e87d477",
+              "sourceStep": "/api/3/workflow_steps/b465d6f7-9b20-4d1a-827d-420c62316ea7",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "fcb35346-c423-4e7f-8b1e-584cfd7316cd"
+            }
+          ],
+          "groups": [],
+          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "uuid": "1100efba-7fc1-4449-960f-3d789a4c307c",
+          "id": 856,
+          "owners": [],
           "isPrivate": false,
-          "owners": []
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "Subroutine",
+            "Email_Enrichment"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "IP Address > API Void > Enrichment",
+          "aliasName": null,
+          "tag": null,
+          "description": "Retrieve the reputation of indicator of type ‘IP Address’ using API Void.",
+          "isActive": true,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [
+            "indicator_value",
+            "style_colors"
+          ],
+          "synchronous": false,
+          "lastModifyDate": 1659431472,
+          "collection": "/api/3/workflow_collections/0f63ad10-3ea5-43a6-9f70-b3c68d640b26",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/ec329b23-6feb-4373-97cb-e7e83288d582",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Get IP Reputation",
+              "description": null,
+              "arguments": {
+                "name": "apivoid",
+                "config": "6dbaf6bb-65cc-4646-b52d-76676e563516",
+                "params": {
+                  "req_value": "{{vars.indicator_value}}"
+                },
+                "version": "1.0.1",
+                "connector": "apivoid",
+                "operation": "iprep",
+                "mock_result": "{\n  \"data\": {\n    \"result\": {\n      \"data\": {\n        \"report\": {\n          \"ip\": \"{{vars.indicator_value}}\",\n          \"anonymity\": {\n            \"is_tor\": false,\n            \"is_vpn\": false,\n            \"is_proxy\": false,\n            \"is_hosting\": false,\n            \"is_webproxy\": false\n          },\n          \"blacklists\": {\n            \"engines\": {\n              \"0\": {\n                \"engine\": \"Barracuda_Reputation_BL\",\n                \"elapsed\": \"0.00\",\n                \"detected\": true,\n                \"reference\": \"http://www.barracudanetworks.com/\"\n              },\n              \"1\": {\n                \"engine\": \"BlockedServersRBL\",\n                \"elapsed\": \"0.00\",\n                \"detected\": false,\n                \"reference\": \"https://www.blockedservers.com/\"\n              },\n              \"2\": {\n                \"engine\": \"EFnet_RBL\",\n                \"elapsed\": \"0.00\",\n                \"detected\": false,\n                \"reference\": \"https://rbl.efnetrbl.org/multicheck.php\"\n              },\n              \"3\": {\n                \"engine\": \"IBM_Cobion\",\n                \"elapsed\": \"0.00\",\n                \"detected\": false,\n                \"reference\": \"https://filterdb.iss.net/dnsblinfo/\"\n              },\n              \"4\": {\n                \"engine\": \"JustSpam_org\",\n                \"elapsed\": \"0.00\",\n                \"detected\": false,\n                \"reference\": \"http://www.justspam.org/\"\n              },\n              \"5\": {\n                \"engine\": \"Known Scanning Service\",\n                \"elapsed\": \"0.00\",\n                \"detected\": false,\n                \"reference\": \"https://www.novirusthanks.org/\"\n              },\n              \"6\": {\n                \"engine\": \"RealtimeBLACKLIST\",\n                \"elapsed\": \"0.39\",\n                \"detected\": false,\n                \"reference\": \"https://realtimeblacklist.com/\"\n              },\n              \"7\": {\n                \"engine\": \"S5hbl\",\n                \"elapsed\": \"0.00\",\n                \"detected\": false,\n                \"reference\": \"http://www.usenix.org.uk/content/rbl.html\"\n              },\n              \"8\": {\n                \"engine\": \"Anti-Attacks BL\",\n                \"elapsed\": \"0.00\",\n                \"detected\": false,\n                \"reference\": \"https://www.anti-attacks.com/\"\n              },\n              \"9\": {\n                \"engine\": \"AntiSpam_by_CleanTalk\",\n                \"elapsed\": \"0.00\",\n                \"detected\": false,\n                \"reference\": \"https://cleantalk.org/\"\n              },\n              \"10\": {\n                \"engine\": \"APEWS-L2\",\n                \"elapsed\": \"0.00\",\n                \"detected\": false,\n                \"reference\": \"http://www.apews.org/\"\n              },\n              \"11\": {\n                \"engine\": \"AZORult Tracker\",\n                \"elapsed\": \"0.00\",\n                \"detected\": false,\n                \"reference\": \"https://azorult-tracker.net/\"\n              },\n              \"12\": {\n                \"engine\": \"Backscatterer\",\n                \"elapsed\": \"0.00\",\n                \"detected\": false,\n                \"reference\": \"https://www.backscatterer.org/\"\n              },\n              \"13\": {\n                \"engine\": \"Blacklists_co\",\n                \"elapsed\": \"0.00\",\n                \"detected\": false,\n                \"reference\": \"http://blacklists.co/\"\n              },\n              \"14\": {\n                \"engine\": \"Blocking_rocks\",\n                \"elapsed\": \"0.00\",\n                \"detected\": false,\n                \"reference\": \"https://blocking.rocks/\"\n              },\n              \"15\": {\n                \"engine\": \"BlockList_de\",\n                \"elapsed\": \"0.00\",\n                \"detected\": false,\n                \"reference\": \"http://www.blocklist.de/\"\n              },\n              \"16\": {\n                \"engine\": \"Blocklist.net.ua\",\n                \"elapsed\": \"0.00\",\n                \"detected\": false,\n                \"reference\": \"https://blocklist.net.ua/\"\n              },\n              \"17\": {\n                \"engine\": \"BloggingFusion BL\",\n                \"elapsed\": \"0.00\",\n                \"detected\": false,\n                \"reference\": \"https://www.bloggingfusion.com/\"\n              },\n              \"18\": {\n                \"engine\": \"Botscout (Last Caught)\",\n                \"elapsed\": \"0.00\",\n                \"detected\": false,\n                \"reference\": \"http://botscout.com/\"\n              },\n              \"19\": {\n                \"engine\": \"Botvrij.eu\",\n                \"elapsed\": \"0.00\",\n                \"detected\": false,\n                \"reference\": \"https://botvrij.eu/\"\n              },\n              \"20\": {\n                \"engine\": \"Brute Force Blocker\",\n                \"elapsed\": \"0.00\",\n                \"detected\": false,\n                \"reference\": \"https://danger.rulez.sk/index.php/bruteforceblocker/\"\n              },\n              \"21\": {\n                \"engine\": \"C-APT-ure\",\n                \"elapsed\": \"0.00\",\n                \"detected\": false,\n                \"reference\": \"http://c-apt-ure.blogspot.com/\"\n              },\n              \"22\": {\n                \"engine\": \"CERT-PA\",\n                \"elapsed\": \"0.00\",\n                \"detected\": false,\n                \"reference\": \"https://www.cert-pa.it/\"\n              },\n              \"23\": {\n                \"engine\": \"Charles Haley\",\n                \"elapsed\": \"0.00\",\n                \"detected\": false,\n                \"reference\": \"http://charles.the-haleys.org/\"\n              },\n              \"24\": {\n                \"engine\": \"CI Army List\",\n                \"elapsed\": \"0.00\",\n                \"detected\": false,\n                \"reference\": \"http://cinsscore.com/#list\"\n              },\n              \"25\": {\n                \"engine\": \"CRDF\",\n                \"elapsed\": \"0.00\",\n                \"detected\": false,\n                \"reference\": \"https://threatcenter.crdf.fr/check.html\"\n              },\n              \"26\": {\n                \"engine\": \"CruzIT Blocklist\",\n                \"elapsed\": \"0.00\",\n                \"detected\": false,\n                \"reference\": \"https://www.cruzit.com/\"\n              },\n              \"27\": {\n                \"engine\": \"CSpace Hostings IP BL\",\n                \"elapsed\": \"0.00\",\n                \"detected\": false,\n                \"reference\": \"https://cspacehostings.com/\"\n              },\n              \"28\": {\n                \"engine\": \"Cybercrime-tracker.net\",\n                \"elapsed\": \"0.00\",\n                \"detected\": false,\n                \"reference\": \"https://cybercrime-tracker.net/\"\n              },\n              \"29\": {\n                \"engine\": \"Darklist.de\",\n                \"elapsed\": \"0.00\",\n                \"detected\": false,\n                \"reference\": \"http://www.darklist.de/\"\n              },\n              \"30\": {\n                \"engine\": \"Etnetera BL\",\n                \"elapsed\": \"0.00\",\n                \"detected\": false,\n                \"reference\": \"https://security.etnetera.cz/\"\n              },\n              \"31\": {\n                \"engine\": \"Feodo Tracker\",\n                \"elapsed\": \"0.00\",\n                \"detected\": false,\n                \"reference\": \"https://feodotracker.abuse.ch/\"\n              },\n              \"32\": {\n                \"engine\": \"FSpamList\",\n                \"elapsed\": \"0.00\",\n                \"detected\": false,\n                \"reference\": \"https://fspamlist.com/\"\n              },\n              \"33\": {\n                \"engine\": \"GPF DNS Block List\",\n                \"elapsed\": \"0.00\",\n                \"detected\": false,\n                \"reference\": \"https://www.gpf-comics.com/dnsbl/export.php\"\n              },\n              \"34\": {\n                \"engine\": \"GreenSnow Blocklist\",\n                \"elapsed\": \"0.00\",\n                \"detected\": false,\n                \"reference\": \"https://greensnow.co/\"\n              },\n              \"35\": {\n                \"engine\": \"HoneyDB\",\n                \"elapsed\": \"0.00\",\n                \"detected\": false,\n                \"reference\": \"https://honeydb.io/\"\n              },\n              \"36\": {\n                \"engine\": \"InterServer IP List\",\n                \"elapsed\": \"0.00\",\n                \"detected\": false,\n                \"reference\": \"https://sigs.interserver.net/\"\n              },\n              \"37\": {\n                \"engine\": \"IPSpamList\",\n                \"elapsed\": \"0.00\",\n                \"detected\": false,\n                \"reference\": \"https://www.ipspamlist.com/ip-lookup/\"\n              },\n              \"38\": {\n                \"engine\": \"IPsum\",\n                \"elapsed\": \"0.00\",\n                \"detected\": false,\n                \"reference\": \"https://github.com/stamparm/ipsum\"\n              },\n              \"39\": {\n                \"engine\": \"ISX.fr DNSBL\",\n                \"elapsed\": \"0.00\",\n                \"detected\": false,\n                \"reference\": \"https://bl.isx.fr/\"\n              },\n              \"40\": {\n                \"engine\": \"JamesBrine IP List\",\n                \"elapsed\": \"0.00\",\n                \"detected\": false,\n                \"reference\": \"https://jamesbrine.com.au/\"\n              },\n              \"41\": {\n                \"engine\": \"LAPPS Grid Blacklist\",\n                \"elapsed\": \"0.00\",\n                \"detected\": false,\n                \"reference\": \"http://www.lappsgrid.org/\"\n              },\n              \"42\": {\n                \"engine\": \"Liquid Binary\",\n                \"elapsed\": \"0.00\",\n                \"detected\": false,\n                \"reference\": \"https://liquidbinary.com/\"\n              },\n              \"43\": {\n                \"engine\": \"M4lwhere Intel\",\n                \"elapsed\": \"0.00\",\n                \"detected\": false,\n                \"reference\": \"https://m4lwhere.org/\"\n              },\n              \"44\": {\n                \"engine\": \"Mark Smith Blocked IPs\",\n                \"elapsed\": \"0.00\",\n                \"detected\": false,\n                \"reference\": \"https://www.marksmith.it/\"\n              },\n              \"45\": {\n                \"engine\": \"Megumin\",\n                \"elapsed\": \"0.00\",\n                \"detected\": false,\n                \"reference\": \"https://megumin.ru/\"\n              },\n              \"46\": {\n                \"engine\": \"Mirai Tracker\",\n                \"elapsed\": \"0.00\",\n                \"detected\": false,\n                \"reference\": \"https://mirai.security.gives/index.php\"\n              },\n              \"47\": {\n                \"engine\": \"MKXT_NET SSH BL\",\n                \"elapsed\": \"0.00\",\n                \"detected\": false,\n                \"reference\": \"https://mkxt.net/\"\n              },\n              \"48\": {\n                \"engine\": \"Myip.ms Blacklist\",\n                \"elapsed\": \"0.00\",\n                \"detected\": false,\n                \"reference\": \"https://myip.ms/browse/blacklist\"\n              },\n              \"49\": {\n                \"engine\": \"NEU SSH Black list\",\n                \"elapsed\": \"0.00\",\n                \"detected\": false,\n                \"reference\": \"http://antivirus.neu.edu.cn/scan/\"\n              },\n              \"50\": {\n                \"engine\": \"Nginx Bad Bot Blocker\",\n                \"elapsed\": \"0.00\",\n                \"detected\": false,\n                \"reference\": \"https://github.com/mitchellkrogza/nginx-ultimate-bad-bot-blocker\"\n              },\n              \"51\": {\n                \"engine\": \"NOC_RUB_DE\",\n                \"elapsed\": \"0.00\",\n                \"detected\": false,\n                \"reference\": \"https://noc.rub.de/web/\"\n              },\n              \"52\": {\n                \"engine\": \"NordSpam\",\n                \"elapsed\": \"0.00\",\n                \"detected\": false,\n                \"reference\": \"https://www.nordspam.com/\"\n              },\n              \"53\": {\n                \"engine\": \"NUBI Bad IPs\",\n                \"elapsed\": \"0.00\",\n                \"detected\": false,\n                \"reference\": \"https://www.nubi-network.com/\"\n              },\n              \"54\": {\n                \"engine\": \"OpenPhish\",\n                \"elapsed\": \"0.00\",\n                \"detected\": false,\n                \"reference\": \"https://www.openphish.com/\"\n              },\n              \"55\": {\n                \"engine\": \"Peter-s NUUG IP BL\",\n                \"elapsed\": \"0.00\",\n                \"detected\": false,\n                \"reference\": \"https://home.nuug.no/~peter/\"\n              },\n              \"56\": {\n                \"engine\": \"PhishTank\",\n                \"elapsed\": \"0.00\",\n                \"detected\": false,\n                \"reference\": \"http://www.phishtank.com/\"\n              },\n              \"57\": {\n                \"engine\": \"PlonkatronixBL\",\n                \"elapsed\": \"0.00\",\n                \"detected\": false,\n                \"reference\": \"http://bl.plonkatronix.com/\"\n              },\n              \"58\": {\n                \"engine\": \"PSBL\",\n                \"elapsed\": \"0.00\",\n                \"detected\": false,\n                \"reference\": \"https://psbl.org/\"\n              },\n              \"59\": {\n                \"engine\": \"Redactia\",\n                \"elapsed\": \"0.00\",\n                \"detected\": false,\n                \"reference\": \"http://www.redactia.co.uk/\"\n              },\n              \"60\": {\n                \"engine\": \"Redstout Threat IP list\",\n                \"elapsed\": \"0.00\",\n                \"detected\": false,\n                \"reference\": \"https://www.redstout.com/index.html\"\n              },\n              \"61\": {\n                \"engine\": \"Ring-u NOC\",\n                \"elapsed\": \"0.00\",\n                \"detected\": false,\n                \"reference\": \"https://portal.ring-u.com/portal/portal.php\"\n              },\n              \"62\": {\n                \"engine\": \"RJM Blocklist\",\n                \"elapsed\": \"0.00\",\n                \"detected\": false,\n                \"reference\": \"https://www.rjmblocklist.com/\"\n              },\n              \"63\": {\n                \"engine\": \"Roquesor BL\",\n                \"elapsed\": \"0.00\",\n                \"detected\": false,\n                \"reference\": \"https://es.roquesor.com/en/\"\n              },\n              \"64\": {\n                \"engine\": \"Rutgers Drop List\",\n                \"elapsed\": \"0.00\",\n                \"detected\": false,\n                \"reference\": \"http://www.rutgers.edu/\"\n              },\n              \"65\": {\n                \"engine\": \"S.S.S.H.I.A\",\n                \"elapsed\": \"0.00\",\n                \"detected\": false,\n                \"reference\": \"https://github.com/mitchellkrogza/Suspicious.Snooping.Sniffing.Hacking.IP.Addresses/\"\n              },\n              \"66\": {\n                \"engine\": \"Sblam\",\n                \"elapsed\": \"0.00\",\n                \"detected\": false,\n                \"reference\": \"http://sblam.com/\"\n              },\n              \"67\": {\n                \"engine\": \"Snapt NovaSense\",\n                \"elapsed\": \"0.00\",\n                \"detected\": false,\n                \"reference\": \"https://novasense-threats.com/\"\n              },\n              \"68\": {\n                \"engine\": \"SSL Blacklist\",\n                \"elapsed\": \"0.00\",\n                \"detected\": false,\n                \"reference\": \"https://sslbl.abuse.ch/\"\n              },\n              \"69\": {\n                \"engine\": \"Talos IP Blacklist\",\n                \"elapsed\": \"0.00\",\n                \"detected\": false,\n                \"reference\": \"https://www.talosintelligence.com/\"\n              },\n              \"70\": {\n                \"engine\": \"ThreatLog\",\n                \"elapsed\": \"0.00\",\n                \"detected\": false,\n                \"reference\": \"https://www.threatlog.com/\"\n              },\n              \"71\": {\n                \"engine\": \"Threat Crowd\",\n                \"elapsed\": \"0.00\",\n                \"detected\": false,\n                \"reference\": \"https://www.threatcrowd.org/\"\n              },\n              \"72\": {\n                \"engine\": \"Threat Sourcing\",\n                \"elapsed\": \"0.00\",\n                \"detected\": false,\n                \"reference\": \"https://www.threatsourcing.com/\"\n              },\n              \"73\": {\n                \"engine\": \"TweetFeed\",\n                \"elapsed\": \"0.00\",\n                \"detected\": false,\n                \"reference\": \"https://github.com/0xDanielLopez/TweetFeed\"\n              },\n              \"74\": {\n                \"engine\": \"UCEPROTECT Level 1\",\n                \"elapsed\": \"0.00\",\n                \"detected\": false,\n                \"reference\": \"http://www.uceprotect.net/en/index.php\"\n              },\n              \"75\": {\n                \"engine\": \"URLhaus\",\n                \"elapsed\": \"0.00\",\n                \"detected\": false,\n                \"reference\": \"https://urlhaus.abuse.ch/\"\n              },\n              \"76\": {\n                \"engine\": \"URLVir\",\n                \"elapsed\": \"0.00\",\n                \"detected\": false,\n                \"reference\": \"https://www.urlvir.com/\"\n              },\n              \"77\": {\n                \"engine\": \"USTC IP BL\",\n                \"elapsed\": \"0.00\",\n                \"detected\": false,\n                \"reference\": \"http://blackip.ustc.edu.cn/\"\n              },\n              \"78\": {\n                \"engine\": \"ViriBack C2 Tracker\",\n                \"elapsed\": \"0.00\",\n                \"detected\": false,\n                \"reference\": \"http://tracker.viriback.com/\"\n              },\n              \"79\": {\n                \"engine\": \"VoIP Blacklist\",\n                \"elapsed\": \"0.00\",\n                \"detected\": false,\n                \"reference\": \"http://www.voipbl.org/\"\n              },\n              \"80\": {\n                \"engine\": \"VXVault\",\n                \"elapsed\": \"0.00\",\n                \"detected\": false,\n                \"reference\": \"http://vxvault.net/ViriList.php\"\n              },\n              \"81\": {\n                \"engine\": \"ZeroDot1 Bad IPs\",\n                \"elapsed\": \"0.00\",\n                \"detected\": false,\n                \"reference\": \"https://zerodot1.gitlab.io/CoinBlockerListsWeb/index.html\"\n              },\n              \"82\": {\n                \"engine\": \"ZeroDot1 Miner IPs\",\n                \"elapsed\": \"0.00\",\n                \"detected\": false,\n                \"reference\": \"https://zerodot1.gitlab.io/CoinBlockerListsWeb/index.html\"\n              }\n            },\n            \"scantime\": \"0.40\",\n            \"detections\": 1,\n            \"engines_count\": 83,\n            \"detection_rate\": \"1%\"\n          },\n          \"risk_score\": {\n            \"result\": 70\n          },\n          \"information\": {\n            \"asn\": \"AS24295\",\n            \"isp\": \"VioletPurpleLLC\",\n            \"latitude\": 34.69388961791992,\n            \"city_name\": \"Osaka\",\n            \"longitude\": 135.50221252441406,\n            \"region_name\": \"Osaka\",\n            \"reverse_dns\": \"twr002.rz5k8hm0o5\",\n            \"country_code\": \"JP\",\n            \"country_name\": \"Japan\",\n            \"continent_code\": \"AS\",\n            \"continent_name\": \"Asia\",\n            \"country_currency\": \"JPY\",\n            \"country_calling_code\": \"81\"\n          }\n        }\n      },\n      \"success\": true,\n      \"elapsed_time\": \"0.60\",\n      \"credits_remained\": 8.54,\n      \"estimated_queries\": \"106\"\n    },\n    \"status\": \"Success\"\n  },\n  \"status\": \"Success\",\n  \"message\": \"\",\n  \"operation\": null\n}",
+                "operationTitle": "Get IP Reputation",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "300",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "861017cb-e07b-4f52-9f5c-bfc9ea8686ee"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Configuration",
+              "description": null,
+              "arguments": {
+                "good_score": "0",
+                "useMockOutput": "{{globalVars.Demo_mode}}",
+                "indicator_value": "{{vars.input.params['indicator_value']}}",
+                "malicious_score": "100-90",
+                "suspicious_score": "89-1"
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
+              "group": null,
+              "uuid": "35b52bbc-e915-4da7-b9b7-aac6586fd7cd"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Return Output Data",
+              "description": null,
+              "arguments": {
+                "verdict": "{% if vars.steps.Get_IP_Reputation.data.result.data.report.risk_score.result >= 90 %}{{\"Malicious\"}}{% elif vars.steps.Get_IP_Reputation.data.result.data.report.risk_score.result > 0  and vars.steps.Get_IP_Reputation.data.result.data.report.risk_score.result < 90 %}{{\"Suspicious\"}}{% elif vars.steps.Get_IP_Reputation.data.result.data.report.risk_score.result == 0 %}{{\"Good\"}}{% else %}{{\"No Reputation Available\"}}{% endif %}",
+                "cti_name": "API Void",
+                "cti_score": "{{ vars.steps.Get_IP_Reputation.data.result.data.report.risk_score.result }}",
+                "source_data": "{\"APIVoid\": {{vars.steps.Get_IP_Reputation.data.result}} }",
+                "field_mapping": "{\"asn\": {% if vars.steps.Get_IP_Reputation.data.result.data.report.information.asn %}\"{{vars.steps.Get_IP_Reputation.data.result.data.report.information.asn}}\"{% else %}{{None}}{% endif %}, \"isp\": {% if vars.steps.Get_IP_Reputation.data.result.data.report.information.isp %}\"{{vars.steps.Get_IP_Reputation.data.result.data.report.information.isp}}\"{% else %}{{None}}{% endif %}, \"city\": {% if vars.steps.Get_IP_Reputation.data.result.data.report.information.city_name %}\"{{vars.steps.Get_IP_Reputation.data.result.data.report.information.city_name}}\"{% else %}{{None}}{% endif %}, \"region\": {% if vars.steps.Get_IP_Reputation.data.result.data.report.information.region_name %}\"{{vars.steps.Get_IP_Reputation.data.result.data.report.information.region_name}}\"{% else %}{{None}}{% endif %}, \"country\": {% if vars.steps.Get_IP_Reputation.data.result.data.report.information.country_name %}\"{{vars.steps.Get_IP_Reputation.data.result.data.report.information.country_name}}\"{% else %}{{None}}{% endif %}, \"reverse_dns\": {% if vars.steps.Get_IP_Reputation.data.result.data.report.information.reverse_dns %}\"{{vars.steps.Get_IP_Reputation.data.result.data.report.information.reverse_dns}}\"{% else %}{{None}}{% endif %}, \"continent_name\": {% if vars.steps.Get_IP_Reputation.data.result.data.report.information.continent_name %}\"{{vars.steps.Get_IP_Reputation.data.result.data.report.information.continent_name}}\"{% else %}{{None}}{% endif %}}",
+                "enrichment_summary": "{{vars.steps.Compute_API_Void_Summary.data['formatted_string']}}"
+              },
+              "status": null,
+              "top": "570",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
+              "group": null,
+              "uuid": "2a4c1f1e-daab-413e-aa84-c455fda36b95"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Compute API Void Summary",
+              "description": null,
+              "arguments": {
+                "params": {
+                  "value": "<table class=\"no-border\">\n    <tr>\n        <th colspan=\"5\" class=\"no-background padding-0\">\n            <div class=\"font-size-11 ng-binding padding-bottom-sm\">\n                <h4 style=\"color: orange;\"\n                    class=\"body-default-bgcolor margin-bottom-0 padding-bottom-md padding-left-md padding-top-md text-align-left\">\n                    API Void Detection Summary</h4>\n            </div>\n        </th>\n    </tr>\n    <tr class=\"solid-border\">\n        <td>\n            <div small class=\"control-label\">Risk Score</div>\n            <div class=\"card-container-body margin-left-0\" style=\"width: 100px;\">\n                <div>{% if vars.steps.Get_IP_Reputation.data.result.data.report.risk_score.result >= (vars.malicious_score.split('-')[1] | int) %}</div>\n                <div class=\"body-default-bgcolor card-number padding-left-md\"\n                    style=\"border-left: 5px solid {{vars.input.params.style_colors.Malicious}};padding: 11px;font-size: 18px !important;\">\n                    {{vars.steps.Get_IP_Reputation.data.result.data.report.risk_score.result}}</div>\n                <div>{% elif vars.steps.Get_IP_Reputation.data.result.data.report.risk_score.result <= (vars.suspicious_score.split('-')[0] | int) and\n                    vars.steps.Get_IP_Reputation.data.result.data.report.risk_score.result >= (vars.suspicious_score.split('-')[1] | int) %}</div>\n                        <div class=\"body-default-bgcolor card-number padding-left-md\"\n                            style=\"border-left: 5px solid {{vars.input.params.style_colors.Suspicious}};padding: 11px;font-size: 18px !important;\">\n                            {{vars.steps.Get_IP_Reputation.data.result.data.report.risk_score.result}}</div>\n                        <div>{% elif vars.steps.Get_IP_Reputation.data.report.risk_score.result == vars.good_score %}</div>\n                        <div class=\"body-default-bgcolor card-number padding-left-md\"\n                            style=\"border-left: 5px solid {{vars.input.params.style_colors.Good}};padding: 11px;font-size: 18px !important;\">\n                            {{vars.steps.Get_IP_Reputation.data.result.data.report.risk_score.result}}</div>\n                        <div>{% else %}</div>\n                        <div class=\"body-default-bgcolor card-number padding-left-md\"\n                            style=\"border-left: 5px solid {{vars.input.params.style_colors['No Reputation Available']}};padding: 11px;font-size: 18px !important;\">\n                            {{vars.steps.Get_IP_Reputation.data.result.data.report.risk_score.result}}</div>\n                        <div>{% endif %}</div>\n                </div>\n        </td>\n        <td>\n            <div small class=\"control-label\">Proxy</div>\n            <div class=\"card-container-body margin-left-0\" style=\"width: 100px;\">\n                <div>{% if vars.steps.Get_IP_Reputation.data.result.data.report.anonymity.is_proxy %}</div>\n                <div class=\"body-default-bgcolor card-number padding-left-md\"\n                    style=\"border-left: 5px solid {{vars.input.params.style_colors.Malicious}};padding: 11px;font-size: 18px !important;\">\n                    {{vars.steps.Get_IP_Reputation.data.result.data.report.anonymity.is_proxy}}</div>\n                <div>{% else %}</div>\n                <div class=\"body-default-bgcolor card-number padding-left-md\"\n                    style=\"border-left: 5px solid {{vars.input.params.style_colors.Good}};padding: 11px;font-size: 18px !important;\">\n                    {{vars.steps.Get_IP_Reputation.data.result.data.report.anonymity.is_proxy}}</div>\n                <div>{% endif %}</div>\n            </div>\n        </td>\n        <td>\n            <div small class=\"control-label\">TOR</div>\n            <div class=\"card-container-body margin-left-0\" style=\"width: 100px;\">\n                <div>{% if vars.steps.Get_IP_Reputation.data.result.data.report.anonymity.is_tor %}</div>\n                <div class=\"body-default-bgcolor card-number padding-left-md\"\n                    style=\"border-left: 5px solid {{vars.input.params.style_colors.Malicious}};padding: 11px;font-size: 18px !important;\">\n                    {{vars.steps.Get_IP_Reputation.data.result.data.report.anonymity.is_tor}}</div>\n                <div>{% else %}</div>\n                <div class=\"body-default-bgcolor card-number padding-left-md\"\n                    style=\"border-left: 5px solid {{vars.input.params.style_colors.Good}};padding: 11px;font-size: 18px !important;\">\n                    {{vars.steps.Get_IP_Reputation.data.result.data.report.anonymity.is_tor}}</div>\n                <div>{% endif %}</div>\n            </div>\n        </td>\n        <td>\n            <div small class=\"control-label\">Hosting</div>\n            <div class=\"card-container-body margin-left-0\" style=\"width: 100px;\">\n                <div>{% if vars.steps.Get_IP_Reputation.data.result.data.report.anonymity.is_hosting %}</div>\n                <div class=\"body-default-bgcolor card-number padding-left-md\"\n                    style=\"border-left: 5px solid {{vars.input.params.style_colors.Malicious}};padding: 11px;font-size: 18px !important;\">\n                    {{vars.steps.Get_IP_Reputation.data.result.data.report.anonymity.is_hosting}}</div>\n                <div>{% else %}</div>\n                <div class=\"body-default-bgcolor card-number padding-left-md\"\n                    style=\"border-left: 5px solid {{vars.input.params.style_colors.Good}};padding: 11px;font-size: 18px !important;\">\n                    {{vars.steps.Get_IP_Reputation.data.result.data.report.anonymity.is_hosting}}</div>\n                <div>{% endif %}</div>\n            </div>\n        </td>\n        <td>\n            <div small class=\"control-label\">Blacklisted Detection Engine Rate</div>\n            <div class=\"card-container-body margin-left-0\" style=\"width: 100px;\">\n                <div>{% if vars.steps.Get_IP_Reputation.data.result.data.report.blacklists.detection_rate.split('%')[0]|int >= 90 %}</div>\n                <div class=\"body-default-bgcolor card-number padding-left-md\"\n                    style=\"border-left: 5px solid {{vars.input.params.style_colors.Malicious}};padding: 11px;font-size: 18px !important;\">\n                    {{vars.steps.Get_IP_Reputation.data.result.data.report.blacklists.detection_rate}}</div>\n                <div>{% elif vars.steps.Get_IP_Reputation.data.result.data.report.blacklists.detection_rate.split('%')[0]|int > 0  and vars.steps.Get_IP_Reputation.data.result.data.report.blacklists.detection_rate.split('%')[0]|int < 90 %}</div>\n                <div class=\"body-default-bgcolor card-number padding-left-md\"\n                    style=\"border-left: 5px solid {{vars.input.params.style_colors.Suspicious}};padding: 11px;font-size: 18px !important;\">\n                    {{vars.steps.Get_IP_Reputation.data.result.data.report.blacklists.detection_rate}}</div>\n                <div>{% elif vars.steps.Get_IP_Reputation.data.result.data.report.blacklists.detection_rate.split('%')[0]|int == 0 %}</div>\n                <div class=\"body-default-bgcolor card-number padding-left-md\"\n                    style=\"border-left: 5px solid {{vars.input.params.style_colors.Good}};padding: 11px;font-size: 18px !important;\">\n                    {{vars.steps.Get_IP_Reputation.data.result.data.report.blacklists.detection_rate}}</div>\n                <div>{% else %}</div>\n                <div class=\"body-default-bgcolor card-number padding-left-md\"\n                    style=\"border-left: 5px solid {{vars.input.params.style_colors['No Reputation Available']}};padding: 11px;font-size: 18px !important;\">\n                    {{vars.steps.Get_IP_Reputation.data.result.data.report.blacklists.detection_rate}}</div>\n                <div>{% endif %}</div>\n            </div>\n        </td>\n    </tr>\n</table>"
+                },
+                "version": "3.2.1",
+                "connector": "cyops_utilities",
+                "operation": "format_richtext",
+                "operationTitle": "Utils: Format as RichText",
+                "step_variables": []
+              },
+              "status": null,
+              "top": "435",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0109f35d-090b-4a2b-bd8a-94cbc3508562",
+              "group": null,
+              "uuid": "3ee074df-3cda-4954-b023-bc33011e1c66"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "step_variables": {
+                  "input": {
+                    "params": []
+                  },
+                  "indicator_value": "{{vars.input.params['indicator_value']}}"
+                }
+              },
+              "status": null,
+              "top": "30",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62",
+              "group": null,
+              "uuid": "ec329b23-6feb-4373-97cb-e7e83288d582"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Get IP Reputation -> Compute IQS Summary",
+              "targetStep": "/api/3/workflow_steps/3ee074df-3cda-4954-b023-bc33011e1c66",
+              "sourceStep": "/api/3/workflow_steps/861017cb-e07b-4f52-9f5c-bfc9ea8686ee",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "a2b7a7bb-6370-4508-a638-c5c057951c64"
+            },
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start -> Configuration",
+              "targetStep": "/api/3/workflow_steps/35b52bbc-e915-4da7-b9b7-aac6586fd7cd",
+              "sourceStep": "/api/3/workflow_steps/ec329b23-6feb-4373-97cb-e7e83288d582",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "b900d7f9-dc33-4873-832c-84e806d27c98"
+            },
+            {
+              "@type": "WorkflowRoute",
+              "name": "Compute VT Summary -> Output Data",
+              "targetStep": "/api/3/workflow_steps/2a4c1f1e-daab-413e-aa84-c455fda36b95",
+              "sourceStep": "/api/3/workflow_steps/3ee074df-3cda-4954-b023-bc33011e1c66",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "a1605c20-c16b-4c59-b36e-ce204ece8b5e"
+            },
+            {
+              "@type": "WorkflowRoute",
+              "name": "Configuration -> Get IP Reputation",
+              "targetStep": "/api/3/workflow_steps/861017cb-e07b-4f52-9f5c-bfc9ea8686ee",
+              "sourceStep": "/api/3/workflow_steps/35b52bbc-e915-4da7-b9b7-aac6586fd7cd",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "887ad23a-50e2-4d4c-81af-4bd76ae41bae"
+            }
+          ],
+          "groups": [],
+          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "uuid": "16bd46c2-ca75-4686-8917-7fe11c7ee369",
+          "id": 858,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "Subroutine",
+            "IP_Enrichment"
+          ]
         },
         {
           "@type": "Workflow",
           "triggerLimit": null,
           "name": "Get Email Reputation",
           "aliasName": null,
-          "description": "Find out if the email is disposable, suspicious/risky, valid format, and more.",
-          "collection": "/api/3/workflow_collections/0f63ad10-3ea5-43a6-9f70-b3c68d640b26",
           "tag": "#apivoid",
+          "description": "Find out if the email is disposable, suspicious/risky, valid format, and more.",
           "isActive": false,
+          "debug": false,
           "singleRecordExecution": false,
           "remoteExecutableFlag": false,
           "parameters": [],
           "synchronous": false,
+          "lastModifyDate": 1612518536,
+          "collection": "/api/3/workflow_collections/0f63ad10-3ea5-43a6-9f70-b3c68d640b26",
+          "versions": [],
           "triggerStep": "/api/3/workflow_steps/658e87e7-5c78-485c-bd56-c1a50a54fefc",
           "steps": [
             {
@@ -207,7 +578,7 @@
                 "params": {
                   "req_value": ""
                 },
-                "version": "1.0.0",
+                "version": "1.0.1",
                 "connector": "apivoid",
                 "operation": "emailverify",
                 "operationTitle": "Get Email Reputation",
@@ -216,9 +587,10 @@
                 }
               },
               "status": null,
-              "left": "188",
               "top": "120",
+              "left": "188",
               "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
               "uuid": "00647934-1235-4552-b3ec-225f506ef025"
             },
             {
@@ -241,46 +613,52 @@
                 "singleRecordExecution": false
               },
               "status": null,
-              "left": "20",
               "top": "20",
+              "left": "20",
               "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
               "uuid": "658e87e7-5c78-485c-bd56-c1a50a54fefc"
             }
           ],
           "routes": [
             {
               "@type": "WorkflowRoute",
-              "uuid": "ba9d19a7-84ff-4440-ac85-4a3188a785b5",
               "name": "Alerts -> Get Email Reputation",
+              "targetStep": "/api/3/workflow_steps/00647934-1235-4552-b3ec-225f506ef025",
+              "sourceStep": "/api/3/workflow_steps/658e87e7-5c78-485c-bd56-c1a50a54fefc",
               "label": null,
               "isExecuted": false,
-              "targetStep": "/api/3/workflow_steps/00647934-1235-4552-b3ec-225f506ef025",
-              "sourceStep": "/api/3/workflow_steps/658e87e7-5c78-485c-bd56-c1a50a54fefc"
+              "uuid": "ba9d19a7-84ff-4440-ac85-4a3188a785b5"
             }
           ],
-          "versions": null,
-          "lastModifyDate": 1612518536,
+          "groups": [],
           "priority": null,
           "uuid": "1bd865be-61e0-4325-9991-bb9c58443b03",
+          "id": 844,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
           "recordTags": [
             "apivoid"
-          ],
-          "isPrivate": false,
-          "owners": []
+          ]
         },
         {
           "@type": "Workflow",
           "triggerLimit": null,
           "name": "Get URL Status",
           "aliasName": null,
-          "description": "Check if an URL is online or offline (down or not accessible).",
-          "collection": "/api/3/workflow_collections/0f63ad10-3ea5-43a6-9f70-b3c68d640b26",
           "tag": "#apivoid",
+          "description": "Check if an URL is online or offline (down or not accessible).",
           "isActive": false,
+          "debug": false,
           "singleRecordExecution": false,
           "remoteExecutableFlag": false,
           "parameters": [],
           "synchronous": false,
+          "lastModifyDate": 1612518834,
+          "collection": "/api/3/workflow_collections/0f63ad10-3ea5-43a6-9f70-b3c68d640b26",
+          "versions": [],
           "triggerStep": "/api/3/workflow_steps/d7478fe8-22b7-404e-9ab4-b88be94bd831",
           "steps": [
             {
@@ -293,7 +671,7 @@
                 "params": {
                   "req_value": ""
                 },
-                "version": "1.0.0",
+                "version": "1.0.1",
                 "connector": "apivoid",
                 "operation": "urlstatus",
                 "operationTitle": "Get URL Status",
@@ -302,9 +680,10 @@
                 }
               },
               "status": null,
-              "left": "188",
               "top": "120",
+              "left": "188",
               "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
               "uuid": "92f13700-1255-4090-afe8-84a812ce0931"
             },
             {
@@ -327,46 +706,52 @@
                 "singleRecordExecution": false
               },
               "status": null,
-              "left": "20",
               "top": "20",
+              "left": "20",
               "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
               "uuid": "d7478fe8-22b7-404e-9ab4-b88be94bd831"
             }
           ],
           "routes": [
             {
               "@type": "WorkflowRoute",
-              "uuid": "9e9234d6-87e3-4824-a7f1-1b41dfa79b95",
               "name": "Alerts -> Get URL Status",
+              "targetStep": "/api/3/workflow_steps/92f13700-1255-4090-afe8-84a812ce0931",
+              "sourceStep": "/api/3/workflow_steps/d7478fe8-22b7-404e-9ab4-b88be94bd831",
               "label": null,
               "isExecuted": false,
-              "targetStep": "/api/3/workflow_steps/92f13700-1255-4090-afe8-84a812ce0931",
-              "sourceStep": "/api/3/workflow_steps/d7478fe8-22b7-404e-9ab4-b88be94bd831"
+              "uuid": "9e9234d6-87e3-4824-a7f1-1b41dfa79b95"
             }
           ],
-          "versions": null,
-          "lastModifyDate": 1612518834,
+          "groups": [],
           "priority": null,
           "uuid": "2309b6a9-fa26-4df8-a166-3d77720ff4aa",
+          "id": 845,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
           "recordTags": [
             "apivoid"
-          ],
-          "isPrivate": false,
-          "owners": []
+          ]
         },
         {
           "@type": "Workflow",
           "triggerLimit": null,
           "name": "Get URL Reputation",
           "aliasName": null,
-          "description": "Identify potentially unsafe and phishing URLs.",
-          "collection": "/api/3/workflow_collections/0f63ad10-3ea5-43a6-9f70-b3c68d640b26",
           "tag": "#apivoid",
+          "description": "Identify potentially unsafe and phishing URLs.",
           "isActive": false,
+          "debug": false,
           "singleRecordExecution": false,
           "remoteExecutableFlag": false,
           "parameters": [],
           "synchronous": false,
+          "lastModifyDate": 1612518750,
+          "collection": "/api/3/workflow_collections/0f63ad10-3ea5-43a6-9f70-b3c68d640b26",
+          "versions": [],
           "triggerStep": "/api/3/workflow_steps/4f135486-badf-4fd8-b92c-e1028885811e",
           "steps": [
             {
@@ -389,9 +774,10 @@
                 "singleRecordExecution": false
               },
               "status": null,
-              "left": "20",
               "top": "20",
+              "left": "20",
               "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
               "uuid": "4f135486-badf-4fd8-b92c-e1028885811e"
             },
             {
@@ -404,7 +790,7 @@
                 "params": {
                   "req_value": ""
                 },
-                "version": "1.0.0",
+                "version": "1.0.1",
                 "connector": "apivoid",
                 "operation": "urlrep",
                 "operationTitle": "Get URL Reputation",
@@ -413,46 +799,52 @@
                 }
               },
               "status": null,
-              "left": "188",
               "top": "120",
+              "left": "188",
               "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
               "uuid": "f8e668ea-66ec-4ce3-bf00-2c56a90a6be1"
             }
           ],
           "routes": [
             {
               "@type": "WorkflowRoute",
-              "uuid": "f9a1544a-9311-4861-808c-3f4bfeaa8755",
               "name": "Alerts -> Get URL Reputation",
+              "targetStep": "/api/3/workflow_steps/f8e668ea-66ec-4ce3-bf00-2c56a90a6be1",
+              "sourceStep": "/api/3/workflow_steps/4f135486-badf-4fd8-b92c-e1028885811e",
               "label": null,
               "isExecuted": false,
-              "targetStep": "/api/3/workflow_steps/f8e668ea-66ec-4ce3-bf00-2c56a90a6be1",
-              "sourceStep": "/api/3/workflow_steps/4f135486-badf-4fd8-b92c-e1028885811e"
+              "uuid": "f9a1544a-9311-4861-808c-3f4bfeaa8755"
             }
           ],
-          "versions": null,
-          "lastModifyDate": 1612518750,
+          "groups": [],
           "priority": null,
           "uuid": "37b8728e-cf6c-4dcb-ab2c-8f36dc0d0912",
+          "id": 846,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
           "recordTags": [
             "apivoid"
-          ],
-          "isPrivate": false,
-          "owners": []
+          ]
         },
         {
           "@type": "Workflow",
           "triggerLimit": null,
           "name": "Get DNS Propagation",
           "aliasName": null,
-          "description": "Check if DNS records of a domain have propagated globally.",
-          "collection": "/api/3/workflow_collections/0f63ad10-3ea5-43a6-9f70-b3c68d640b26",
           "tag": "#apivoid",
+          "description": "Check if DNS records of a domain have propagated globally.",
           "isActive": false,
+          "debug": false,
           "singleRecordExecution": false,
           "remoteExecutableFlag": false,
           "parameters": [],
           "synchronous": false,
+          "lastModifyDate": 1612518451,
+          "collection": "/api/3/workflow_collections/0f63ad10-3ea5-43a6-9f70-b3c68d640b26",
+          "versions": [],
           "triggerStep": "/api/3/workflow_steps/62be08b5-3f55-469f-a637-dd9987080045",
           "steps": [
             {
@@ -475,9 +867,10 @@
                 "singleRecordExecution": false
               },
               "status": null,
-              "left": "20",
               "top": "20",
+              "left": "20",
               "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
               "uuid": "62be08b5-3f55-469f-a637-dd9987080045"
             },
             {
@@ -491,7 +884,7 @@
                   "req_value": "",
                   "dns_record_type": "MX"
                 },
-                "version": "1.0.0",
+                "version": "1.0.1",
                 "connector": "apivoid",
                 "operation": "dnspropagation",
                 "operationTitle": "Get DNS Propagation",
@@ -500,46 +893,52 @@
                 }
               },
               "status": null,
-              "left": "188",
               "top": "120",
+              "left": "188",
               "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
               "uuid": "a1996d47-4f89-408f-a08a-809849622b32"
             }
           ],
           "routes": [
             {
               "@type": "WorkflowRoute",
-              "uuid": "14699720-8c93-40d4-8874-a4d0cfbc6c6c",
               "name": "Alerts -> Get DNS Propagation",
+              "targetStep": "/api/3/workflow_steps/a1996d47-4f89-408f-a08a-809849622b32",
+              "sourceStep": "/api/3/workflow_steps/62be08b5-3f55-469f-a637-dd9987080045",
               "label": null,
               "isExecuted": false,
-              "targetStep": "/api/3/workflow_steps/a1996d47-4f89-408f-a08a-809849622b32",
-              "sourceStep": "/api/3/workflow_steps/62be08b5-3f55-469f-a637-dd9987080045"
+              "uuid": "14699720-8c93-40d4-8874-a4d0cfbc6c6c"
             }
           ],
-          "versions": null,
-          "lastModifyDate": 1612518451,
+          "groups": [],
           "priority": null,
           "uuid": "4269daf2-5132-46be-a824-4197aa472fe4",
+          "id": 847,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
           "recordTags": [
             "apivoid"
-          ],
-          "isPrivate": false,
-          "owners": []
+          ]
         },
         {
           "@type": "Workflow",
           "triggerLimit": null,
           "name": "Get Domain Age ",
           "aliasName": null,
-          "description": "Get domain registration date and domain age in days",
-          "collection": "/api/3/workflow_collections/0f63ad10-3ea5-43a6-9f70-b3c68d640b26",
           "tag": "#apivoid",
+          "description": "Get domain registration date and domain age in days",
           "isActive": false,
+          "debug": false,
           "singleRecordExecution": false,
           "remoteExecutableFlag": false,
           "parameters": [],
           "synchronous": false,
+          "lastModifyDate": 1612518464,
+          "collection": "/api/3/workflow_collections/0f63ad10-3ea5-43a6-9f70-b3c68d640b26",
+          "versions": [],
           "triggerStep": "/api/3/workflow_steps/270a710d-2d04-484e-a0ab-c093b6cd9d06",
           "steps": [
             {
@@ -562,9 +961,10 @@
                 "singleRecordExecution": false
               },
               "status": null,
-              "left": "20",
               "top": "20",
+              "left": "20",
               "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
               "uuid": "270a710d-2d04-484e-a0ab-c093b6cd9d06"
             },
             {
@@ -577,7 +977,7 @@
                 "params": {
                   "req_value": ""
                 },
-                "version": "1.0.0",
+                "version": "1.0.1",
                 "connector": "apivoid",
                 "operation": "domainage",
                 "operationTitle": "Get Domain Age ",
@@ -586,46 +986,52 @@
                 }
               },
               "status": null,
-              "left": "188",
               "top": "120",
+              "left": "188",
               "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
               "uuid": "d180b6cf-b067-4665-8319-ca4b186c5622"
             }
           ],
           "routes": [
             {
               "@type": "WorkflowRoute",
-              "uuid": "3be5f2f7-caec-4eb0-bcd9-f6b94aa3c2ac",
               "name": "Alerts -> Get Domain Age ",
+              "targetStep": "/api/3/workflow_steps/d180b6cf-b067-4665-8319-ca4b186c5622",
+              "sourceStep": "/api/3/workflow_steps/270a710d-2d04-484e-a0ab-c093b6cd9d06",
               "label": null,
               "isExecuted": false,
-              "targetStep": "/api/3/workflow_steps/d180b6cf-b067-4665-8319-ca4b186c5622",
-              "sourceStep": "/api/3/workflow_steps/270a710d-2d04-484e-a0ab-c093b6cd9d06"
+              "uuid": "3be5f2f7-caec-4eb0-bcd9-f6b94aa3c2ac"
             }
           ],
-          "versions": null,
-          "lastModifyDate": 1612518464,
+          "groups": [],
           "priority": null,
           "uuid": "444888e6-cbce-4306-93eb-d885192cd182",
+          "id": 848,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
           "recordTags": [
             "apivoid"
-          ],
-          "isPrivate": false,
-          "owners": []
+          ]
         },
         {
           "@type": "Workflow",
           "triggerLimit": null,
           "name": "Get URL HTML",
           "aliasName": null,
-          "description": "Capture the HTML page source after JavaScript has been executed.",
-          "collection": "/api/3/workflow_collections/0f63ad10-3ea5-43a6-9f70-b3c68d640b26",
           "tag": "#apivoid",
+          "description": "Capture the HTML page source after JavaScript has been executed.",
           "isActive": false,
+          "debug": false,
           "singleRecordExecution": false,
           "remoteExecutableFlag": false,
           "parameters": [],
           "synchronous": false,
+          "lastModifyDate": 1612518717,
+          "collection": "/api/3/workflow_collections/0f63ad10-3ea5-43a6-9f70-b3c68d640b26",
+          "versions": [],
           "triggerStep": "/api/3/workflow_steps/09950b38-bc92-4b0a-a3dd-62e0ccb8b48c",
           "steps": [
             {
@@ -648,9 +1054,10 @@
                 "singleRecordExecution": false
               },
               "status": null,
-              "left": "20",
               "top": "20",
+              "left": "20",
               "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
               "uuid": "09950b38-bc92-4b0a-a3dd-62e0ccb8b48c"
             },
             {
@@ -663,7 +1070,7 @@
                 "params": {
                   "req_value": ""
                 },
-                "version": "1.0.0",
+                "version": "1.0.1",
                 "connector": "apivoid",
                 "operation": "urltohtml",
                 "operationTitle": "Get URL HTML",
@@ -672,46 +1079,52 @@
                 }
               },
               "status": null,
-              "left": "188",
               "top": "120",
+              "left": "188",
               "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
               "uuid": "2aec4e69-42ac-4de9-b73c-169b3cd37fec"
             }
           ],
           "routes": [
             {
               "@type": "WorkflowRoute",
-              "uuid": "a089a2a7-aa5f-459e-8d21-9b9eb070a358",
               "name": "Alerts -> Get URL HTML",
+              "targetStep": "/api/3/workflow_steps/2aec4e69-42ac-4de9-b73c-169b3cd37fec",
+              "sourceStep": "/api/3/workflow_steps/09950b38-bc92-4b0a-a3dd-62e0ccb8b48c",
               "label": null,
               "isExecuted": false,
-              "targetStep": "/api/3/workflow_steps/2aec4e69-42ac-4de9-b73c-169b3cd37fec",
-              "sourceStep": "/api/3/workflow_steps/09950b38-bc92-4b0a-a3dd-62e0ccb8b48c"
+              "uuid": "a089a2a7-aa5f-459e-8d21-9b9eb070a358"
             }
           ],
-          "versions": null,
-          "lastModifyDate": 1612518717,
+          "groups": [],
           "priority": null,
           "uuid": "4e017218-ab6b-4f2c-8f2b-06920e8eda37",
+          "id": 849,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
           "recordTags": [
             "apivoid"
-          ],
-          "isPrivate": false,
-          "owners": []
+          ]
         },
         {
           "@type": "Workflow",
           "triggerLimit": null,
           "name": "Get Domain Trustworthiness",
           "aliasName": null,
-          "description": "Provides important details about a website to check if it is legit.",
-          "collection": "/api/3/workflow_collections/0f63ad10-3ea5-43a6-9f70-b3c68d640b26",
           "tag": "#apivoid",
+          "description": "Provides important details about a website to check if it is legit.",
           "isActive": false,
+          "debug": false,
           "singleRecordExecution": false,
           "remoteExecutableFlag": false,
           "parameters": [],
           "synchronous": false,
+          "lastModifyDate": 1612518523,
+          "collection": "/api/3/workflow_collections/0f63ad10-3ea5-43a6-9f70-b3c68d640b26",
+          "versions": [],
           "triggerStep": "/api/3/workflow_steps/c1c42774-e1ec-4ea9-8833-b259e747ff03",
           "steps": [
             {
@@ -724,7 +1137,7 @@
                 "params": {
                   "req_value": ""
                 },
-                "version": "1.0.0",
+                "version": "1.0.1",
                 "connector": "apivoid",
                 "operation": "sitetrust",
                 "operationTitle": "Get Domain Trustworthiness",
@@ -733,9 +1146,10 @@
                 }
               },
               "status": null,
-              "left": "188",
               "top": "120",
+              "left": "188",
               "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
               "uuid": "a8e86228-ae28-4fba-ba94-afcf6212d144"
             },
             {
@@ -758,46 +1172,226 @@
                 "singleRecordExecution": false
               },
               "status": null,
-              "left": "20",
               "top": "20",
+              "left": "20",
               "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
               "uuid": "c1c42774-e1ec-4ea9-8833-b259e747ff03"
             }
           ],
           "routes": [
             {
               "@type": "WorkflowRoute",
-              "uuid": "c5f56368-95d4-4766-99d1-a38253205dcd",
               "name": "Alerts -> Get Domain Trustworthiness",
+              "targetStep": "/api/3/workflow_steps/a8e86228-ae28-4fba-ba94-afcf6212d144",
+              "sourceStep": "/api/3/workflow_steps/c1c42774-e1ec-4ea9-8833-b259e747ff03",
               "label": null,
               "isExecuted": false,
-              "targetStep": "/api/3/workflow_steps/a8e86228-ae28-4fba-ba94-afcf6212d144",
-              "sourceStep": "/api/3/workflow_steps/c1c42774-e1ec-4ea9-8833-b259e747ff03"
+              "uuid": "c5f56368-95d4-4766-99d1-a38253205dcd"
             }
           ],
-          "versions": null,
-          "lastModifyDate": 1612518523,
+          "groups": [],
           "priority": null,
           "uuid": "6aa7e569-8e52-45d3-a3c9-46221fdebe30",
+          "id": 850,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
           "recordTags": [
             "apivoid"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Domain > API Void > Enrichment",
+          "aliasName": null,
+          "tag": null,
+          "description": "Retrieve the reputation of indicator of type ‘Domain’ using API Void.",
+          "isActive": true,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [
+            "indicator_value",
+            "style_colors"
           ],
+          "synchronous": false,
+          "lastModifyDate": 1659431472,
+          "collection": "/api/3/workflow_collections/0f63ad10-3ea5-43a6-9f70-b3c68d640b26",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/3dd18cb4-a599-4fed-b5d5-2be3f7006972",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Configuration",
+              "description": null,
+              "arguments": {
+                "good_score": "0",
+                "useMockOutput": "{{globalVars.Demo_mode}}",
+                "indicator_value": "{{vars.input.params['indicator_value']}}",
+                "malicious_score": "100-90",
+                "suspicious_score": "89-1"
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
+              "group": null,
+              "uuid": "98261f80-a8ce-4a73-8d07-4175aa2744d3"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Return Output Data",
+              "description": null,
+              "arguments": {
+                "verdict": "{% if vars.steps.Get_Domain_Reputation.data.result.data.report.risk_score.result >= 90 %}{{\"Malicious\"}}{% elif vars.steps.Get_Domain_Reputation.data.result.data.report.risk_score.result > 0 and vars.steps.Get_Domain_Reputation.data.result.data.report.risk_score.result < 90 %}{{\"Suspicious\"}}{% elif vars.steps.Get_Domain_Reputation.data.result.data.report.risk_score.result == 0 %}{{\"Good\"}}{% else %}\n{{\"No Reputation Available\"}}{% endif %}",
+                "cti_name": "API Void",
+                "cti_score": "{{vars.steps.Get_Domain_Reputation.data.result.data.report.risk_score.result}}",
+                "source_data": "{\"APIVoid\": {{vars.steps.Get_Domain_Reputation.data.result}} }",
+                "field_mapping": "{\"ip_address\": {% if vars.steps.Get_Domain_Reputation.data.result.data.report.server.ip %}\"{{vars.steps.Get_Domain_Reputation.data.result.data.report.server.ip}}\"{% else %}{{None}}{% endif %}, \"asn\": {% if vars.steps.Get_Domain_Reputation.data.result.data.report.server.asn %}\"{{vars.steps.Get_Domain_Reputation.data.result.data.report.server.asn}}\"{% else %}{{None}}{% endif %}, \"isp\": {% if vars.steps.Get_Domain_Reputation.data.result.data.report.server.isp %}\"{{vars.steps.Get_Domain_Reputation.data.result.data.report.server.isp}}\"{% else %}{{None}}{% endif %}, \"city\": {% if vars.steps.Get_Domain_Reputation.data.result.data.report.server.city_name %}\"{{vars.steps.Get_Domain_Reputation.data.result.data.report.server.city_name}}\"{% else %}{{None}}{% endif %}, \"region\": {% if vars.steps.Get_Domain_Reputation.data.result.data.report.server.region_name %}\"{{vars.steps.Get_Domain_Reputation.data.result.data.report.server.region_name}}\"{% else %}{{None}}{% endif %}, \"country\": {% if vars.steps.Get_Domain_Reputation.data.result.data.report.server.country_name %}\"{{vars.steps.Get_Domain_Reputation.data.result.data.report.server.country_name}}\"{% else %}{{None}}{% endif %}, \"reverse_dns\": {% if vars.steps.Get_Domain_Reputation.data.result.data.report.server.reverse_dns %}\"{{vars.steps.Get_Domain_Reputation.data.result.data.report.server.reverse_dns}}\"{% else %}{{None}}{% endif %}, \"continent_name\": {% if vars.steps.Get_Domain_Reputation.data.result.data.report.server.continent_name %}\"{{vars.steps.Get_Domain_Reputation.data.result.data.report.server.continent_name}}\"{% else %}{{None}}{% endif %}}",
+                "enrichment_summary": "{{vars.steps.Compute_API_Void_Summary.data['formatted_string']}}"
+              },
+              "status": null,
+              "top": "570",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
+              "group": null,
+              "uuid": "cd285cc1-1523-4399-b243-7fa16523c88a"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "step_variables": {
+                  "input": {
+                    "params": []
+                  }
+                }
+              },
+              "status": null,
+              "top": "30",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62",
+              "group": null,
+              "uuid": "3dd18cb4-a599-4fed-b5d5-2be3f7006972"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Get Domain Reputation",
+              "description": null,
+              "arguments": {
+                "name": "apivoid",
+                "config": "ae0bbc6e-b511-4fa5-b906-8cf6e0b360a3",
+                "params": {
+                  "req_value": "{{vars.indicator_value}}"
+                },
+                "version": "1.0.1",
+                "connector": "apivoid",
+                "operation": "domainbl",
+                "mock_result": "{\n  \"data\": {\n    \"result\": {\n      \"data\": {\n        \"report\": {\n          \"host\": \"{{vars.indicator_value}}\",\n          \"server\": {\n            \"ip\": \"103.224.182.249\",\n            \"asn\": \"AS133618\",\n            \"isp\": \"Trellian Pty. Limited\",\n            \"latitude\": -37.982200622558594,\n            \"city_name\": \"Beaumaris\",\n            \"longitude\": 145.0389404296875,\n            \"region_name\": \"Victoria\",\n            \"reverse_dns\": \"lb-182-249.above.com\",\n            \"country_code\": \"AU\",\n            \"country_name\": \"Australia\",\n            \"continent_code\": \"OC\",\n            \"continent_name\": \"Oceania\"\n          },\n          \"category\": {\n            \"is_pastebin\": false,\n            \"is_anonymizer\": false,\n            \"is_code_sandbox\": false,\n            \"is_form_builder\": false,\n            \"is_free_hosting\": false,\n            \"is_url_shortener\": false,\n            \"is_free_dynamic_dns\": false,\n            \"is_free_file_sharing\": false\n          },\n          \"blacklists\": {\n            \"engines\": {\n              \"0\": {\n                \"engine\": \"Phishing Test\",\n                \"elapsed\": \"0.00\",\n                \"detected\": false,\n                \"reference\": \"https://www.novirusthanks.org/\",\n                \"confidence\": \"low\"\n              },\n              \"1\": {\n                \"engine\": \"Scam Test\",\n                \"elapsed\": \"0.00\",\n                \"detected\": false,\n                \"reference\": \"https://www.novirusthanks.org/\",\n                \"confidence\": \"low\"\n              },\n              \"2\": {\n                \"engine\": \"Sinkholed Domain\",\n                \"elapsed\": \"0.00\",\n                \"detected\": false,\n                \"reference\": \"https://www.novirusthanks.org/\",\n                \"confidence\": \"low\"\n              },\n              \"3\": {\n                \"engine\": \"Suspicious Hosting IP\",\n                \"elapsed\": \"0.00\",\n                \"detected\": false,\n                \"reference\": \"https://www.novirusthanks.org/\",\n                \"confidence\": \"low\"\n              },\n              \"4\": {\n                \"engine\": \"AntiSocial Blacklist\",\n                \"elapsed\": \"0.00\",\n                \"detected\": false,\n                \"reference\": \"https://theantisocialengineer.com/\",\n                \"confidence\": \"high\"\n              },\n              \"5\": {\n                \"engine\": \"Artists Against 419\",\n                \"elapsed\": \"0.00\",\n                \"detected\": false,\n                \"reference\": \"http://wiki.aa419.org/index.php/Main_Page\",\n                \"confidence\": \"high\"\n              },\n              \"6\": {\n                \"engine\": \"AZORult Tracker\",\n                \"elapsed\": \"0.00\",\n                \"detected\": false,\n                \"reference\": \"https://azorult-tracker.net/\",\n                \"confidence\": \"high\"\n              },\n              \"7\": {\n                \"engine\": \"Badbitcoin\",\n                \"elapsed\": \"0.00\",\n                \"detected\": false,\n                \"reference\": \"https://badbitcoin.org/\",\n                \"confidence\": \"high\"\n              },\n              \"8\": {\n                \"engine\": \"Bambenek Consulting\",\n                \"elapsed\": \"0.00\",\n                \"detected\": false,\n                \"reference\": \"https://www.bambenekconsulting.com/\",\n                \"confidence\": \"high\"\n              },\n              \"9\": {\n                \"engine\": \"C_APT_ure\",\n                \"elapsed\": \"0.00\",\n                \"detected\": false,\n                \"reference\": \"http://c-apt-ure.blogspot.com/\",\n                \"confidence\": \"high\"\n              },\n              \"10\": {\n                \"engine\": \"CERT-GIB\",\n                \"elapsed\": \"0.00\",\n                \"detected\": false,\n                \"reference\": \"http://www.cert-gib.com/\",\n                \"confidence\": \"high\"\n              },\n              \"11\": {\n                \"engine\": \"CERT-PA\",\n                \"elapsed\": \"0.00\",\n                \"detected\": false,\n                \"reference\": \"https://www.cert-pa.it/\",\n                \"confidence\": \"high\"\n              },\n              \"12\": {\n                \"engine\": \"CERT Polska\",\n                \"elapsed\": \"0.00\",\n                \"detected\": false,\n                \"reference\": \"https://www.cert.pl/\",\n                \"confidence\": \"high\"\n              },\n              \"13\": {\n                \"engine\": \"Chong Lua Dao\",\n                \"elapsed\": \"0.00\",\n                \"detected\": false,\n                \"reference\": \"https://chongluadao.vn/\",\n                \"confidence\": \"high\"\n              },\n              \"14\": {\n                \"engine\": \"CoinBlockerLists\",\n                \"elapsed\": \"0.00\",\n                \"detected\": false,\n                \"reference\": \"https://gitlab.com/ZeroDot1/CoinBlockerLists/\",\n                \"confidence\": \"high\"\n              },\n              \"15\": {\n                \"engine\": \"CRDF\",\n                \"elapsed\": \"0.00\",\n                \"detected\": true,\n                \"reference\": \"https://threatcenter.crdf.fr/check.html\",\n                \"confidence\": \"high\"\n              },\n              \"16\": {\n                \"engine\": \"CyberCrime\",\n                \"elapsed\": \"0.00\",\n                \"detected\": false,\n                \"reference\": \"https://cybercrime-tracker.net/\",\n                \"confidence\": \"high\"\n              },\n              \"17\": {\n                \"engine\": \"Cyber Threat Coalition\",\n                \"elapsed\": \"0.00\",\n                \"detected\": false,\n                \"reference\": \"https://www.cyberthreatcoalition.org/\",\n                \"confidence\": \"high\"\n              },\n              \"18\": {\n                \"engine\": \"EtherAddressLookup\",\n                \"elapsed\": \"0.00\",\n                \"detected\": false,\n                \"reference\": \"https://github.com/409H/EtherAddressLookup/\",\n                \"confidence\": \"high\"\n              },\n              \"19\": {\n                \"engine\": \"EtherScamDB\",\n                \"elapsed\": \"0.00\",\n                \"detected\": false,\n                \"reference\": \"https://etherscamdb.info/\",\n                \"confidence\": \"high\"\n              },\n              \"20\": {\n                \"engine\": \"Fake Website Buster\",\n                \"elapsed\": \"0.00\",\n                \"detected\": false,\n                \"reference\": \"https://fakewebsitebuster.com/\",\n                \"confidence\": \"high\"\n              },\n              \"21\": {\n                \"engine\": \"Fumik0 Malware Tracker\",\n                \"elapsed\": \"0.00\",\n                \"detected\": false,\n                \"reference\": \"https://tracker.fumik0.com/\",\n                \"confidence\": \"high\"\n              },\n              \"22\": {\n                \"engine\": \"HijackedUrls\",\n                \"elapsed\": \"0.00\",\n                \"detected\": false,\n                \"reference\": \"https://www.hijackedurls.com/\",\n                \"confidence\": \"high\"\n              },\n              \"23\": {\n                \"engine\": \"Joewein Domain BL\",\n                \"elapsed\": \"0.00\",\n                \"detected\": false,\n                \"reference\": \"http://www.joewein.net/\",\n                \"confidence\": \"high\"\n              },\n              \"24\": {\n                \"engine\": \"Malc0de\",\n                \"elapsed\": \"0.00\",\n                \"detected\": false,\n                \"reference\": \"http://malc0de.com/\",\n                \"confidence\": \"high\"\n              },\n              \"25\": {\n                \"engine\": \"MetaMask EthPhishing\",\n                \"elapsed\": \"0.00\",\n                \"detected\": false,\n                \"reference\": \"https://github.com/MetaMask/eth-phishing-detect/\",\n                \"confidence\": \"high\"\n              },\n              \"26\": {\n                \"engine\": \"NABP Not Recommended Sites\",\n                \"elapsed\": \"0.00\",\n                \"detected\": false,\n                \"reference\": \"https://safe.pharmacy/buy-safely/\",\n                \"confidence\": \"high\"\n              },\n              \"27\": {\n                \"engine\": \"Netlab360\",\n                \"elapsed\": \"0.00\",\n                \"detected\": false,\n                \"reference\": \"http://netlab.360.com/\",\n                \"confidence\": \"high\"\n              },\n              \"28\": {\n                \"engine\": \"OpenPhish\",\n                \"elapsed\": \"0.00\",\n                \"detected\": false,\n                \"reference\": \"https://openphish.com/\",\n                \"confidence\": \"high\"\n              },\n              \"29\": {\n                \"engine\": \"PetScams\",\n                \"elapsed\": \"0.00\",\n                \"detected\": false,\n                \"reference\": \"https://petscams.com/\",\n                \"confidence\": \"high\"\n              },\n              \"30\": {\n                \"engine\": \"Phishing.Database\",\n                \"elapsed\": \"0.00\",\n                \"detected\": false,\n                \"reference\": \"https://github.com/mitchellkrogza/Phishing.Database\",\n                \"confidence\": \"high\"\n              },\n              \"31\": {\n                \"engine\": \"PhishFeed\",\n                \"elapsed\": \"0.00\",\n                \"detected\": false,\n                \"reference\": \"https://phishfeed.com/\",\n                \"confidence\": \"high\"\n              },\n              \"32\": {\n                \"engine\": \"PhishingReel\",\n                \"elapsed\": \"0.00\",\n                \"detected\": false,\n                \"reference\": \"https://phishingreel.io/\",\n                \"confidence\": \"high\"\n              },\n              \"33\": {\n                \"engine\": \"PhishStats\",\n                \"elapsed\": \"0.00\",\n                \"detected\": false,\n                \"reference\": \"https://phishstats.info/\",\n                \"confidence\": \"high\"\n              },\n              \"34\": {\n                \"engine\": \"PhishTank\",\n                \"elapsed\": \"0.00\",\n                \"detected\": false,\n                \"reference\": \"https://www.phishtank.com/\",\n                \"confidence\": \"high\"\n              },\n              \"35\": {\n                \"engine\": \"Phishunt\",\n                \"elapsed\": \"0.00\",\n                \"detected\": false,\n                \"reference\": \"https://phishunt.io/\",\n                \"confidence\": \"high\"\n              },\n              \"36\": {\n                \"engine\": \"Quttera\",\n                \"elapsed\": \"0.00\",\n                \"detected\": true,\n                \"reference\": \"https://quttera.com/home\",\n                \"confidence\": \"low\"\n              },\n              \"37\": {\n                \"engine\": \"RPiList Not Serious\",\n                \"elapsed\": \"0.00\",\n                \"detected\": false,\n                \"reference\": \"https://github.com/RPiList/specials\",\n                \"confidence\": \"high\"\n              },\n              \"38\": {\n                \"engine\": \"Scam.Directory\",\n                \"elapsed\": \"0.00\",\n                \"detected\": false,\n                \"reference\": \"https://scam.directory/\",\n                \"confidence\": \"high\"\n              },\n              \"39\": {\n                \"engine\": \"SecureReload Phishing List\",\n                \"elapsed\": \"0.00\",\n                \"detected\": false,\n                \"reference\": \"https://securereload.tech/\",\n                \"confidence\": \"high\"\n              },\n              \"40\": {\n                \"engine\": \"Spam404\",\n                \"elapsed\": \"0.00\",\n                \"detected\": false,\n                \"reference\": \"https://www.spam404.com/\",\n                \"confidence\": \"high\"\n              },\n              \"41\": {\n                \"engine\": \"ThreatCrowd\",\n                \"elapsed\": \"0.00\",\n                \"detected\": false,\n                \"reference\": \"https://www.threatcrowd.org/\",\n                \"confidence\": \"high\"\n              },\n              \"42\": {\n                \"engine\": \"ThreatLog\",\n                \"elapsed\": \"0.00\",\n                \"detected\": true,\n                \"reference\": \"https://www.threatlog.com/\",\n                \"confidence\": \"high\"\n              },\n              \"43\": {\n                \"engine\": \"Threat Sourcing\",\n                \"elapsed\": \"0.00\",\n                \"detected\": false,\n                \"reference\": \"https://www.threatsourcing.com/\",\n                \"confidence\": \"high\"\n              },\n              \"44\": {\n                \"engine\": \"TR-PhishingList\",\n                \"elapsed\": \"0.00\",\n                \"detected\": true,\n                \"reference\": \"https://github.com/HorusTeknoloji/TR-PhishingList\",\n                \"confidence\": \"high\"\n              },\n              \"45\": {\n                \"engine\": \"TweetFeed\",\n                \"elapsed\": \"0.00\",\n                \"detected\": false,\n                \"reference\": \"https://github.com/0xDanielLopez/TweetFeed\",\n                \"confidence\": \"high\"\n              },\n              \"46\": {\n                \"engine\": \"URLhaus\",\n                \"elapsed\": \"0.00\",\n                \"detected\": false,\n                \"reference\": \"https://urlhaus.abuse.ch/\",\n                \"confidence\": \"high\"\n              },\n              \"47\": {\n                \"engine\": \"URLVir\",\n                \"elapsed\": \"0.00\",\n                \"detected\": false,\n                \"reference\": \"https://www.urlvir.com/\",\n                \"confidence\": \"high\"\n              },\n              \"48\": {\n                \"engine\": \"ViriBack C2 Tracker\",\n                \"elapsed\": \"0.00\",\n                \"detected\": false,\n                \"reference\": \"http://tracker.viriback.com/\",\n                \"confidence\": \"high\"\n              },\n              \"49\": {\n                \"engine\": \"VXVault\",\n                \"elapsed\": \"0.00\",\n                \"detected\": false,\n                \"reference\": \"http://vxvault.net/\",\n                \"confidence\": \"high\"\n              }\n            },\n            \"scantime\": \"0.01\",\n            \"detections\": 4,\n            \"engines_count\": 50,\n            \"detection_rate\": \"8%\"\n          },\n          \"risk_score\": {\n            \"result\": 100\n          },\n          \"security_checks\": {\n            \"is_risky_category\": false,\n            \"is_most_abused_tld\": false,\n            \"website_popularity\": \"low\",\n            \"is_domain_ipv4_valid\": true,\n            \"is_domain_blacklisted\": true,\n            \"is_domain_ipv4_private\": false,\n            \"is_domain_ipv4_assigned\": true,\n            \"is_domain_ipv4_loopback\": false,\n            \"is_domain_ipv4_reserved\": false,\n            \"is_uncommon_host_length\": false,\n            \"is_uncommon_dot_char_count\": false,\n            \"is_uncommon_dash_char_count\": false,\n            \"is_uncommon_clickable_domain\": false\n          }\n        }\n      },\n      \"success\": true,\n      \"elapsed_time\": \"0.23\",\n      \"credits_remained\": 12.24,\n      \"estimated_queries\": \"153\"\n    },\n    \"status\": \"Success\"\n  },\n  \"status\": \"Success\",\n  \"message\": \"\",\n  \"operation\": null\n}",
+                "operationTitle": "Get Domain Reputation",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "300",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "3e8b080e-c804-4318-bc30-1f08356f548b"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Compute API Void Summary",
+              "description": null,
+              "arguments": {
+                "params": {
+                  "value": "<table class=\"no-border\">\n    <tr>\n        <th colspan=\"4\" class=\"no-background padding-0\">\n            <div class=\"font-size-11 ng-binding padding-bottom-sm\">\n                <h4 style=\"color: orange;\"\n                    class=\"body-default-bgcolor margin-bottom-0 padding-bottom-md padding-left-md padding-top-md text-align-left\">\n                    API Void Detection Summary</h4>\n            </div>\n        </th>\n    </tr>\n    <tr class=\"solid-border\">\n        <td>\n            <div small class=\"control-label\">Risk Score</div>\n            <div class=\"card-container-body margin-left-0\" style=\"width: 100px;\">\n                <div>{% if vars.steps.Get_Domain_Reputation.data.result.data.report.risk_score.result >= (vars.malicious_score.split('-')[1] | int) %}</div>\n                <div class=\"body-default-bgcolor card-number padding-left-md\"\n                    style=\"border-left: 5px solid {{vars.input.params.style_colors.Malicious}};padding: 11px;font-size: 18px !important;\">\n                    {{vars.steps.Get_Domain_Reputation.data.result.data.report.risk_score.result}}</div>\n                <div>{% elif vars.steps.Get_Domain_Reputation.data.result.data.report.risk_score.result <= (vars.suspicious_score.split('-')[0] | int) and\n                    vars.steps.Get_Domain_Reputation.data.result.data.report.risk_score.result >= (vars.suspicious_score.split('-')[1] | int) %}</div>\n                        <div class=\"body-default-bgcolor card-number padding-left-md\"\n                            style=\"border-left: 5px solid {{vars.input.params.style_colors.Suspicious}};padding: 11px;font-size: 18px !important;\">\n                            {{vars.steps.Get_Domain_Reputation.data.result.data.report.risk_score.result}}</div>\n                        <div>{% elif vars.steps.Get_Domain_Reputation.data.report.risk_score.result == vars.good_score %}</div>\n                        <div class=\"body-default-bgcolor card-number padding-left-md\"\n                            style=\"border-left: 5px solid {{vars.input.params.style_colors.Good}};padding: 11px;font-size: 18px !important;\">\n                            {{vars.steps.Get_Domain_Reputation.data.result.data.report.risk_score.result}}</div>\n                        <div>{% else %}</div>\n                        <div class=\"body-default-bgcolor card-number padding-left-md\"\n                            style=\"border-left: 5px solid {{vars.input.params.style_colors['No Reputation Available']}};padding: 11px;font-size: 18px !important;\">\n                            {{vars.steps.Get_Domain_Reputation.data.result.data.report.risk_score.result}}</div>\n                        <div>{% endif %}</div>\n                </div>\n        </td>\n        <td>\n            <div small class=\"control-label\">Domain Blacklisted</div>\n            <div class=\"card-container-body margin-left-0\" style=\"width: 100px;\">\n                <div>{% if vars.steps.Get_Domain_Reputation.data.result.data.report.security_checks.is_domain_blacklisted %}</div>\n                <div class=\"body-default-bgcolor card-number padding-left-md\"\n                    style=\"border-left: 5px solid {{vars.input.params.style_colors.Malicious}};padding: 11px;font-size: 18px !important;\">\n                    {{vars.steps.Get_Domain_Reputation.data.result.data.report.security_checks.is_domain_blacklisted}}</div>\n                <div>{% else %}</div>\n                <div class=\"body-default-bgcolor card-number padding-left-md\"\n                    style=\"border-left: 5px solid {{vars.input.params.style_colors.Good}};padding: 11px;font-size: 18px !important;\">\n                    {{vars.steps.Get_Domain_Reputation.data.result.data.report.security_checks.is_domain_blacklisted}}</div>\n                <div>{% endif %}</div>\n            </div>\n        </td>\n        <td>\n            <div small class=\"control-label\">Risky Category</div>\n            <div class=\"card-container-body margin-left-0\" style=\"width: 100px;\">\n                <div>{% if vars.steps.Get_Domain_Reputation.data.result.data.report.security_checks.is_risky_category %}</div>\n                <div class=\"body-default-bgcolor card-number padding-left-md\"\n                    style=\"border-left: 5px solid {{vars.input.params.style_colors.Malicious}};padding: 11px;font-size: 18px !important;\">\n                    {{vars.steps.Get_Domain_Reputation.data.result.data.report.security_checks.is_risky_category}}</div>\n                <div>{% else %}</div>\n                <div class=\"body-default-bgcolor card-number padding-left-md\"\n                    style=\"border-left: 5px solid {{vars.input.params.style_colors.Good}};padding: 11px;font-size: 18px !important;\">\n                    {{vars.steps.Get_Domain_Reputation.data.result.data.report.security_checks.is_risky_category}}</div>\n                <div>{% endif %}</div>\n            </div>\n        </td>\n        <td>\n            <div small class=\"control-label\">Blacklisted Detection Engine Rate</div>\n            <div class=\"card-container-body margin-left-0\" style=\"width: 100px;\">\n                <div>{% if vars.steps.Get_Domain_Reputation.data.result.data.report.blacklists.detection_rate.split('%')[0]|int >= 90 %}</div>\n                <div class=\"body-default-bgcolor card-number padding-left-md\"\n                    style=\"border-left: 5px solid {{vars.input.params.style_colors.Malicious}};padding: 11px;font-size: 18px !important;\">\n                    {{vars.steps.Get_Domain_Reputation.data.result.data.report.blacklists.detection_rate}}</div>\n                <div>{% elif vars.steps.Get_Domain_Reputation.data.result.data.report.blacklists.detection_rate.split('%')[0]|int > 0  and vars.steps.Get_Domain_Reputation.data.result.data.report.blacklists.detection_rate.split('%')[0]|int < 90 %}</div>\n                <div class=\"body-default-bgcolor card-number padding-left-md\"\n                    style=\"border-left: 5px solid {{vars.input.params.style_colors.Suspicious}};padding: 11px;font-size: 18px !important;\">\n                    {{vars.steps.Get_Domain_Reputation.data.result.data.report.blacklists.detection_rate}}</div>\n                <div>{% elif vars.steps.Get_Domain_Reputation.data.result.data.report.blacklists.detection_rate.split('%')[0]|int == 0 %}</div>\n                <div class=\"body-default-bgcolor card-number padding-left-md\"\n                    style=\"border-left: 5px solid {{vars.input.params.style_colors.Good}};padding: 11px;font-size: 18px !important;\">\n                    {{vars.steps.Get_Domain_Reputation.data.result.data.report.blacklists.detection_rate}}</div>\n                <div>{% else %}</div>\n                <div class=\"body-default-bgcolor card-number padding-left-md\"\n                    style=\"border-left: 5px solid {{vars.input.params.style_colors['No Reputation Available']}};padding: 11px;font-size: 18px !important;\">\n                    {{vars.steps.Get_Domain_Reputation.data.result.data.report.blacklists.detection_rate}}</div>\n                <div>{% endif %}</div>\n            </div>\n        </td>\n    </tr>\n</table>"
+                },
+                "version": "3.2.1",
+                "connector": "cyops_utilities",
+                "operation": "format_richtext",
+                "operationTitle": "Utils: Format as RichText",
+                "step_variables": []
+              },
+              "status": null,
+              "top": "435",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0109f35d-090b-4a2b-bd8a-94cbc3508562",
+              "group": null,
+              "uuid": "14573e09-e12c-43f3-bb0c-f6e78ed4be53"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Compute VT Summary -> Return Output Data",
+              "targetStep": "/api/3/workflow_steps/cd285cc1-1523-4399-b243-7fa16523c88a",
+              "sourceStep": "/api/3/workflow_steps/14573e09-e12c-43f3-bb0c-f6e78ed4be53",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "848d0e76-85d8-4e67-80b6-c2715b0e4f3b"
+            },
+            {
+              "@type": "WorkflowRoute",
+              "name": "Configuration -> Get Domain Reputation",
+              "targetStep": "/api/3/workflow_steps/3e8b080e-c804-4318-bc30-1f08356f548b",
+              "sourceStep": "/api/3/workflow_steps/98261f80-a8ce-4a73-8d07-4175aa2744d3",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "8248f50b-2aa8-4325-80cf-bfced8fc1387"
+            },
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start -> Configuration",
+              "targetStep": "/api/3/workflow_steps/98261f80-a8ce-4a73-8d07-4175aa2744d3",
+              "sourceStep": "/api/3/workflow_steps/3dd18cb4-a599-4fed-b5d5-2be3f7006972",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "2fc5b5d1-aa35-4c83-b815-6dee36cfa5f6"
+            },
+            {
+              "@type": "WorkflowRoute",
+              "name": "Get Domain Reputation -> Compute API Void Summary",
+              "targetStep": "/api/3/workflow_steps/14573e09-e12c-43f3-bb0c-f6e78ed4be53",
+              "sourceStep": "/api/3/workflow_steps/3e8b080e-c804-4318-bc30-1f08356f548b",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "f8ff79e4-9cd0-465c-9fe6-d8e82b4ae0a1"
+            }
+          ],
+          "groups": [],
+          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "uuid": "7c803cbf-934e-463b-9ecf-596bee95d7a7",
+          "id": 857,
+          "owners": [],
           "isPrivate": false,
-          "owners": []
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "Subroutine",
+            "Domain_Enrichment"
+          ]
         },
         {
           "@type": "Workflow",
           "triggerLimit": null,
           "name": "Get Domain Reputation",
           "aliasName": null,
-          "description": "Check if a domain name is blacklisted by trusted sources",
-          "collection": "/api/3/workflow_collections/0f63ad10-3ea5-43a6-9f70-b3c68d640b26",
           "tag": "#apivoid",
+          "description": "Check if a domain name is blacklisted by trusted sources",
           "isActive": false,
+          "debug": false,
           "singleRecordExecution": false,
           "remoteExecutableFlag": false,
           "parameters": [],
           "synchronous": false,
+          "lastModifyDate": 1612518502,
+          "collection": "/api/3/workflow_collections/0f63ad10-3ea5-43a6-9f70-b3c68d640b26",
+          "versions": [],
           "triggerStep": "/api/3/workflow_steps/31bc230d-5916-4182-bb12-dfd1609c7363",
           "steps": [
             {
@@ -820,9 +1414,10 @@
                 "singleRecordExecution": false
               },
               "status": null,
-              "left": "20",
               "top": "20",
+              "left": "20",
               "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
               "uuid": "31bc230d-5916-4182-bb12-dfd1609c7363"
             },
             {
@@ -835,7 +1430,7 @@
                 "params": {
                   "req_value": ""
                 },
-                "version": "1.0.0",
+                "version": "1.0.1",
                 "connector": "apivoid",
                 "operation": "domainbl",
                 "operationTitle": "Get Domain Reputation",
@@ -844,46 +1439,226 @@
                 }
               },
               "status": null,
-              "left": "188",
               "top": "120",
+              "left": "188",
               "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
               "uuid": "517878e1-e8ee-4fda-beb3-1a84a33ec20f"
             }
           ],
           "routes": [
             {
               "@type": "WorkflowRoute",
-              "uuid": "09f73b0f-40f1-48a0-9e30-61a0dba8736e",
               "name": "Alerts -> Get Domain Reputation",
+              "targetStep": "/api/3/workflow_steps/517878e1-e8ee-4fda-beb3-1a84a33ec20f",
+              "sourceStep": "/api/3/workflow_steps/31bc230d-5916-4182-bb12-dfd1609c7363",
               "label": null,
               "isExecuted": false,
-              "targetStep": "/api/3/workflow_steps/517878e1-e8ee-4fda-beb3-1a84a33ec20f",
-              "sourceStep": "/api/3/workflow_steps/31bc230d-5916-4182-bb12-dfd1609c7363"
+              "uuid": "09f73b0f-40f1-48a0-9e30-61a0dba8736e"
             }
           ],
-          "versions": null,
-          "lastModifyDate": 1612518502,
+          "groups": [],
           "priority": null,
           "uuid": "b0b3b847-e509-4083-b0bc-cf82ccc77eea",
+          "id": 851,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
           "recordTags": [
             "apivoid"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "URL > API Void > Enrichment",
+          "aliasName": null,
+          "tag": null,
+          "description": "Retrieve the reputation of indicator of type ‘URL’ using API Void.",
+          "isActive": true,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [
+            "indicator_value",
+            "style_colors"
           ],
+          "synchronous": false,
+          "lastModifyDate": 1659431472,
+          "collection": "/api/3/workflow_collections/0f63ad10-3ea5-43a6-9f70-b3c68d640b26",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/9928dd3b-c426-4c66-ad06-c42b79415ef0",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Compute API Void Summary",
+              "description": null,
+              "arguments": {
+                "params": {
+                  "value": "<table class=\"no-border\">\n    <tr>\n        <th colspan=\"5\" class=\"no-background padding-0\">\n            <div class=\"font-size-11 ng-binding padding-bottom-sm\">\n                <h4 style=\"color: orange;\"\n                    class=\"body-default-bgcolor margin-bottom-0 padding-bottom-md padding-left-md padding-top-md text-align-left\">\n                    API Void Detection Summary</h4>\n            </div>\n        </th>\n    </tr>\n    <tr class=\"solid-border\">\n        <td>\n            <div small class=\"control-label\">Risk Score</div>\n            <div class=\"card-container-body margin-left-0\" style=\"width: 100px;\">\n                <div>{% if vars.steps.Get_URL_Reputation.data.result.data.report.risk_score.result >= (vars.malicious_score.split('-')[1] | int) %}</div>\n                <div class=\"body-default-bgcolor card-number padding-left-md\"\n                    style=\"border-left: 5px solid {{vars.input.params.style_colors.Malicious}};padding: 11px;font-size: 18px !important;\">\n                    {{vars.steps.Get_URL_Reputation.data.result.data.report.risk_score.result}}</div>\n                <div>{% elif vars.steps.Get_URL_Reputation.data.result.data.report.risk_score.result <= (vars.suspicious_score.split('-')[0] | int) and\n                    vars.steps.Get_URL_Reputation.data.result.data.report.risk_score.result >= (vars.suspicious_score.split('-')[1] | int) %}</div>\n                        <div class=\"body-default-bgcolor card-number padding-left-md\"\n                            style=\"border-left: 5px solid {{vars.input.params.style_colors.Suspicious}};padding: 11px;font-size: 18px !important;\">\n                            {{vars.steps.Get_URL_Reputation.data.result.data.report.risk_score.result}}</div>\n                        <div>{% elif vars.steps.Get_URL_Reputation.data.report.risk_score.result == vars.good_score %}</div>\n                        <div class=\"body-default-bgcolor card-number padding-left-md\"\n                            style=\"border-left: 5px solid {{vars.input.params.style_colors.Good}};padding: 11px;font-size: 18px !important;\">\n                            {{vars.steps.Get_URL_Reputation.data.result.data.report.risk_score.result}}</div>\n                        <div>{% else %}</div>\n                        <div class=\"body-default-bgcolor card-number padding-left-md\"\n                            style=\"border-left: 5px solid {{vars.input.params.style_colors['No Reputation Available']}};padding: 11px;font-size: 18px !important;\">\n                            {{vars.steps.Get_URL_Reputation.data.result.data.report.risk_score.result}}</div>\n                        <div>{% endif %}</div>\n                </div>\n        </td>\n        <td>\n            <div small class=\"control-label\">Domain Blacklisted</div>\n            <div class=\"card-container-body margin-left-0\" style=\"width: auto;\">\n                <div>{% if vars.steps.Get_URL_Reputation.data.result.data.report.security_checks.is_domain_blacklisted %}</div>\n                <div class=\"body-default-bgcolor card-number padding-left-md\"\n                    style=\"border-left: 5px solid {{vars.input.params.style_colors.Malicious}};padding: 11px;font-size: 18px !important;\">\n                    {{vars.steps.Get_URL_Reputation.data.result.data.report.security_checks.is_domain_blacklisted}}</div>\n                <div>{% else %}</div>\n                <div class=\"body-default-bgcolor card-number padding-left-md\"\n                    style=\"border-left: 5px solid {{vars.input.params.style_colors.Good}};padding: 11px;font-size: 18px !important;\">\n                    {{vars.steps.Get_URL_Reputation.data.result.data.report.security_checks.is_domain_blacklisted}}</div>\n                <div>{% endif %}</div>\n            </div>\n        </td>\n        <td>\n            <div small class=\"control-label\">Suspicious Domain</div>\n            <div class=\"card-container-body margin-left-0\" style=\"width: 100px;\">\n                <div>{% if vars.steps.Get_URL_Reputation.data.result.data.report.security_checks.is_suspicious_domain %}</div>\n                <div class=\"body-default-bgcolor card-number padding-left-md\"\n                    style=\"border-left: 5px solid {{vars.input.params.style_colors.Malicious}};padding: 11px;font-size: 18px !important;\">\n                    {{vars.steps.Get_URL_Reputation.data.result.data.report.security_checks.is_suspicious_domain}}</div>\n                <div>{% else %}</div>\n                <div class=\"body-default-bgcolor card-number padding-left-md\"\n                    style=\"border-left: 5px solid {{vars.input.params.style_colors.Good}};padding: 11px;font-size: 18px !important;\">\n                    {{vars.steps.Get_URL_Reputation.data.result.data.report.security_checks.is_suspicious_domain}}</div>\n                <div>{% endif %}</div>\n            </div>\n        </td>\n        <td>\n            <div small class=\"control-label\">Risky Geo Location</div>\n            <div class=\"card-container-body margin-left-0\" style=\"width: 100px;\">\n                <div>{% if vars.steps.Get_URL_Reputation.data.result.data.report.security_checks.is_risky_geo_location %}</div>\n                <div class=\"body-default-bgcolor card-number padding-left-md\"\n                    style=\"border-left: 5px solid {{vars.input.params.style_colors.Malicious}};padding: 11px;font-size: 18px !important;\">\n                    {{vars.steps.Get_URL_Reputation.data.result.data.report.security_checks.is_risky_geo_location}}</div>\n                <div>{% else %}</div>\n                <div class=\"body-default-bgcolor card-number padding-left-md\"\n                    style=\"border-left: 5px solid {{vars.input.params.style_colors.Good}};padding: 11px;font-size: 18px !important;\">\n                    {{vars.steps.Get_URL_Reputation.data.result.data.report.security_checks.is_risky_geo_location}}</div>\n                <div>{% endif %}</div>\n            </div>\n        </td>\n        <td>\n            <div small class=\"control-label\">Blacklisted Detection Engines</div>\n            <div class=\"card-container-body margin-left-0\" style=\"width: 100px;\">\n                <div class=\"text-capitalize body-default-bgcolor card-number padding-left-md\"\n                    style=\"padding: 13px;border-left-width: 1px;border-left-color: #dcdcdc;font-size: 15px !important;\">\n                    {{vars.steps.Get_URL_Reputation.data.result.data.report.domain_blacklist.engines | json_query(\"[?detected == `true`].name\")|join(',')}}</div>\n            </div>\n        </td>\n    </tr>\n</table>"
+                },
+                "version": "3.2.1",
+                "connector": "cyops_utilities",
+                "operation": "format_richtext",
+                "operationTitle": "Utils: Format as RichText",
+                "step_variables": []
+              },
+              "status": null,
+              "top": "435",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0109f35d-090b-4a2b-bd8a-94cbc3508562",
+              "group": null,
+              "uuid": "2ee95999-f798-4e77-9a83-8163a01f4fc4"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Get URL Reputation",
+              "description": null,
+              "arguments": {
+                "name": "apivoid",
+                "config": "ae0bbc6e-b511-4fa5-b906-8cf6e0b360a3",
+                "params": {
+                  "req_value": "{{vars.indicator_value}}"
+                },
+                "version": "1.0.1",
+                "connector": "apivoid",
+                "operation": "urlrep",
+                "mock_result": "{\n  \"data\": {\n    \"result\": {\n      \"data\": {\n        \"report\": {\n          \"web_page\": {\n            \"title\": \"404 - Page Not Found\",\n            \"keywords\": \"\",\n            \"description\": \"\"\n          },\n          \"file_type\": {\n            \"headers\": \"HTML\",\n            \"extension\": \"\",\n            \"signature\": \"HTML\"\n          },\n          \"url_parts\": {\n            \"host\": \"{{vars.indicator_value}}\",\n            \"path\": \"/\",\n            \"port\": null,\n            \"query\": null,\n            \"scheme\": \"https\",\n            \"host_nowww\": \"{{vars.indicator_value}}\"\n          },\n          \"html_forms\": {\n            \"email_field_present\": false,\n            \"number_of_total_forms\": 0,\n            \"password_field_present\": false,\n            \"credit_card_field_present\": false,\n            \"two_text_inputs_in_a_form\": false,\n            \"number_of_total_input_fields\": 0\n          },\n          \"risk_score\": {\n            \"result\": 100\n          },\n          \"dns_records\": {\n            \"mx\": {\n              \"records\": []\n            },\n            \"ns\": {\n              \"records\": []\n            }\n          },\n          \"redirection\": {\n            \"url\": null,\n            \"found\": false,\n            \"external\": false\n          },\n          \"geo_location\": {\n            \"countries\": [\n              \"US\"\n            ]\n          },\n          \"site_category\": {\n            \"is_torrent\": false,\n            \"is_pastebin\": false,\n            \"is_anonymizer\": false,\n            \"is_code_sandbox\": false,\n            \"is_form_builder\": false,\n            \"is_free_hosting\": true,\n            \"is_vpn_provider\": false,\n            \"is_url_shortener\": false,\n            \"is_free_dynamic_dns\": false,\n            \"is_free_file_sharing\": false\n          },\n          \"server_details\": {\n            \"ip\": \"199.34.228.53\",\n            \"asn\": \"AS27647\",\n            \"isp\": \"Weebly Inc.\",\n            \"hostname\": \"pages-wildcard-1.weebly.com\",\n            \"latitude\": 37.77396774291992,\n            \"city_name\": \"San Francisco\",\n            \"longitude\": -122.41044616699219,\n            \"region_name\": \"California\",\n            \"country_code\": \"US\",\n            \"country_name\": \"United States of America\",\n            \"continent_code\": \"NA\",\n            \"continent_name\": \"North America\"\n          },\n          \"security_checks\": {\n            \"is_masked_file\": false,\n            \"is_valid_https\": true,\n            \"is_host_an_ipv4\": false,\n            \"is_china_country\": false,\n            \"is_domain_recent\": \"no\",\n            \"is_linux_elf_file\": false,\n            \"is_ms_office_file\": false,\n            \"is_password_field\": false,\n            \"is_risky_category\": true,\n            \"is_robots_noindex\": false,\n            \"is_suspended_page\": false,\n            \"is_url_accessible\": true,\n            \"is_most_abused_tld\": false,\n            \"is_nigeria_country\": false,\n            \"is_possible_emotet\": false,\n            \"is_android_apk_file\": false,\n            \"is_empty_page_title\": false,\n            \"is_sinkholed_domain\": false,\n            \"is_windows_exe_file\": false,\n            \"is_credit_card_field\": false,\n            \"is_defaced_heuristic\": false,\n            \"is_directory_listing\": false,\n            \"is_domain_ipv4_valid\": true,\n            \"is_external_redirect\": false,\n            \"is_http_client_error\": true,\n            \"is_http_server_error\": false,\n            \"is_http_status_error\": true,\n            \"is_non_standard_port\": false,\n            \"is_suspicious_domain\": true,\n            \"is_domain_blacklisted\": true,\n            \"is_domain_very_recent\": \"no\",\n            \"is_empty_page_content\": false,\n            \"is_phishing_heuristic\": false,\n            \"is_risky_geo_location\": false,\n            \"is_suspicious_content\": false,\n            \"is_domain_ipv4_private\": false,\n            \"is_domain_ipv4_assigned\": true,\n            \"is_domain_ipv4_loopback\": false,\n            \"is_domain_ipv4_reserved\": false,\n            \"is_uncommon_host_length\": false,\n            \"is_masked_linux_elf_file\": false,\n            \"is_linux_elf_file_on_ipv4\": false,\n            \"is_suspicious_url_pattern\": false,\n            \"is_uncommon_clickable_url\": false,\n            \"is_masked_windows_exe_file\": false,\n            \"is_uncommon_dot_char_count\": false,\n            \"is_android_apk_file_on_ipv4\": false,\n            \"is_apk_on_directory_listing\": false,\n            \"is_doc_on_directory_listing\": false,\n            \"is_exe_on_directory_listing\": false,\n            \"is_pdf_on_directory_listing\": false,\n            \"is_php_on_directory_listing\": false,\n            \"is_uncommon_dash_char_count\": false,\n            \"is_windows_exe_file_on_ipv4\": false,\n            \"is_zip_on_directory_listing\": false,\n            \"is_redirect_to_search_engine\": false,\n            \"is_suspicious_file_extension\": false,\n            \"is_email_address_on_url_query\": false,\n            \"is_linux_elf_file_on_free_hosting\": false,\n            \"is_android_apk_file_on_free_hosting\": false,\n            \"is_windows_exe_file_on_free_hosting\": false,\n            \"is_linux_elf_file_on_free_dynamic_dns\": false,\n            \"is_android_apk_file_on_free_dynamic_dns\": false,\n            \"is_windows_exe_file_on_free_dynamic_dns\": false\n          },\n          \"domain_blacklist\": {\n            \"engines\": [\n              {\n                \"name\": \"ThreatLog\",\n                \"detected\": false,\n                \"reference\": \"https://www.threatlog.com/\"\n              },\n              {\n                \"name\": \"OpenPhish\",\n                \"detected\": false,\n                \"reference\": \"https://openphish.com/\"\n              },\n              {\n                \"name\": \"PhishTank\",\n                \"detected\": false,\n                \"reference\": \"https://www.phishtank.com/\"\n              },\n              {\n                \"name\": \"Phishing.Database\",\n                \"detected\": false,\n                \"reference\": \"https://github.com/mitchellkrogza/Phishing.Database\"\n              },\n              {\n                \"name\": \"PhishStats\",\n                \"detected\": false,\n                \"reference\": \"https://phishstats.info/\"\n              },\n              {\n                \"name\": \"URLVir\",\n                \"detected\": false,\n                \"reference\": \"https://www.urlvir.com/\"\n              },\n              {\n                \"name\": \"URLhaus\",\n                \"detected\": false,\n                \"reference\": \"https://urlhaus.abuse.ch/\"\n              },\n              {\n                \"name\": \"RPiList Not Serious\",\n                \"detected\": false,\n                \"reference\": \"https://github.com/RPiList/specials\"\n              },\n              {\n                \"name\": \"AntiSocial Blacklist\",\n                \"detected\": false,\n                \"reference\": \"https://theantisocialengineer.com/\"\n              },\n              {\n                \"name\": \"PhishFeed\",\n                \"detected\": false,\n                \"reference\": \"https://phishfeed.com/\"\n              },\n              {\n                \"name\": \"NABP Not Recommended Sites\",\n                \"detected\": false,\n                \"reference\": \"https://safe.pharmacy/buy-safely/\"\n              },\n              {\n                \"name\": \"Spam404\",\n                \"detected\": false,\n                \"reference\": \"https://www.spam404.com/\"\n              },\n              {\n                \"name\": \"CRDF\",\n                \"detected\": true,\n                \"reference\": \"https://threatcenter.crdf.fr/check.html\"\n              },\n              {\n                \"name\": \"Artists Against 419\",\n                \"detected\": false,\n                \"reference\": \"http://wiki.aa419.org/index.php/Main_Page\"\n              },\n              {\n                \"name\": \"CERT Polska\",\n                \"detected\": false,\n                \"reference\": \"https://www.cert.pl/\"\n              },\n              {\n                \"name\": \"Scam.Directory\",\n                \"detected\": false,\n                \"reference\": \"https://scam.directory/\"\n              },\n              {\n                \"name\": \"PetScams\",\n                \"detected\": false,\n                \"reference\": \"https://petscams.com/\"\n              },\n              {\n                \"name\": \"Suspicious Hosting IP\",\n                \"detected\": false,\n                \"reference\": \"https://www.novirusthanks.org/\"\n              },\n              {\n                \"name\": \"Phishunt\",\n                \"detected\": false,\n                \"reference\": \"https://phishunt.io/\"\n              },\n              {\n                \"name\": \"TR-PhishingList\",\n                \"detected\": false,\n                \"reference\": \"https://github.com/HorusTeknoloji/TR-PhishingList\"\n              },\n              {\n                \"name\": \"CoinBlockerLists\",\n                \"detected\": false,\n                \"reference\": \"https://gitlab.com/ZeroDot1/CoinBlockerLists/\"\n              },\n              {\n                \"name\": \"MetaMask EthPhishing\",\n                \"detected\": false,\n                \"reference\": \"https://github.com/MetaMask/eth-phishing-detect/\"\n              },\n              {\n                \"name\": \"EtherScamDB\",\n                \"detected\": false,\n                \"reference\": \"https://etherscamdb.info/\"\n              },\n              {\n                \"name\": \"EtherAddressLookup\",\n                \"detected\": false,\n                \"reference\": \"https://github.com/409H/EtherAddressLookup/\"\n              },\n              {\n                \"name\": \"ViriBack C2 Tracker\",\n                \"detected\": false,\n                \"reference\": \"http://tracker.viriback.com/\"\n              },\n              {\n                \"name\": \"Bambenek Consulting\",\n                \"detected\": false,\n                \"reference\": \"http://www.bambenekconsulting.com/\"\n              },\n              {\n                \"name\": \"Badbitcoin\",\n                \"detected\": false,\n                \"reference\": \"https://badbitcoin.org/\"\n              },\n              {\n                \"name\": \"SecureReload Phishing List\",\n                \"detected\": false,\n                \"reference\": \"https://securereload.tech/\"\n              },\n              {\n                \"name\": \"PhishingReel\",\n                \"detected\": false,\n                \"reference\": \"https://phishingreel.io/\"\n              },\n              {\n                \"name\": \"Fake Website Buster\",\n                \"detected\": false,\n                \"reference\": \"https://fakewebsitebuster.com/\"\n              },\n              {\n                \"name\": \"TweetFeed\",\n                \"detected\": false,\n                \"reference\": \"https://github.com/0xDanielLopez/TweetFeed\"\n              }\n            ],\n            \"detections\": 1\n          },\n          \"response_headers\": {\n            \"code\": 404,\n            \"date\": \"Wed, 27 Jul 2022 06:21:39 GMT\",\n            \"vary\": \"X-W-SSL,User-Agent\",\n            \"server\": \"Apache\",\n            \"status\": \"HTTP/1.1 404 Not Found\",\n            \"x-host\": \"blu95.sf2p.intern.weebly.net\",\n            \"connection\": \"close\",\n            \"set-cookie\": \"is_mobile=0; path=/; domain={{vars.indicator_value}} language=en; expires=Wed, 10-Aug-2022 06:21:39 GMT; Max-Age=1209600; path=/\",\n            \"content-type\": \"text/html; charset=UTF-8\",\n            \"cache-control\": \"private\",\n            \"content-length\": \"3909\",\n            \"x-ua-compatible\": \"IE=edge,chrome=1\"\n          }\n        }\n      },\n      \"success\": true,\n      \"elapsed_time\": \"2.11\",\n      \"credits_remained\": 7.04,\n      \"estimated_queries\": \"14\"\n    },\n    \"status\": \"Success\"\n  },\n  \"status\": \"Success\",\n  \"message\": \"\",\n  \"operation\": null\n}",
+                "operationTitle": "Get URL Reputation",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "300",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "683c6a93-40ed-4af7-96b3-3faffdda5626"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Return Output Data",
+              "description": null,
+              "arguments": {
+                "verdict": "{% if vars.steps.Get_URL_Reputation.data.result.data.report.risk_score.result >= 90 %}{{\"Malicious\"}}{% elif vars.steps.Get_URL_Reputation.data.result.data.report.risk_score.result > 0 and vars.steps.Get_URL_Reputation.data.result.data.report.risk_score.result < 90 %}{{\"Suspicious\"}}{% elif vars.steps.Get_URL_Reputation.data.result.data.report.risk_score.result == 0 %}{{\"Good\"}}{% else %}\n{{\"No Reputation Available\"}}{% endif %}",
+                "cti_name": "API Void",
+                "cti_score": "{{vars.steps.Get_URL_Reputation.data.result.data.report.risk_score.result}}",
+                "source_data": "{\"APIVoid\": {{vars.steps.Get_URL_Reputation.data.result}} }",
+                "field_mapping": "{\"ip_address\": {% if vars.steps.Get_URL_Reputation.data.result.data.report.server_details.ip %}\"{{vars.steps.Get_URL_Reputation.data.result.data.report.server_details.ip}}\"{% else %}{{None}}{% endif %}, \"asn\": {% if vars.steps.Get_URL_Reputation.data.result.data.report.server_details.asn %}\"{{vars.steps.Get_URL_Reputation.data.result.data.report.server_details.asn}}\"{% else %}{{None}}{% endif %}, \"isp\": {% if vars.steps.Get_URL_Reputation.data.result.data.report.server_details.isp %}\"{{vars.steps.Get_URL_Reputation.data.result.data.report.server_details.isp}}\"{% else %}{{None}}{% endif %}, \"city\": {% if vars.steps.Get_URL_Reputation.data.result.data.report.server_details.city_name %}\"{{vars.steps.Get_URL_Reputation.data.result.data.report.server_details.city_name}}\"{% else %}{{None}}{% endif %}, \"region\": {% if vars.steps.Get_URL_Reputation.data.result.data.report.server_details.region_name %}\"{{vars.steps.Get_URL_Reputation.data.result.data.report.server_details.region_name}}\"{% else %}{{None}}{% endif %}, \"country\": {% if vars.steps.Get_URL_Reputation.data.result.data.report.server_details.country_name %}\"{{vars.steps.Get_URL_Reputation.data.result.data.report.server_details.country_name}}\"{% else %}{{None}}{% endif %}, \"continent_name\": {% if vars.steps.Get_URL_Reputation.data.result.data.report.server_details.continent_name %}\"{{vars.steps.Get_URL_Reputation.data.result.data.report.server_details.continent_name}}\"{% else %}{{None}}{% endif %}}",
+                "enrichment_summary": "{{vars.steps.Compute_API_Void_Summary.data['formatted_string']}}"
+              },
+              "status": null,
+              "top": "570",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
+              "group": null,
+              "uuid": "fd3b7876-a710-4b16-ba00-0c48c1ca0d3f"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "step_variables": {
+                  "input": {
+                    "params": []
+                  }
+                }
+              },
+              "status": null,
+              "top": "30",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62",
+              "group": null,
+              "uuid": "9928dd3b-c426-4c66-ad06-c42b79415ef0"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Configuration",
+              "description": null,
+              "arguments": {
+                "good_score": "0",
+                "useMockOutput": "{{globalVars.Demo_mode}}",
+                "indicator_value": "{{vars.input.params['indicator_value']}}",
+                "malicious_score": "100-90",
+                "suspicious_score": "89-1"
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
+              "group": null,
+              "uuid": "33daacc1-b38e-406b-a602-d5b9afa2e985"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Compute VT Summary -> Return Output Data",
+              "targetStep": "/api/3/workflow_steps/fd3b7876-a710-4b16-ba00-0c48c1ca0d3f",
+              "sourceStep": "/api/3/workflow_steps/2ee95999-f798-4e77-9a83-8163a01f4fc4",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "99a332f1-2fac-4863-86f3-2031dcd04c3c"
+            },
+            {
+              "@type": "WorkflowRoute",
+              "name": "Configuration -> Get URL Reputation",
+              "targetStep": "/api/3/workflow_steps/683c6a93-40ed-4af7-96b3-3faffdda5626",
+              "sourceStep": "/api/3/workflow_steps/33daacc1-b38e-406b-a602-d5b9afa2e985",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "9ba47d43-6d2a-4849-b682-e5515b48e235"
+            },
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start -> Configuration",
+              "targetStep": "/api/3/workflow_steps/33daacc1-b38e-406b-a602-d5b9afa2e985",
+              "sourceStep": "/api/3/workflow_steps/9928dd3b-c426-4c66-ad06-c42b79415ef0",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "8bacc621-3731-498f-b841-7b320d24a0ba"
+            },
+            {
+              "@type": "WorkflowRoute",
+              "name": "Get URL Reputation -> Compute VT Summary",
+              "targetStep": "/api/3/workflow_steps/2ee95999-f798-4e77-9a83-8163a01f4fc4",
+              "sourceStep": "/api/3/workflow_steps/683c6a93-40ed-4af7-96b3-3faffdda5626",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "fcb96976-5ffc-4afc-a73e-bcfe9d1cbe4c"
+            }
+          ],
+          "groups": [],
+          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "uuid": "ba0f3ba3-1d13-4568-a03e-159bcc6af495",
+          "id": 855,
+          "owners": [],
           "isPrivate": false,
-          "owners": []
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "Subroutine",
+            "URL_Enrichment"
+          ]
         },
         {
           "@type": "Workflow",
           "triggerLimit": null,
           "name": "Get SSL Info",
           "aliasName": null,
-          "description": "Check if a website's SSL certificate is valid, expired or blacklisted.",
-          "collection": "/api/3/workflow_collections/0f63ad10-3ea5-43a6-9f70-b3c68d640b26",
           "tag": "#apivoid",
+          "description": "Check if a website's SSL certificate is valid, expired or blacklisted.",
           "isActive": false,
+          "debug": false,
           "singleRecordExecution": false,
           "remoteExecutableFlag": false,
           "parameters": [],
           "synchronous": false,
+          "lastModifyDate": 1612518566,
+          "collection": "/api/3/workflow_collections/0f63ad10-3ea5-43a6-9f70-b3c68d640b26",
+          "versions": [],
           "triggerStep": "/api/3/workflow_steps/6284f3f7-ef3a-48d7-a8b0-b41496aac088",
           "steps": [
             {
@@ -906,9 +1681,10 @@
                 "singleRecordExecution": false
               },
               "status": null,
-              "left": "20",
               "top": "20",
+              "left": "20",
               "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
               "uuid": "6284f3f7-ef3a-48d7-a8b0-b41496aac088"
             },
             {
@@ -921,7 +1697,7 @@
                 "params": {
                   "req_value": ""
                 },
-                "version": "1.0.0",
+                "version": "1.0.1",
                 "connector": "apivoid",
                 "operation": "sslinfo",
                 "operationTitle": "Get SSL Info",
@@ -930,46 +1706,52 @@
                 }
               },
               "status": null,
-              "left": "188",
               "top": "120",
+              "left": "188",
               "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
               "uuid": "677c641e-b673-4cc4-babe-b6c7745e5939"
             }
           ],
           "routes": [
             {
               "@type": "WorkflowRoute",
-              "uuid": "fa37cc03-9079-47f2-8298-5ab058fc936e",
               "name": "Alerts -> Get SSL Info",
+              "targetStep": "/api/3/workflow_steps/677c641e-b673-4cc4-babe-b6c7745e5939",
+              "sourceStep": "/api/3/workflow_steps/6284f3f7-ef3a-48d7-a8b0-b41496aac088",
               "label": null,
               "isExecuted": false,
-              "targetStep": "/api/3/workflow_steps/677c641e-b673-4cc4-babe-b6c7745e5939",
-              "sourceStep": "/api/3/workflow_steps/6284f3f7-ef3a-48d7-a8b0-b41496aac088"
+              "uuid": "fa37cc03-9079-47f2-8298-5ab058fc936e"
             }
           ],
-          "versions": null,
-          "lastModifyDate": 1612518566,
+          "groups": [],
           "priority": null,
           "uuid": "bd19f4e4-9bb5-49b2-8e1c-e8ac5b071210",
+          "id": 852,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
           "recordTags": [
             "apivoid"
-          ],
-          "isPrivate": false,
-          "owners": []
+          ]
         },
         {
           "@type": "Workflow",
           "triggerLimit": null,
           "name": "Get Domain Parked Status",
           "aliasName": null,
-          "description": "Check if a domain name is parked/for sale/Inavtive.",
-          "collection": "/api/3/workflow_collections/0f63ad10-3ea5-43a6-9f70-b3c68d640b26",
           "tag": "#apivoid",
+          "description": "Check if a domain name is parked/for sale/Inavtive.",
           "isActive": false,
+          "debug": false,
           "singleRecordExecution": false,
           "remoteExecutableFlag": false,
           "parameters": [],
           "synchronous": false,
+          "lastModifyDate": 1612518490,
+          "collection": "/api/3/workflow_collections/0f63ad10-3ea5-43a6-9f70-b3c68d640b26",
+          "versions": [],
           "triggerStep": "/api/3/workflow_steps/cfb3aca7-c836-480e-b8c6-4c9597f9e757",
           "steps": [
             {
@@ -982,7 +1764,7 @@
                 "params": {
                   "req_value": ""
                 },
-                "version": "1.0.0",
+                "version": "1.0.1",
                 "connector": "apivoid",
                 "operation": "parkeddomain",
                 "operationTitle": "Get Domain Parked Status",
@@ -991,9 +1773,10 @@
                 }
               },
               "status": null,
-              "left": "188",
               "top": "120",
+              "left": "188",
               "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
               "uuid": "98d3327c-3296-4ce7-a25f-5a0afb3dd410"
             },
             {
@@ -1016,46 +1799,52 @@
                 "singleRecordExecution": false
               },
               "status": null,
-              "left": "20",
               "top": "20",
+              "left": "20",
               "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
               "uuid": "cfb3aca7-c836-480e-b8c6-4c9597f9e757"
             }
           ],
           "routes": [
             {
               "@type": "WorkflowRoute",
-              "uuid": "fa5b03e7-1a74-4efa-9c66-3133fc43bb37",
               "name": "Alerts -> Get Domain Parked Status",
+              "targetStep": "/api/3/workflow_steps/98d3327c-3296-4ce7-a25f-5a0afb3dd410",
+              "sourceStep": "/api/3/workflow_steps/cfb3aca7-c836-480e-b8c6-4c9597f9e757",
               "label": null,
               "isExecuted": false,
-              "targetStep": "/api/3/workflow_steps/98d3327c-3296-4ce7-a25f-5a0afb3dd410",
-              "sourceStep": "/api/3/workflow_steps/cfb3aca7-c836-480e-b8c6-4c9597f9e757"
+              "uuid": "fa5b03e7-1a74-4efa-9c66-3133fc43bb37"
             }
           ],
-          "versions": null,
-          "lastModifyDate": 1612518490,
+          "groups": [],
           "priority": null,
           "uuid": "cb71b61b-e399-4a59-95b8-c32451ede8db",
+          "id": 853,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
           "recordTags": [
             "apivoid"
-          ],
-          "isPrivate": false,
-          "owners": []
+          ]
         },
         {
           "@type": "Workflow",
           "triggerLimit": null,
           "name": "Get ThreatLog Domain Reputation",
           "aliasName": null,
-          "description": "Query ThreatLog.com database of malicious domains",
-          "collection": "/api/3/workflow_collections/0f63ad10-3ea5-43a6-9f70-b3c68d640b26",
           "tag": "#apivoid",
+          "description": "Query ThreatLog.com database of malicious domains",
           "isActive": false,
+          "debug": false,
           "singleRecordExecution": false,
           "remoteExecutableFlag": false,
           "parameters": [],
           "synchronous": false,
+          "lastModifyDate": 1612518661,
+          "collection": "/api/3/workflow_collections/0f63ad10-3ea5-43a6-9f70-b3c68d640b26",
+          "versions": [],
           "triggerStep": "/api/3/workflow_steps/02aa7be1-f0d4-4abf-b845-fc8203ce3b3c",
           "steps": [
             {
@@ -1078,9 +1867,10 @@
                 "singleRecordExecution": false
               },
               "status": null,
-              "left": "20",
               "top": "20",
+              "left": "20",
               "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
               "uuid": "02aa7be1-f0d4-4abf-b845-fc8203ce3b3c"
             },
             {
@@ -1093,7 +1883,7 @@
                 "params": {
                   "req_value": ""
                 },
-                "version": "1.0.0",
+                "version": "1.0.1",
                 "connector": "apivoid",
                 "operation": "threatlog",
                 "operationTitle": "Get ThreatLog Domain Reputation",
@@ -1102,37 +1892,52 @@
                 }
               },
               "status": null,
-              "left": "188",
               "top": "120",
+              "left": "188",
               "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
               "uuid": "40ebe7e8-006c-422f-ae19-241058384c13"
             }
           ],
           "routes": [
             {
               "@type": "WorkflowRoute",
-              "uuid": "dd194bec-7759-4344-bffe-6ab7a100e5a2",
               "name": "Alerts -> Get ThreatLog Domain Reputation",
+              "targetStep": "/api/3/workflow_steps/40ebe7e8-006c-422f-ae19-241058384c13",
+              "sourceStep": "/api/3/workflow_steps/02aa7be1-f0d4-4abf-b845-fc8203ce3b3c",
               "label": null,
               "isExecuted": false,
-              "targetStep": "/api/3/workflow_steps/40ebe7e8-006c-422f-ae19-241058384c13",
-              "sourceStep": "/api/3/workflow_steps/02aa7be1-f0d4-4abf-b845-fc8203ce3b3c"
+              "uuid": "dd194bec-7759-4344-bffe-6ab7a100e5a2"
             }
           ],
-          "versions": null,
-          "lastModifyDate": 1612518661,
+          "groups": [],
           "priority": null,
           "uuid": "d914b414-bb23-4f9b-81ad-24195a8e3f91",
+          "id": 854,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
           "recordTags": [
             "apivoid"
-          ],
-          "isPrivate": false,
-          "owners": []
+          ]
         }
       ]
     }
   ],
+  "macros": [
+    {
+      "name": "Demo_mode",
+      "value": "true",
+      "default_value": "true"
+    }
+  ],
   "exported_tags": [
-    "apivoid"
+    "apivoid",
+    "Subroutine",
+    "Email_Enrichment",
+    "IP_Enrichment",
+    "Domain_Enrichment",
+    "URL_Enrichment"
   ]
 }
