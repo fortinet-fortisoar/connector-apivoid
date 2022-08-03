@@ -1,6 +1,6 @@
 {
   "name": "apivoid",
-  "label": "API Void",
+  "label": "APIVoid",
   "description": "Apivoid connector provides several threat intelligence services ranging from IP/URL/Domain reputation to domain age and website screenshots",
   "publisher": "Fortinet",
   "cs_approved": true,
