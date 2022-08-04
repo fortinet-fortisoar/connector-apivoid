@@ -1928,8 +1928,8 @@
   "macros": [
     {
       "name": "Demo_mode",
-      "value": "true",
-      "default_value": "true"
+      "value": "false",
+      "default_value": "false"
     }
   ],
   "exported_tags": [
