@@ -1,6 +1,6 @@
 {
   "name": "apivoid",
-  "label": "apivoid",
+  "label": "APIVoid",
   "description": "Apivoid connector provides several threat intelligence services ranging from IP/URL/Domain reputation to domain age and website screenshots",
   "publisher": "Fortinet",
   "cs_approved": true,
@@ -9,7 +9,7 @@
   "category": "Threat Intelligence",
   "icon_small_name": "small_icon.png",
   "icon_large_name": "large_icon.png",
-  "help_online": "",
+  "help_online": "https://docs.fortinet.com/document/fortisoar/1.0.1/apivoid/357/apivoid-v1-0-1",
   "configuration": {
     "fields": [
       {
