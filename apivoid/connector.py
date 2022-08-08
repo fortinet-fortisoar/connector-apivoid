@@ -6,7 +6,7 @@
 
 from connectors.core.connector import Connector, get_logger, ConnectorError
 from connectors.cyops_utilities.builtins import make_cyops_request
-from .operations import operations, _check_health
+from .operations import operations, _check_health, MACRO_LIST
 logger = get_logger('apivoid')
 
 
@@ -40,7 +40,7 @@ class apivoid(Connector):
     def on_activate(self, config):
         self.del_micro(config)
 
-    def on_add_config(self, config):
+    def on_add_config(self, config, active):
         self.del_micro(config)
 
     def on_delete_config(self, config):
