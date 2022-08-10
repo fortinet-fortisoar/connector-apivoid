@@ -506,7 +506,7 @@
               "name": "Return Output Data",
               "description": null,
               "arguments": {
-                "verdict": "{% if vars.steps.Get_Domain_Reputation.data.result.data.report.risk_score.result >= 90 %}{{\"Malicious\"}}{% elif vars.steps.Get_Domain_Reputation.data.result.data.report.risk_score.result > 0 and vars.steps.Get_Domain_Reputation.data.result.data.report.risk_score.result < 90 %}{{\"Suspicious\"}}{% elif vars.steps.Get_Domain_Reputation.data.result.data.report.risk_score.result == 0 %}{{\"Good\"}}{% else %}\n{{\"No Reputation Available\"}}{% endif %}",
+                "verdict": "{% if vars.steps.Get_Domain_Reputation.data.result.data.report.risk_score.result >= 90 %}{{\"Malicious\"}}{% elif vars.steps.Get_Domain_Reputation.data.result.data.report.risk_score.result > 0 and vars.steps.Get_Domain_Reputation.data.result.data.report.risk_score.result < 90 %}{{\"Suspicious\"}}{% elif vars.steps.Get_Domain_Reputation.data.result.data.report.risk_score.result == 0 %}{{\"Good\"}}{% else %}{{\"No Reputation Available\"}}{% endif %}",
                 "cti_name": "API Void",
                 "cti_score": "{{vars.steps.Get_Domain_Reputation.data.result.data.report.risk_score.result}}",
                 "source_data": "{\"APIVoid\": {{vars.steps.Get_Domain_Reputation.data.result}} }",
@@ -1117,7 +1117,7 @@
               "name": "Return Output Data",
               "description": null,
               "arguments": {
-                "verdict": "{% if vars.steps.Get_URL_Reputation.data.result.data.report.risk_score.result >= 90 %}{{\"Malicious\"}}{% elif vars.steps.Get_URL_Reputation.data.result.data.report.risk_score.result > 0 and vars.steps.Get_URL_Reputation.data.result.data.report.risk_score.result < 90 %}{{\"Suspicious\"}}{% elif vars.steps.Get_URL_Reputation.data.result.data.report.risk_score.result == 0 %}{{\"Good\"}}{% else %}\n{{\"No Reputation Available\"}}{% endif %}",
+                "verdict": "{% if vars.steps.Get_URL_Reputation.data.result.data.report.risk_score.result >= 90 %}{{\"Malicious\"}}{% elif vars.steps.Get_URL_Reputation.data.result.data.report.risk_score.result > 0 and vars.steps.Get_URL_Reputation.data.result.data.report.risk_score.result < 90 %}{{\"Suspicious\"}}{% elif vars.steps.Get_URL_Reputation.data.result.data.report.risk_score.result == 0 %}{{\"Good\"}}{% else %}{{\"No Reputation Available\"}}{% endif %}",
                 "cti_name": "API Void",
                 "cti_score": "{{vars.steps.Get_URL_Reputation.data.result.data.report.risk_score.result}}",
                 "source_data": "{\"APIVoid\": {{vars.steps.Get_URL_Reputation.data.result}} }",
@@ -1401,7 +1401,7 @@
               "name": "Return Output Data",
               "description": null,
               "arguments": {
-                "verdict": "{% if vars.steps.Get_Email_Reputation.data.result.data.score >= 70 %}{{\"Malicious\"}}{% elif vars.steps.Get_Email_Reputation.data.result.data.score < 70  and vars.steps.Get_Email_Reputation.data.result.data.score > 0  %}{{\"Suspicious\"}}{% elif vars.steps.Get_Email_Reputation.data.result.data.score == 0 %}{{\"Good\"}}{% else %}\n{{\"No Reputation Available\"}}{% endif %}",
+                "verdict": "{% if vars.steps.Get_Email_Reputation.data.result.data.score >= 70 %}{{\"Malicious\"}}{% elif vars.steps.Get_Email_Reputation.data.result.data.score < 70  and vars.steps.Get_Email_Reputation.data.result.data.score > 0  %}{{\"Suspicious\"}}{% elif vars.steps.Get_Email_Reputation.data.result.data.score == 0 %}{{\"Good\"}}{% else %}{{\"No Reputation Available\"}}{% endif %}",
                 "cti_name": "API Void",
                 "cti_score": "{{vars.steps.Get_Email_Reputation.data.result.data.score}}",
                 "source_data": "{\"APIVoid\": {{vars.steps.Get_Email_Reputation.data.result}} }",
