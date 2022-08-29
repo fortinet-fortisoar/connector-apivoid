@@ -9,6 +9,13 @@
   "category": "Threat Intelligence",
   "icon_small_name": "small_icon.png",
   "icon_large_name": "large_icon.png",
+  "tags": [
+    "Enrichment",
+    "IP_Enrichment",
+    "URL_Enrichment",
+    "Domain_Enrichment",
+    "Email _Enrichment"
+  ],
   "help_online": "https://docs.fortinet.com/document/fortisoar/1.0.1/apivoid/357/apivoid-v1-0-1",
   "configuration": {
     "fields": [
@@ -436,6 +443,3 @@
     }
   ]
 }
-
-
-
