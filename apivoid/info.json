@@ -14,7 +14,7 @@
     "IP_Enrichment",
     "URL_Enrichment",
     "Domain_Enrichment",
-    "Email _Enrichment"
+    "Email_Enrichment"
   ],
   "help_online": "https://docs.fortinet.com/document/fortisoar/1.0.1/apivoid/357/apivoid-v1-0-1",
   "configuration": {
