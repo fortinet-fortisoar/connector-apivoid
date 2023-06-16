@@ -5,7 +5,7 @@
   "publisher": "Fortinet",
   "cs_approved": true,
   "cs_compatible": true,
-  "version": "1.0.1",
+  "version": "1.0.2",
   "category": "Threat Intelligence",
   "icon_small_name": "small_icon.png",
   "icon_large_name": "large_icon.png",
@@ -16,7 +16,7 @@
     "Domain_Enrichment",
     "Email_Enrichment"
   ],
-  "help_online": "https://docs.fortinet.com/document/fortisoar/1.0.1/apivoid/357/apivoid-v1-0-1",
+  "help_online": "",
   "configuration": {
     "fields": [
       {
