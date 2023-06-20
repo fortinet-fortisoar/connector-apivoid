@@ -1,5 +1,5 @@
 #### What's Improved
-- Added the following pluggable enrichment playbooks that automatically enrich data when you install and configure the Apivoid:
+- Updated compute enrichment summary step for the following enrichment playbooks:
   - IP Address > API Void > Enrichment
   - Domain > API Void > Enrichment
   - Email Address > API Void > Enrichment
