@@ -1285,7 +1285,7 @@
                 "verdict": "{% if vars.score >= (vars.malicious_score.split('-')[1] | int) %}{{\"Malicious\"}}{% elif vars.score <= (vars.suspicious_score.split('-')[0] | int)  and vars.score >= (vars.suspicious_score.split('-')[1] | int) %}{{\"Suspicious\"}}{% elif vars.score == vars.good_score %}{{\"Good\"}}{% else %}{{\"No Reputation Available\"}}{% endif %}",
                 "cti_name": "API Void",
                 "cti_score": "{{vars.steps.Get_Email_Reputation.data.result.data.score}}",
-                "source_data": "{\"APIVoid\": {{vars.steps.Get_URL_Reputation.data.result.data}} }",
+                "source_data": "{\"APIVoid\": {{vars.steps.Get_Email_Reputation.data.result.data}} }",
                 "field_mapping": "{\"free_email\": {{vars.steps.Get_Email_Reputation.data.result.data.free_email}}, \"is_spoofable\": {{vars.steps.Get_Email_Reputation.data.result.data.is_spoofable}}, \"should_block\": {{vars.steps.Get_Email_Reputation.data.result.data.should_block}}, \"free_email\": {{vars.steps.Get_Email_Reputation.data.result.data.free_email}} }",
                 "enrichment_summary": "{{vars.steps.Compute_API_Void_Summary.data['formatted_string']}}"
               },
