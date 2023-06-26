@@ -800,7 +800,17 @@
       "annotation": "parkeddomain",
       "category": "investigation",
       "output_schema": {
-        "result": "",
+        "result": {
+          "data": {
+            "host": "",
+            "parked_domain": "",
+            "a_records_found": ""
+          },
+          "success": "",
+          "elapsed_time": "",
+          "credits_remained": "",
+          "estimated_queries": ""
+        },
         "status": ""
       }
     },
@@ -824,7 +834,69 @@
       "annotation": "urlstatus",
       "category": "investigation",
       "output_schema": {
-        "result": "",
+        "result": {
+          "data": {
+            "report": {
+              "analysis": {
+                "url_status": "",
+                "suspended_page": "",
+                "url_taken_down": "",
+                "valid_server_ip": "",
+                "http_status_code": "",
+                "sinkholed_domain": "",
+                "http_client_error": "",
+                "http_server_error": ""
+              },
+              "web_page": {
+                "title": "",
+                "keywords": "",
+                "description": ""
+              },
+              "url_parts": {
+                "host": "",
+                "path": "",
+                "port": "",
+                "query": "",
+                "scheme": "",
+                "host_nowww": ""
+              },
+              "redirection": {
+                "url": "",
+                "found": "",
+                "external": ""
+              },
+              "server_details": {
+                "ip": "",
+                "hostname": ""
+              },
+              "response_headers": {
+                "p3p": "",
+                "code": "",
+                "date": "",
+                "server": "",
+                "status": "",
+                "alt-svc": "",
+                "expires": "",
+                "location": "",
+                "report-to": "",
+                "set-cookie": "",
+                "content-type": "",
+                "origin-trial": "",
+                "cache-control": "",
+                "content-length": "",
+                "x-frame-options": "",
+                "x-xss-protection": "",
+                "permissions-policy": "",
+                "cross-origin-opener-policy": "",
+                "content-security-policy-report-only": ""
+              }
+            }
+          },
+          "success": "",
+          "elapsed_time": "",
+          "credits_remained": "",
+          "estimated_queries": ""
+        },
         "status": ""
       }
     },
@@ -848,7 +920,43 @@
       "annotation": "emailverify",
       "category": "investigation",
       "output_schema": {
-        "result": "",
+        "result": {
+          "data": {
+            "email": "",
+            "score": "",
+            "domain": "",
+            "username": "",
+            "risky_tld": "",
+            "valid_tld": "",
+            "disposable": "",
+            "free_email": "",
+            "did_you_mean": "",
+            "is_spoofable": "",
+            "role_address": "",
+            "should_block": "",
+            "valid_format": "",
+            "has_a_records": "",
+            "police_domain": "",
+            "dmarc_enforced": "",
+            "domain_popular": "",
+            "has_mx_records": "",
+            "has_spf_records": "",
+            "china_free_email": "",
+            "dmarc_configured": "",
+            "suspicious_email": "",
+            "government_domain": "",
+            "suspicious_domain": "",
+            "dirty_words_domain": "",
+            "educational_domain": "",
+            "russian_free_email": "",
+            "suspicious_username": "",
+            "dirty_words_username": ""
+          },
+          "success": "",
+          "elapsed_time": "",
+          "credits_remained": "",
+          "estimated_queries": ""
+        },
         "status": ""
       }
     },
@@ -894,7 +1002,24 @@
       "annotation": "dnspropagation",
       "category": "investigation",
       "output_schema": {
-        "result": "",
+        "result": {
+          "data": {
+            "host": "",
+            "dns_type": "",
+            "propagation": [
+              {
+                "service": "",
+                "response": "",
+                "country_code": "",
+                "country_name": ""
+              }
+            ]
+          },
+          "success": "",
+          "elapsed_time": "",
+          "credits_remained": "",
+          "estimated_queries": ""
+        },
         "status": ""
       }
     },
@@ -918,7 +1043,20 @@
       "annotation": "urltohtml",
       "category": "investigation",
       "output_schema": {
-        "result": "",
+        "result": {
+          "data": {
+            "format": "",
+            "elapsed": "",
+            "base64_file": "",
+            "file_md5_hash": "",
+            "file_size_bytes": "",
+            "file_size_readable": ""
+          },
+          "success": "",
+          "elapsed_time": "",
+          "credits_remained": "",
+          "estimated_queries": ""
+        },
         "status": ""
       }
     },
@@ -942,7 +1080,71 @@
       "annotation": "sslinfo",
       "category": "investigation",
       "output_schema": {
-        "result": "",
+        "result": {
+          "data": {
+            "host": "",
+            "certificate": {
+              "found": "",
+              "valid": "",
+              "details": {
+                "issuer": {
+                  "state": "",
+                  "country": "",
+                  "location": "",
+                  "common_name": "",
+                  "organization": "",
+                  "organization_unit": ""
+                },
+                "subject": {
+                  "name": "",
+                  "state": "",
+                  "street": "",
+                  "country": "",
+                  "category": "",
+                  "location": "",
+                  "common_name": "",
+                  "postal_code": "",
+                  "organization": "",
+                  "alternative_names": "",
+                  "organization_unit": ""
+                },
+                "validity": {
+                  "valid_to": "",
+                  "days_left": "",
+                  "valid_from": "",
+                  "valid_to_timestamp": "",
+                  "valid_from_timestamp": ""
+                },
+                "signature": {
+                  "type": "",
+                  "serial": "",
+                  "serial_hex": ""
+                },
+                "extensions": {
+                  "key_usage": "",
+                  "basic_constraints": "",
+                  "extended_key_usage": "",
+                  "certificate_policies": "",
+                  "authority_info_access": "",
+                  "subject_key_identifier": "",
+                  "crl_distribution_points": "",
+                  "authority_key_identifier": ""
+                }
+              },
+              "expired": "",
+              "name_match": "",
+              "valid_peer": "",
+              "blacklisted": "",
+              "fingerprint": "",
+              "debug_message": "",
+              "deprecated_issuer": ""
+            }
+          },
+          "success": "",
+          "elapsed_time": "",
+          "credits_remained": "",
+          "estimated_queries": ""
+        },
         "status": ""
       }
     }
