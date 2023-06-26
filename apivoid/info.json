@@ -71,7 +71,20 @@
       "annotation": "threatlog",
       "category": "investigation",
       "output_schema": {
-        "result": "",
+        "result": {
+          "data": {
+            "host": "",
+            "threatlog": {
+              "detected": "",
+              "scantime": "",
+              "reference": ""
+            }
+          },
+          "success": "",
+          "elapsed_time": "",
+          "credits_remained": "",
+          "estimated_queries": ""
+        },
         "status": ""
       }
     },
@@ -95,7 +108,74 @@
       "annotation": "domainbl",
       "category": "investigation",
       "output_schema": {
-        "result": "",
+        "result": {
+          "data": {
+            "report": {
+              "host": "",
+              "server": {
+                "ip": "",
+                "asn": "",
+                "isp": "",
+                "latitude": "",
+                "city_name": "",
+                "longitude": "",
+                "region_name": "",
+                "reverse_dns": "",
+                "country_code": "",
+                "country_name": "",
+                "continent_code": "",
+                "continent_name": ""
+              },
+              "category": {
+                "is_pastebin": "",
+                "is_anonymizer": "",
+                "is_code_sandbox": "",
+                "is_form_builder": "",
+                "is_free_hosting": "",
+                "is_url_shortener": "",
+                "is_free_dynamic_dns": "",
+                "is_free_file_sharing": ""
+              },
+              "blacklists": {
+                "engines": {
+                  "": {
+                    "engine": "",
+                    "elapsed": "",
+                    "detected": "",
+                    "reference": "",
+                    "confidence": ""
+                  }
+                },
+                "scantime": "",
+                "detections": "",
+                "engines_count": "",
+                "detection_rate": ""
+              },
+              "risk_score": {
+                "result": ""
+              },
+              "security_checks": {
+                "is_risky_category": "",
+                "is_most_abused_tld": "",
+                "website_popularity": "",
+                "is_domain_ipv4_valid": "",
+                "is_domain_blacklisted": "",
+                "is_domain_ipv4_private": "",
+                "is_domain_ipv4_assigned": "",
+                "is_domain_ipv4_loopback": "",
+                "is_domain_ipv4_reserved": "",
+                "is_uncommon_host_length": "",
+                "is_uncommon_dot_char_count": "",
+                "is_uncommon_dash_char_count": "",
+                "is_uncommon_clickable_domain": ""
+              }
+            }
+          },
+          "success": "",
+          "elapsed_time": "",
+          "credits_remained": "",
+          "estimated_queries": ""
+        },
         "status": ""
       }
     },
@@ -119,8 +199,54 @@
       "annotation": "iprep",
       "category": "investigation",
       "output_schema": {
-        "result": "",
-        "status": ""
+        "result": {
+          "data": {
+            "report": {
+              "ip": "",
+                "is_tor": "",
+                "is_vpn": "",
+                "is_proxy": "",
+                "is_hosting": "",
+                "is_webproxy": ""
+              },
+              "blacklists": {
+                "engines": {
+                  "": {
+                    "engine": "",
+                    "elapsed": "",
+                    "detected": "",
+                    "reference": ""
+                  }
+                },
+                "scantime": "",
+                "detections": "",
+                "engines_count": "",
+                "detection_rate": ""
+              },
+              "risk_score": {
+                "result": ""
+              },
+              "information": {
+                "asn": "",
+                "isp": "",
+                "latitude": "",
+                "city_name": "",
+                "longitude": "",
+                "region_name": "",
+                "reverse_dns": "",
+                "country_code": "",
+                "country_name": "",
+                "continent_code": "",
+                "continent_name": "",
+                "country_currency": "",
+                "country_calling_code": ""
+              }
+            }
+          },
+        "success": "",
+        "elapsed_time": "",
+        "credits_remained": "",
+        "estimated_queries": ""
       }
     },
     {
@@ -223,7 +349,202 @@
       "annotation": "urlrep",
       "category": "investigation",
       "output_schema": {
-        "result": "",
+        "result": {
+          "data": {
+            "report": {
+              "web_page": {
+                "title": "",
+                "keywords": "",
+                "description": ""
+              },
+              "file_type": {
+                "headers": "",
+                "extension": "",
+                "signature": ""
+              },
+              "url_parts": {
+                "host": "",
+                "path": "",
+                "port": "",
+                "query": "",
+                "scheme": "",
+                "host_nowww": ""
+              },
+              "html_forms": {
+                "email_field_present": "",
+                "number_of_total_forms": "",
+                "password_field_present": "",
+                "credit_card_field_present": "",
+                "two_text_inputs_in_a_form": "",
+                "number_of_total_input_fields": ""
+              },
+              "risk_score": {
+                "result": ""
+              },
+              "dns_records": {
+                "mx": {
+                  "records": [
+                    {
+                      "ip": "",
+                      "isp": "",
+                      "target": "",
+                      "country_code": "",
+                      "country_name": ""
+                    }
+                  ]
+                },
+                "ns": {
+                  "records": [
+                    {
+                      "ip": "",
+                      "isp": "",
+                      "target": "",
+                      "country_code": "",
+                      "country_name": ""
+                    }
+                  ]
+                }
+              },
+              "redirection": {
+                "url": "",
+                "found": "",
+                "external": ""
+              },
+              "geo_location": {
+                "countries": []
+              },
+              "site_category": {
+                "is_torrent": "",
+                "is_pastebin": "",
+                "is_anonymizer": "",
+                "is_code_sandbox": "",
+                "is_form_builder": "",
+                "is_free_hosting": "",
+                "is_vpn_provider": "",
+                "is_url_shortener": "",
+                "is_free_dynamic_dns": "",
+                "is_free_file_sharing": ""
+              },
+              "server_details": {
+                "ip": "",
+                "asn": "",
+                "isp": "",
+                "hostname": "",
+                "latitude": "",
+                "city_name": "",
+                "longitude": "",
+                "region_name": "",
+                "country_code": "",
+                "country_name": "",
+                "continent_code": "",
+                "continent_name": ""
+              },
+              "security_checks": {
+                "is_masked_file": "",
+                "is_valid_https": "",
+                "is_host_an_ipv4": "",
+                "is_china_country": "",
+                "is_domain_recent": "",
+                "is_linux_elf_file": "",
+                "is_ms_office_file": "",
+                "is_password_field": "",
+                "is_risky_category": "",
+                "is_robots_noindex": "",
+                "is_suspended_page": "",
+                "is_url_accessible": "",
+                "is_most_abused_tld": "",
+                "is_nigeria_country": "",
+                "is_possible_emotet": "",
+                "is_android_apk_file": "",
+                "is_empty_page_title": "",
+                "is_sinkholed_domain": "",
+                "is_windows_exe_file": "",
+                "is_credit_card_field": "",
+                "is_defaced_heuristic": "",
+                "is_directory_listing": "",
+                "is_domain_ipv4_valid": "",
+                "is_external_redirect": "",
+                "is_http_client_error": "",
+                "is_http_server_error": "",
+                "is_http_status_error": "",
+                "is_non_standard_port": "",
+                "is_suspicious_domain": "",
+                "is_domain_blacklisted": "",
+                "is_domain_very_recent": "",
+                "is_empty_page_content": "",
+                "is_phishing_heuristic": "",
+                "is_risky_geo_location": "",
+                "is_suspicious_content": "",
+                "is_domain_ipv4_private": "",
+                "is_domain_ipv4_assigned": "",
+                "is_domain_ipv4_loopback": "",
+                "is_domain_ipv4_reserved": "",
+                "is_uncommon_host_length": "",
+                "is_masked_linux_elf_file": "",
+                "is_linux_elf_file_on_ipv4": "",
+                "is_suspicious_url_pattern": "",
+                "is_uncommon_clickable_url": "",
+                "is_masked_windows_exe_file": "",
+                "is_uncommon_dot_char_count": "",
+                "is_android_apk_file_on_ipv4": "",
+                "is_apk_on_directory_listing": "",
+                "is_doc_on_directory_listing": "",
+                "is_exe_on_directory_listing": "",
+                "is_pdf_on_directory_listing": "",
+                "is_php_on_directory_listing": "",
+                "is_uncommon_dash_char_count": "",
+                "is_windows_exe_file_on_ipv4": "",
+                "is_zip_on_directory_listing": "",
+                "is_redirect_to_search_engine": "",
+                "is_suspicious_file_extension": "",
+                "is_email_address_on_url_query": "",
+                "is_linux_elf_file_on_free_hosting": "",
+                "is_android_apk_file_on_free_hosting": "",
+                "is_windows_exe_file_on_free_hosting": "",
+                "is_linux_elf_file_on_free_dynamic_dns": "",
+                "is_android_apk_file_on_free_dynamic_dns": "",
+                "is_windows_exe_file_on_free_dynamic_dns": ""
+              },
+              "domain_blacklist": {
+                "engines": [
+                  {
+                    "name": "",
+                    "detected": "",
+                    "reference": ""
+                  }
+                ],
+                "detections": ""
+              },
+              "response_headers": {
+                "p3p": "",
+                "code": "",
+                "date": "",
+                "server": "",
+                "status": "",
+                "alt-svc": "",
+                "expires": "",
+                "accept-ch": "",
+                "report-to": "",
+                "set-cookie": "",
+                "content-type": "",
+                "origin-trial": "",
+                "cache-control": "",
+                "content-length": "",
+                "x-frame-options": "",
+                "content-encoding": "",
+                "x-xss-protection": "",
+                "permissions-policy": "",
+                "strict-transport-security": "",
+                "cross-origin-opener-policy": "",
+                "content-security-policy-report-only": ""
+              }
+            }
+          },
+          "success": "",
+          "elapsed_time": "",
+          "credits_remained": "",
+          "estimated_queries": ""
+        },
         "status": ""
       }
     },
@@ -247,7 +568,22 @@
       "annotation": "domainage",
       "category": "investigation",
       "output_schema": {
-        "result": "",
+        "result": {
+          "data": {
+            "host": "",
+            "debug_message": "",
+            "domain_age_found": "",
+            "domain_registered": "",
+            "domain_age_in_days": "",
+            "domain_age_in_years": "",
+            "domain_age_in_months": "",
+            "domain_creation_date": ""
+          },
+          "success": "",
+          "elapsed_time": "",
+          "credits_remained": "",
+          "estimated_queries": ""
+        },
         "status": ""
       }
     },
@@ -271,7 +607,176 @@
       "annotation": "sitetrust",
       "category": "investigation",
       "output_schema": {
-        "result": "",
+        "result": {
+          "data": {
+            "report": {
+              "web_page": {
+                "title": "",
+                "keywords": "",
+                "description": ""
+              },
+              "url_parts": {
+                "host": "",
+                "path": "",
+                "port": "",
+                "query": "",
+                "scheme": "",
+                "host_nowww": ""
+              },
+              "domain_age": {
+                "found": "",
+                "domain_age_in_days": "",
+                "domain_age_in_years": "",
+                "domain_age_in_months": "",
+                "domain_creation_date": ""
+              },
+              "dns_records": {
+                "mx": {
+                  "records": [
+                    {
+                      "ip": "",
+                      "isp": "",
+                      "target": "",
+                      "country_code": "",
+                      "country_name": ""
+                    }
+                  ]
+                },
+                "ns": {
+                  "records": [
+                    {
+                      "ip": "",
+                      "isp": "",
+                      "target": "",
+                      "country_code": "",
+                      "country_name": ""
+                    }
+                  ]
+                }
+              },
+              "redirection": {
+                "url": "",
+                "found": "",
+                "external": ""
+              },
+              "trust_score": {
+                "result": ""
+              },
+              "geo_location": {
+                "countries": []
+              },
+              "server_details": {
+                "ip": "",
+                "asn": "",
+                "isp": "",
+                "hostname": "",
+                "latitude": "",
+                "city_name": "",
+                "longitude": "",
+                "region_name": "",
+                "country_code": "",
+                "country_name": "",
+                "continent_code": "",
+                "continent_name": ""
+              },
+              "security_checks": {
+                "is_free_email": "",
+                "is_valid_https": "",
+                "is_fake_socials": "",
+                "is_ipv6_enabled": "",
+                "is_china_country": "",
+                "is_domain_recent": "",
+                "is_dmarc_enforced": "",
+                "is_high_discounts": "",
+                "is_robots_noindex": "",
+                "is_suspended_site": "",
+                "is_email_spoofable": "",
+                "is_most_abused_tld": "",
+                "is_nigeria_country": "",
+                "is_ssl_blacklisted": "",
+                "is_website_popular": "",
+                "is_dmarc_configured": "",
+                "is_email_configured": "",
+                "is_empty_page_title": "",
+                "is_sinkholed_domain": "",
+                "is_defaced_heuristic": "",
+                "is_directory_listing": "",
+                "is_domain_ipv4_valid": "",
+                "is_external_redirect": "",
+                "is_heuristic_pattern": "",
+                "is_http_client_error": "",
+                "is_http_server_error": "",
+                "is_http_status_error": "",
+                "is_suspicious_domain": "",
+                "is_domain_blacklisted": "",
+                "is_domain_very_recent": "",
+                "is_ecommerce_platform": "",
+                "is_empty_page_content": "",
+                "is_risky_geo_location": "",
+                "is_website_accessible": "",
+                "is_domain_ipv4_private": "",
+                "is_domain_ipv4_assigned": "",
+                "is_domain_ipv4_loopback": "",
+                "is_domain_ipv4_reserved": "",
+                "is_uncommon_host_length": "",
+                "is_custom_404_configured": "",
+                "is_uncommon_dot_char_count": "",
+                "is_uncommon_dash_char_count": "",
+                "is_redirect_to_search_engine": ""
+              },
+              "domain_blacklist": {
+                "engines": [
+                  {
+                    "name": "",
+                    "detected": "",
+                    "reference": ""
+                  }
+                ],
+                "detections": ""
+              },
+              "response_headers": {
+                "age": "",
+                "via": "",
+                "code": "",
+                "date": "",
+                "etag": "",
+                "vary": "",
+                "server": "",
+                "status": "",
+                "x-cache": "",
+                "set-cookie": "",
+                "x-amz-id-2": "",
+                "x-amz-cf-id": "",
+                "content-type": "",
+                "x-amz-cf-pop": "",
+                "cache-control": "",
+                "last-modified": "",
+                "content-encoding": "",
+                "x-amz-request-id": "",
+                "x-amz-version-id": "",
+                "x-amz-meta-cf-origin": "",
+                "x-amz-server-side-encryption": ""
+              },
+              "ecommerce_platform": {
+                "is_other": "",
+                "is_shopyy": "",
+                "is_magento": "",
+                "is_shopify": "",
+                "is_ueeshop": "",
+                "is_zencart": "",
+                "is_opencart": "",
+                "is_shoplazza": "",
+                "is_prestashop": "",
+                "is_youcanshop": "",
+                "is_woocommerce": ""
+              }
+            }
+          },
+          "success": "",
+          "elapsed_time": "",
+          "credits_remained": "",
+          "estimated_queries": ""
+        },
         "status": ""
       }
     },
@@ -295,7 +800,17 @@
       "annotation": "parkeddomain",
       "category": "investigation",
       "output_schema": {
-        "result": "",
+        "result": {
+          "data": {
+            "host": "",
+            "parked_domain": "",
+            "a_records_found": ""
+          },
+          "success": "",
+          "elapsed_time": "",
+          "credits_remained": "",
+          "estimated_queries": ""
+        },
         "status": ""
       }
     },
@@ -319,7 +834,69 @@
       "annotation": "urlstatus",
       "category": "investigation",
       "output_schema": {
-        "result": "",
+        "result": {
+          "data": {
+            "report": {
+              "analysis": {
+                "url_status": "",
+                "suspended_page": "",
+                "url_taken_down": "",
+                "valid_server_ip": "",
+                "http_status_code": "",
+                "sinkholed_domain": "",
+                "http_client_error": "",
+                "http_server_error": ""
+              },
+              "web_page": {
+                "title": "",
+                "keywords": "",
+                "description": ""
+              },
+              "url_parts": {
+                "host": "",
+                "path": "",
+                "port": "",
+                "query": "",
+                "scheme": "",
+                "host_nowww": ""
+              },
+              "redirection": {
+                "url": "",
+                "found": "",
+                "external": ""
+              },
+              "server_details": {
+                "ip": "",
+                "hostname": ""
+              },
+              "response_headers": {
+                "p3p": "",
+                "code": "",
+                "date": "",
+                "server": "",
+                "status": "",
+                "alt-svc": "",
+                "expires": "",
+                "location": "",
+                "report-to": "",
+                "set-cookie": "",
+                "content-type": "",
+                "origin-trial": "",
+                "cache-control": "",
+                "content-length": "",
+                "x-frame-options": "",
+                "x-xss-protection": "",
+                "permissions-policy": "",
+                "cross-origin-opener-policy": "",
+                "content-security-policy-report-only": ""
+              }
+            }
+          },
+          "success": "",
+          "elapsed_time": "",
+          "credits_remained": "",
+          "estimated_queries": ""
+        },
         "status": ""
       }
     },
@@ -343,7 +920,43 @@
       "annotation": "emailverify",
       "category": "investigation",
       "output_schema": {
-        "result": "",
+        "result": {
+          "data": {
+            "email": "",
+            "score": "",
+            "domain": "",
+            "username": "",
+            "risky_tld": "",
+            "valid_tld": "",
+            "disposable": "",
+            "free_email": "",
+            "did_you_mean": "",
+            "is_spoofable": "",
+            "role_address": "",
+            "should_block": "",
+            "valid_format": "",
+            "has_a_records": "",
+            "police_domain": "",
+            "dmarc_enforced": "",
+            "domain_popular": "",
+            "has_mx_records": "",
+            "has_spf_records": "",
+            "china_free_email": "",
+            "dmarc_configured": "",
+            "suspicious_email": "",
+            "government_domain": "",
+            "suspicious_domain": "",
+            "dirty_words_domain": "",
+            "educational_domain": "",
+            "russian_free_email": "",
+            "suspicious_username": "",
+            "dirty_words_username": ""
+          },
+          "success": "",
+          "elapsed_time": "",
+          "credits_remained": "",
+          "estimated_queries": ""
+        },
         "status": ""
       }
     },
@@ -389,7 +1002,24 @@
       "annotation": "dnspropagation",
       "category": "investigation",
       "output_schema": {
-        "result": "",
+        "result": {
+          "data": {
+            "host": "",
+            "dns_type": "",
+            "propagation": [
+              {
+                "service": "",
+                "response": "",
+                "country_code": "",
+                "country_name": ""
+              }
+            ]
+          },
+          "success": "",
+          "elapsed_time": "",
+          "credits_remained": "",
+          "estimated_queries": ""
+        },
         "status": ""
       }
     },
@@ -413,7 +1043,20 @@
       "annotation": "urltohtml",
       "category": "investigation",
       "output_schema": {
-        "result": "",
+        "result": {
+          "data": {
+            "format": "",
+            "elapsed": "",
+            "base64_file": "",
+            "file_md5_hash": "",
+            "file_size_bytes": "",
+            "file_size_readable": ""
+          },
+          "success": "",
+          "elapsed_time": "",
+          "credits_remained": "",
+          "estimated_queries": ""
+        },
         "status": ""
       }
     },
@@ -437,7 +1080,71 @@
       "annotation": "sslinfo",
       "category": "investigation",
       "output_schema": {
-        "result": "",
+        "result": {
+          "data": {
+            "host": "",
+            "certificate": {
+              "found": "",
+              "valid": "",
+              "details": {
+                "issuer": {
+                  "state": "",
+                  "country": "",
+                  "location": "",
+                  "common_name": "",
+                  "organization": "",
+                  "organization_unit": ""
+                },
+                "subject": {
+                  "name": "",
+                  "state": "",
+                  "street": "",
+                  "country": "",
+                  "category": "",
+                  "location": "",
+                  "common_name": "",
+                  "postal_code": "",
+                  "organization": "",
+                  "alternative_names": "",
+                  "organization_unit": ""
+                },
+                "validity": {
+                  "valid_to": "",
+                  "days_left": "",
+                  "valid_from": "",
+                  "valid_to_timestamp": "",
+                  "valid_from_timestamp": ""
+                },
+                "signature": {
+                  "type": "",
+                  "serial": "",
+                  "serial_hex": ""
+                },
+                "extensions": {
+                  "key_usage": "",
+                  "basic_constraints": "",
+                  "extended_key_usage": "",
+                  "certificate_policies": "",
+                  "authority_info_access": "",
+                  "subject_key_identifier": "",
+                  "crl_distribution_points": "",
+                  "authority_key_identifier": ""
+                }
+              },
+              "expired": "",
+              "name_match": "",
+              "valid_peer": "",
+              "blacklisted": "",
+              "fingerprint": "",
+              "debug_message": "",
+              "deprecated_issuer": ""
+            }
+          },
+          "success": "",
+          "elapsed_time": "",
+          "credits_remained": "",
+          "estimated_queries": ""
+        },
         "status": ""
       }
     }
