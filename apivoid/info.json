@@ -16,7 +16,7 @@
     "Domain_Enrichment",
     "Email_Enrichment"
   ],
-  "help_online": "",
+  "help_online": "https://docs.fortinet.com/document/fortisoar/1.0.2/apivoid/619/apivoid-v1-0-2",
   "configuration": {
     "fields": [
       {
