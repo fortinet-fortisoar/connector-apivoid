@@ -5,7 +5,7 @@
   "publisher": "Fortinet",
   "cs_approved": true,
   "cs_compatible": true,
-  "version": "1.0.2",
+  "version": "2.0.0",
   "category": "Threat Intelligence",
   "icon_small_name": "small_icon.png",
   "icon_large_name": "large_icon.png",
@@ -16,21 +16,23 @@
     "Domain_Enrichment",
     "Email_Enrichment"
   ],
-  "help_online": "https://docs.fortinet.com/document/fortisoar/1.0.2/apivoid/619/apivoid-v1-0-2",
+  "help_online": "",
   "configuration": {
     "fields": [
       {
         "title": "Server URL",
+        "tooltip": "IP address or FQDN of the apivoid cloud platform.",
         "name": "server",
         "required": true,
         "editable": true,
         "visible": true,
         "type": "text",
-        "value": "endpoint.apivoid.com",
+        "value": "api.apivoid.com",
         "description": "IP address or FQDN of the apivoid cloud platform."
       },
       {
         "title": "API Key",
+        "tooltip": "API key that is configured for your account from apivoid.com for using the apivoid APIs.",
         "name": "api_key",
         "required": true,
         "editable": true,
@@ -40,58 +42,22 @@
       },
       {
         "title": "Verify SSL",
+        "tooltip": "Specifies whether the SSL certificate for the server is to be verified or not. By default, this option is set as True.",
         "name": "verify_ssl",
         "required": false,
         "editable": true,
         "visible": true,
         "type": "checkbox",
         "value": true,
-        "description": "Specifies whether the SSL certificate for the server is to be verified or not. \nBy default, this option is set as True."
+        "description": "Specifies whether the SSL certificate for the server is to be verified or not. By default, this option is set as True."
       }
     ]
   },
   "operations": [
     {
-      "operation": "threatlog",
-      "title": "Get ThreatLog Domain Reputation",
-      "description": "Queries the ThreatLog.com database of malicious domains based on the domain name specified, and if a matching domain is found, then the operation retrieves its reputation from ThreatLog.com.",
-      "enabled": true,
-      "parameters": [
-        {
-          "title": "Domain Name",
-          "required": true,
-          "visible": true,
-          "editable": true,
-          "type": "text",
-          "name": "req_value",
-          "placeholder": "domain.com",
-          "description": "Name of the domain that you want to query for in the ThreatLog.com database and whose reputation you want to retrieve from ThreatLog.com."
-        }
-      ],
-      "annotation": "threatlog",
-      "category": "investigation",
-      "output_schema": {
-        "result": {
-          "data": {
-            "host": "",
-            "threatlog": {
-              "detected": "",
-              "scantime": "",
-              "reference": ""
-            }
-          },
-          "success": "",
-          "elapsed_time": "",
-          "credits_remained": "",
-          "estimated_queries": ""
-        },
-        "status": ""
-      }
-    },
-    {
-      "operation": "domainbl",
+      "operation": "get_domain_reputation",
       "title": "Get Domain Reputation",
-      "description": "Name of the domain that you want to check for blacklisting by trusted sources and whose reputation you want to retrieve from apivoid.",
+      "description": "Checks if the specified domain name is blacklisted by trusted sources and retrieves its reputation from apivoid.",
       "enabled": true,
       "parameters": [
         {
@@ -102,87 +68,78 @@
           "type": "text",
           "name": "req_value",
           "placeholder": "domain.com",
-          "description": "Specify the domain name."
+          "description": "Name of the domain that you want to check for blacklisting by trusted sources and whose reputation you want to retrieve from apivoid.",
+          "tooltip": "Name of the domain that you want to check for blacklisting by trusted sources and whose reputation you want to retrieve from apivoid."
         }
       ],
-      "annotation": "domainbl",
+      "annotation": "get_domain_reputation",
       "category": "investigation",
       "output_schema": {
-        "result": {
-          "data": {
-            "report": {
-              "host": "",
-              "server": {
-                "ip": "",
-                "asn": "",
-                "isp": "",
-                "latitude": "",
-                "city_name": "",
-                "longitude": "",
-                "region_name": "",
-                "reverse_dns": "",
-                "country_code": "",
-                "country_name": "",
-                "continent_code": "",
-                "continent_name": ""
-              },
-              "category": {
-                "is_pastebin": "",
-                "is_anonymizer": "",
-                "is_code_sandbox": "",
-                "is_form_builder": "",
-                "is_free_hosting": "",
-                "is_url_shortener": "",
-                "is_free_dynamic_dns": "",
-                "is_free_file_sharing": ""
-              },
-              "blacklists": {
-                "engines": {
-                  "": {
-                    "engine": "",
-                    "elapsed": "",
-                    "detected": "",
-                    "reference": "",
-                    "confidence": ""
-                  }
-                },
-                "scantime": "",
-                "detections": "",
-                "engines_count": "",
-                "detection_rate": ""
-              },
-              "risk_score": {
-                "result": ""
-              },
-              "security_checks": {
-                "is_risky_category": "",
-                "is_most_abused_tld": "",
-                "website_popularity": "",
-                "is_domain_ipv4_valid": "",
-                "is_domain_blacklisted": "",
-                "is_domain_ipv4_private": "",
-                "is_domain_ipv4_assigned": "",
-                "is_domain_ipv4_loopback": "",
-                "is_domain_ipv4_reserved": "",
-                "is_uncommon_host_length": "",
-                "is_uncommon_dot_char_count": "",
-                "is_uncommon_dash_char_count": "",
-                "is_uncommon_clickable_domain": ""
-              }
+        "host": "",
+        "category": {
+          "is_pastebin": "",
+          "is_anonymizer": "",
+          "is_code_sandbox": "",
+          "is_form_builder": "",
+          "is_free_hosting": "",
+          "is_url_shortener": "",
+          "is_free_dynamic_dns": "",
+          "is_free_file_sharing": ""
+        },
+        "blacklists": {
+          "engines": {
+            "": {
+              "name": "",
+              "detected": "",
+              "reference": "",
+              "confidence": "",
+              "elapsed_ms": ""
             }
           },
-          "success": "",
-          "elapsed_time": "",
-          "credits_remained": "",
-          "estimated_queries": ""
+          "detections": "",
+          "scan_time_ms": "",
+          "engines_count": "",
+          "detection_rate": ""
         },
-        "status": ""
+        "elapsed_ms": "",
+        "risk_score": {
+          "result": ""
+        },
+        "server_details": {
+          "ip": "",
+          "asn": "",
+          "isp": "",
+          "latitude": "",
+          "city_name": "",
+          "longitude": "",
+          "region_name": "",
+          "reverse_dns": "",
+          "country_code": "",
+          "country_name": "",
+          "continent_code": "",
+          "continent_name": ""
+        },
+        "security_checks": {
+          "is_risky_category": "",
+          "is_most_abused_tld": "",
+          "website_popularity": "",
+          "is_domain_ipv4_valid": "",
+          "is_domain_blacklisted": "",
+          "is_domain_ipv4_private": "",
+          "is_domain_ipv4_assigned": "",
+          "is_domain_ipv4_loopback": "",
+          "is_domain_ipv4_reserved": "",
+          "is_uncommon_host_length": "",
+          "is_uncommon_dot_char_count": "",
+          "is_uncommon_dash_char_count": "",
+          "is_uncommon_clickable_domain": ""
+        }
       }
     },
     {
-      "operation": "iprep",
+      "operation": "get_ip_reputation",
       "title": "Get IP Reputation",
-      "description": "IP address whose geolocation and reputation you want to retrieve from apivoid.",
+      "description": "Checks and retrieves the reputation and geolocation of the specified IPv4 address from apivoid.",
       "enabled": true,
       "parameters": [
         {
@@ -193,66 +150,85 @@
           "type": "text",
           "name": "req_value",
           "placeholder": "192.0.2.12",
-          "description": "IP address for which you want to retrieve reputation information."
+          "description": "IP address whose geolocation and reputation you want to retrieve from apivoid.",
+          "tooltip": "IP address whose geolocation and reputation you want to retrieve from apivoid."
         }
       ],
-      "annotation": "iprep",
+      "annotation": "get_ip_reputation",
       "category": "investigation",
       "output_schema": {
-        "result": {
-          "data": {
-            "report": {
-              "ip": "",
-                "is_tor": "",
-                "is_vpn": "",
-                "is_proxy": "",
-                "is_hosting": "",
-                "is_webproxy": ""
-              },
-              "blacklists": {
-                "engines": {
-                  "": {
-                    "engine": "",
-                    "elapsed": "",
-                    "detected": "",
-                    "reference": ""
-                  }
-                },
-                "scantime": "",
-                "detections": "",
-                "engines_count": "",
-                "detection_rate": ""
-              },
-              "risk_score": {
-                "result": ""
-              },
-              "information": {
-                "asn": "",
-                "isp": "",
-                "latitude": "",
-                "city_name": "",
-                "longitude": "",
-                "region_name": "",
-                "reverse_dns": "",
-                "country_code": "",
-                "country_name": "",
-                "continent_code": "",
-                "continent_name": "",
-                "country_currency": "",
-                "country_calling_code": ""
-              }
+        "ip": "",
+        "version": "",
+        "anonymity": {
+          "is_tor": "",
+          "is_vpn": "",
+          "is_proxy": "",
+          "is_relay": "",
+          "is_hosting": "",
+          "is_webproxy": ""
+        },
+        "blacklists": {
+          "engines": {
+            "": {
+              "name": "",
+              "detected": "",
+              "reference": "",
+              "elapsed_ms": ""
             }
           },
-        "success": "",
-        "elapsed_time": "",
-        "credits_remained": "",
-        "estimated_queries": ""
+          "detections": "",
+          "scan_time_ms": "",
+          "engines_count": "",
+          "detection_rate": ""
+        },
+        "elapsed_ms": "",
+        "risk_score": {
+          "result": ""
+        },
+        "information": {
+          "asn": "",
+          "isp": "",
+          "is_eu": "",
+          "currency": "",
+          "is_bogon": "",
+          "latitude": "",
+          "city_name": "",
+          "longitude": "",
+          "emoji_flag": "",
+          "aws_service": "",
+          "is_fake_bot": "",
+          "region_name": "",
+          "reverse_dns": "",
+          "calling_code": "",
+          "country_code": "",
+          "country_name": "",
+          "edge_service": "",
+          "is_satellite": "",
+          "currency_name": "",
+          "is_google_bot": "",
+          "cloud_provider": "",
+          "continent_code": "",
+          "continent_name": "",
+          "currency_symbol": "",
+          "is_spamhaus_drop": "",
+          "is_google_service": "",
+          "emoji_flag_unicode": "",
+          "currency_name_plural": "",
+          "edge_service_website": "",
+          "is_search_engine_bot": "",
+          "related_service_name": "",
+          "related_service_type": "",
+          "cloud_provider_website": "",
+          "currency_symbol_native": "",
+          "is_trusted_email_sender": "",
+          "related_service_website": ""
+        }
       }
     },
     {
-      "operation": "screenshot",
+      "operation": "get_url_screenshot",
       "title": "Get URL Screenshot",
-      "description": "Allows you to take high-quality screenshots of any specified web page or URL. ",
+      "description": "Allows you to take high-quality screenshots of any specified web page or URL.",
       "enabled": true,
       "parameters": [
         {
@@ -263,74 +239,85 @@
           "type": "text",
           "name": "req_value",
           "placeholder": "https://www.domain.com/en/",
-          "description": "URL for which you want to capture the screenshot."
+          "description": "URL for which you want to capture the screenshot.",
+          "tooltip": "URL for which you want to capture the screenshot."
         }
       ],
-      "annotation": "screenshot",
+      "annotation": "get_url_screenshot",
       "category": "investigation",
       "output_schema": {
-        "data": {
+        "id": "",
+        "@id": "",
+        "cVEs": [],
+        "file": {
           "id": "",
           "@id": "",
-          "file": {
-            "id": "",
-            "@id": "",
-            "file": [],
-            "size": "",
-            "@type": "",
-            "@context": "",
-            "filename": "",
-            "metadata": [],
-            "mimeType": "",
-            "thumbnail": "",
-            "uploadDate": ""
-          },
-          "name": "",
-          "type": "",
+          "size": "",
+          "uuid": "",
           "@type": "",
-          "@context": "",
-          "createDate": "",
-          "createUser": {
-            "id": "",
-            "@id": "",
-            "name": "",
-            "@type": "",
-            "avatar": "",
-            "userId": "",
-            "userType": "",
-            "@settings": "",
-            "createDate": "",
-            "createUser": "",
-            "modifyDate": "",
-            "modifyUser": ""
-          },
-          "modifyDate": "",
-          "modifyUser": {
-            "id": "",
-            "@id": "",
-            "name": "",
-            "@type": "",
-            "avatar": "",
-            "userId": "",
-            "userType": "",
-            "@settings": "",
-            "createDate": "",
-            "createUser": "",
-            "modifyDate": "",
-            "modifyUser": ""
-          },
-          "recordTags": "",
-          "description": ""
+          "assignee": "",
+          "filename": "",
+          "metadata": [],
+          "mimeType": "",
+          "thumbnail": "",
+          "uploadDate": ""
         },
-        "status": "",
-        "_status": "",
-        "message": "",
-        "operation": "",
-        "request_id": ""
+        "name": "",
+        "type": "",
+        "uuid": "",
+        "@type": "",
+        "tasks": [],
+        "alerts": [],
+        "assets": [],
+        "owners": [
+          ""
+        ],
+        "people": [],
+        "@context": "",
+        "assignee": "",
+        "comments": [],
+        "warrooms": [],
+        "incidents": [],
+        "createDate": "",
+        "createUser": {
+          "id": "",
+          "@id": "",
+          "name": "",
+          "uuid": "",
+          "@type": "",
+          "avatar": "",
+          "userId": "",
+          "userType": "",
+          "createDate": "",
+          "createUser": "",
+          "modifyDate": "",
+          "modifyUser": ""
+        },
+        "indicators": [],
+        "modifyDate": "",
+        "modifyUser": {
+          "id": "",
+          "@id": "",
+          "name": "",
+          "uuid": "",
+          "@type": "",
+          "avatar": "",
+          "userId": "",
+          "userType": "",
+          "createDate": "",
+          "createUser": "",
+          "modifyDate": "",
+          "modifyUser": ""
+        },
+        "recordTags": [],
+        "userOwners": [],
+        "workspaces": [],
+        "description": "",
+        "vulnerabilities": []
       }
     },
     {
-      "operation": "urlrep",
+      "operation": "get_url_reputation",
       "title": "Get URL Reputation",
       "description": "Identifies potentially unsafe and phishing URLs and retrieves the reputation of the specified URL from apivoid.",
       "enabled": true,
@@ -343,214 +330,186 @@
           "type": "text",
           "name": "req_value",
           "placeholder": "https://www.domain.com/en/",
-          "description": "URL for which you want to retrieve reputation information."
+          "description": "URL for which you want to retrieve reputation information from apivoid.",
+          "tooltip": "URL for which you want to retrieve reputation information from apivoid."
         }
       ],
-      "annotation": "urlrep",
+      "annotation": "get_url_reputation",
       "category": "investigation",
       "output_schema": {
-        "result": {
-          "data": {
-            "report": {
-              "web_page": {
-                "title": "",
-                "keywords": "",
-                "description": ""
-              },
-              "file_type": {
-                "headers": "",
-                "extension": "",
-                "signature": ""
-              },
-              "url_parts": {
-                "host": "",
-                "path": "",
-                "port": "",
-                "query": "",
-                "scheme": "",
-                "host_nowww": ""
-              },
-              "html_forms": {
-                "email_field_present": "",
-                "number_of_total_forms": "",
-                "password_field_present": "",
-                "credit_card_field_present": "",
-                "two_text_inputs_in_a_form": "",
-                "number_of_total_input_fields": ""
-              },
-              "risk_score": {
-                "result": ""
-              },
-              "dns_records": {
-                "mx": {
-                  "records": [
-                    {
-                      "ip": "",
-                      "isp": "",
-                      "target": "",
-                      "country_code": "",
-                      "country_name": ""
-                    }
-                  ]
-                },
-                "ns": {
-                  "records": [
-                    {
-                      "ip": "",
-                      "isp": "",
-                      "target": "",
-                      "country_code": "",
-                      "country_name": ""
-                    }
-                  ]
-                }
-              },
-              "redirection": {
-                "url": "",
-                "found": "",
-                "external": ""
-              },
-              "geo_location": {
-                "countries": []
-              },
-              "site_category": {
-                "is_torrent": "",
-                "is_pastebin": "",
-                "is_anonymizer": "",
-                "is_code_sandbox": "",
-                "is_form_builder": "",
-                "is_free_hosting": "",
-                "is_vpn_provider": "",
-                "is_url_shortener": "",
-                "is_free_dynamic_dns": "",
-                "is_free_file_sharing": ""
-              },
-              "server_details": {
-                "ip": "",
-                "asn": "",
-                "isp": "",
-                "hostname": "",
-                "latitude": "",
-                "city_name": "",
-                "longitude": "",
-                "region_name": "",
-                "country_code": "",
-                "country_name": "",
-                "continent_code": "",
-                "continent_name": ""
-              },
-              "security_checks": {
-                "is_masked_file": "",
-                "is_valid_https": "",
-                "is_host_an_ipv4": "",
-                "is_china_country": "",
-                "is_domain_recent": "",
-                "is_linux_elf_file": "",
-                "is_ms_office_file": "",
-                "is_password_field": "",
-                "is_risky_category": "",
-                "is_robots_noindex": "",
-                "is_suspended_page": "",
-                "is_url_accessible": "",
-                "is_most_abused_tld": "",
-                "is_nigeria_country": "",
-                "is_possible_emotet": "",
-                "is_android_apk_file": "",
-                "is_empty_page_title": "",
-                "is_sinkholed_domain": "",
-                "is_windows_exe_file": "",
-                "is_credit_card_field": "",
-                "is_defaced_heuristic": "",
-                "is_directory_listing": "",
-                "is_domain_ipv4_valid": "",
-                "is_external_redirect": "",
-                "is_http_client_error": "",
-                "is_http_server_error": "",
-                "is_http_status_error": "",
-                "is_non_standard_port": "",
-                "is_suspicious_domain": "",
-                "is_domain_blacklisted": "",
-                "is_domain_very_recent": "",
-                "is_empty_page_content": "",
-                "is_phishing_heuristic": "",
-                "is_risky_geo_location": "",
-                "is_suspicious_content": "",
-                "is_domain_ipv4_private": "",
-                "is_domain_ipv4_assigned": "",
-                "is_domain_ipv4_loopback": "",
-                "is_domain_ipv4_reserved": "",
-                "is_uncommon_host_length": "",
-                "is_masked_linux_elf_file": "",
-                "is_linux_elf_file_on_ipv4": "",
-                "is_suspicious_url_pattern": "",
-                "is_uncommon_clickable_url": "",
-                "is_masked_windows_exe_file": "",
-                "is_uncommon_dot_char_count": "",
-                "is_android_apk_file_on_ipv4": "",
-                "is_apk_on_directory_listing": "",
-                "is_doc_on_directory_listing": "",
-                "is_exe_on_directory_listing": "",
-                "is_pdf_on_directory_listing": "",
-                "is_php_on_directory_listing": "",
-                "is_uncommon_dash_char_count": "",
-                "is_windows_exe_file_on_ipv4": "",
-                "is_zip_on_directory_listing": "",
-                "is_redirect_to_search_engine": "",
-                "is_suspicious_file_extension": "",
-                "is_email_address_on_url_query": "",
-                "is_linux_elf_file_on_free_hosting": "",
-                "is_android_apk_file_on_free_hosting": "",
-                "is_windows_exe_file_on_free_hosting": "",
-                "is_linux_elf_file_on_free_dynamic_dns": "",
-                "is_android_apk_file_on_free_dynamic_dns": "",
-                "is_windows_exe_file_on_free_dynamic_dns": ""
-              },
-              "domain_blacklist": {
-                "engines": [
-                  {
-                    "name": "",
-                    "detected": "",
-                    "reference": ""
-                  }
-                ],
-                "detections": ""
-              },
-              "response_headers": {
-                "p3p": "",
-                "code": "",
-                "date": "",
-                "server": "",
-                "status": "",
-                "alt-svc": "",
-                "expires": "",
-                "accept-ch": "",
-                "report-to": "",
-                "set-cookie": "",
-                "content-type": "",
-                "origin-trial": "",
-                "cache-control": "",
-                "content-length": "",
-                "x-frame-options": "",
-                "content-encoding": "",
-                "x-xss-protection": "",
-                "permissions-policy": "",
-                "strict-transport-security": "",
-                "cross-origin-opener-policy": "",
-                "content-security-policy-report-only": ""
-              }
-            }
-          },
-          "success": "",
-          "elapsed_time": "",
-          "credits_remained": "",
-          "estimated_queries": ""
+        "url": "",
+        "file_type": {
+          "headers": "",
+          "extension": "",
+          "signature": ""
         },
-        "status": ""
+        "html_info": {
+          "lang": "",
+          "title": "",
+          "robots": "",
+          "keywords": "",
+          "og_image": "",
+          "canonical": "",
+          "generator": "",
+          "description": "",
+          "og_site_name": "",
+          "twitter_site": "",
+          "ld_organization": "",
+          "article_publisher": ""
+        },
+        "url_parts": {
+          "host": "",
+          "path": "",
+          "port": "",
+          "query": "",
+          "scheme": "",
+          "host_nowww": ""
+        },
+        "elapsed_ms": "",
+        "risk_score": {
+          "result": ""
+        },
+        "dns_records": {
+          "mx": [],
+          "ns": [
+            {
+              "ip": "",
+              "isp": "",
+              "target": "",
+              "country_code": "",
+              "country_name": ""
+            }
+          ],
+          "cname": ""
+        },
+        "redirection": {
+          "url": "",
+          "found": "",
+          "external": "",
+          "redirects": []
+        },
+        "geo_location": {
+          "countries": [
+            ""
+          ]
+        },
+        "site_category": {
+          "is_torrent": "",
+          "is_pastebin": "",
+          "is_anonymizer": "",
+          "is_code_sandbox": "",
+          "is_form_builder": "",
+          "is_free_hosting": "",
+          "is_vpn_provider": "",
+          "is_url_shortener": "",
+          "is_free_dynamic_dns": "",
+          "is_free_file_sharing": ""
+        },
+        "server_details": {
+          "ip": "",
+          "asn": "",
+          "isp": "",
+          "hostname": "",
+          "latitude": "",
+          "city_name": "",
+          "longitude": "",
+          "region_name": "",
+          "country_code": "",
+          "country_name": "",
+          "continent_code": "",
+          "continent_name": ""
+        },
+        "security_checks": {
+          "is_url_online": "",
+          "is_email_field": "",
+          "is_masked_file": "",
+          "is_valid_https": "",
+          "is_host_an_ipv4": "",
+          "is_china_country": "",
+          "is_domain_recent": "",
+          "is_linux_elf_file": "",
+          "is_ms_office_file": "",
+          "is_password_field": "",
+          "is_risky_category": "",
+          "is_robots_noindex": "",
+          "is_suspended_page": "",
+          "is_url_accessible": "",
+          "domain_age_in_days": "",
+          "is_most_abused_tld": "",
+          "is_nigeria_country": "",
+          "is_possible_emotet": "",
+          "is_ssl_blacklisted": "",
+          "domain_age_in_years": "",
+          "is_android_apk_file": "",
+          "is_empty_page_title": "",
+          "is_sinkholed_domain": "",
+          "is_windows_exe_file": "",
+          "domain_age_in_months": "",
+          "domain_creation_date": "",
+          "is_credit_card_field": "",
+          "is_defaced_heuristic": "",
+          "is_directory_listing": "",
+          "is_domain_ipv4_valid": "",
+          "is_external_redirect": "",
+          "is_http_client_error": "",
+          "is_http_server_error": "",
+          "is_http_status_error": "",
+          "is_non_standard_port": "",
+          "is_suspicious_domain": "",
+          "is_domain_blacklisted": "",
+          "is_domain_very_recent": "",
+          "is_empty_page_content": "",
+          "is_phishing_heuristic": "",
+          "is_risky_geo_location": "",
+          "is_suspicious_content": "",
+          "is_domain_ipv4_private": "",
+          "is_domain_ipv4_assigned": "",
+          "is_domain_ipv4_loopback": "",
+          "is_domain_ipv4_reserved": "",
+          "is_uncommon_host_length": "",
+          "is_masked_linux_elf_file": "",
+          "is_redirect_to_wikipedia": "",
+          "is_linux_elf_file_on_ipv4": "",
+          "is_suspicious_url_pattern": "",
+          "is_uncommon_clickable_url": "",
+          "is_masked_windows_exe_file": "",
+          "is_uncommon_dot_char_count": "",
+          "is_android_apk_file_on_ipv4": "",
+          "is_apk_on_directory_listing": "",
+          "is_doc_on_directory_listing": "",
+          "is_exe_on_directory_listing": "",
+          "is_pdf_on_directory_listing": "",
+          "is_php_on_directory_listing": "",
+          "is_uncommon_dash_char_count": "",
+          "is_windows_exe_file_on_ipv4": "",
+          "is_zip_on_directory_listing": "",
+          "is_redirect_to_search_engine": "",
+          "is_suspicious_file_extension": "",
+          "is_email_address_on_url_query": "",
+          "is_linux_elf_file_on_free_hosting": "",
+          "is_android_apk_file_on_free_hosting": "",
+          "is_windows_exe_file_on_free_hosting": "",
+          "is_linux_elf_file_on_free_dynamic_dns": "",
+          "is_android_apk_file_on_free_dynamic_dns": "",
+          "is_windows_exe_file_on_free_dynamic_dns": ""
+        },
+        "domain_blacklist": {
+          "engines": [
+            {
+              "name": "",
+              "detected": "",
+              "reference": ""
+            }
+          ],
+          "detections": "",
+          "engines_count": ""
+        },
+        "response_headers": []
       }
     },
     {
-      "operation": "domainage",
-      "title": "Get Domain Age ",
+      "operation": "get_domain_age",
+      "title": "Get Domain Age",
       "description": "Retrieves the domain registration date and domain age, in days, from apivoid based on the domain name you have specified.",
       "enabled": true,
       "parameters": [
@@ -562,35 +521,28 @@
           "type": "text",
           "name": "req_value",
           "placeholder": "domain.com",
-          "description": "Name of the domain name whose registration date and domain age, in days, you want to retrieve from apivoid."
+          "description": "Name of the domain name whose registration date and domain age, in days, you want to retrieve from apivoid.",
+          "tooltip": "Name of the domain name whose registration date and domain age, in days, you want to retrieve from apivoid."
         }
       ],
-      "annotation": "domainage",
+      "annotation": "get_domain_age",
       "category": "investigation",
       "output_schema": {
-        "result": {
-          "data": {
-            "host": "",
-            "debug_message": "",
-            "domain_age_found": "",
-            "domain_registered": "",
-            "domain_age_in_days": "",
-            "domain_age_in_years": "",
-            "domain_age_in_months": "",
-            "domain_creation_date": ""
-          },
-          "success": "",
-          "elapsed_time": "",
-          "credits_remained": "",
-          "estimated_queries": ""
-        },
-        "status": ""
+        "host": "",
+        "elapsed_ms": "",
+        "debug_message": "",
+        "domain_age_found": "",
+        "domain_registered": "",
+        "domain_age_in_days": "",
+        "domain_age_in_years": "",
+        "domain_age_in_months": "",
+        "domain_creation_date": ""
       }
     },
     {
-      "operation": "sitetrust",
+      "operation": "get_domain_trustworthiness",
       "title": "Get Domain Trustworthiness",
-      "description": "Retrieves important details about the specified domain from apivoid to check whether the specified domain is legit. ",
+      "description": "Retrieves important details about the specified domain from apivoid to check whether the specified domain is legit.",
       "enabled": true,
       "parameters": [
         {
@@ -601,189 +553,178 @@
           "type": "text",
           "name": "req_value",
           "placeholder": "domain.com",
-          "description": "Name of the domain whose trustworthiness (check whether or not it is legit) information you want to retrieve from apivoid. "
+          "description": "Name of the domain whose trustworthiness (check whether or not it is legit) information you want to retrieve from apivoid.",
+          "tooltip": "Name of the domain whose trustworthiness (check whether or not it is legit) information you want to retrieve from apivoid."
         }
       ],
-      "annotation": "sitetrust",
+      "annotation": "get_domain_trustworthiness",
       "category": "investigation",
       "output_schema": {
-        "result": {
-          "data": {
-            "report": {
-              "web_page": {
-                "title": "",
-                "keywords": "",
-                "description": ""
-              },
-              "url_parts": {
-                "host": "",
-                "path": "",
-                "port": "",
-                "query": "",
-                "scheme": "",
-                "host_nowww": ""
-              },
-              "domain_age": {
-                "found": "",
-                "domain_age_in_days": "",
-                "domain_age_in_years": "",
-                "domain_age_in_months": "",
-                "domain_creation_date": ""
-              },
-              "dns_records": {
-                "mx": {
-                  "records": [
-                    {
-                      "ip": "",
-                      "isp": "",
-                      "target": "",
-                      "country_code": "",
-                      "country_name": ""
-                    }
-                  ]
-                },
-                "ns": {
-                  "records": [
-                    {
-                      "ip": "",
-                      "isp": "",
-                      "target": "",
-                      "country_code": "",
-                      "country_name": ""
-                    }
-                  ]
-                }
-              },
-              "redirection": {
-                "url": "",
-                "found": "",
-                "external": ""
-              },
-              "trust_score": {
-                "result": ""
-              },
-              "geo_location": {
-                "countries": []
-              },
-              "server_details": {
-                "ip": "",
-                "asn": "",
-                "isp": "",
-                "hostname": "",
-                "latitude": "",
-                "city_name": "",
-                "longitude": "",
-                "region_name": "",
-                "country_code": "",
-                "country_name": "",
-                "continent_code": "",
-                "continent_name": ""
-              },
-              "security_checks": {
-                "is_free_email": "",
-                "is_valid_https": "",
-                "is_fake_socials": "",
-                "is_ipv6_enabled": "",
-                "is_china_country": "",
-                "is_domain_recent": "",
-                "is_dmarc_enforced": "",
-                "is_high_discounts": "",
-                "is_robots_noindex": "",
-                "is_suspended_site": "",
-                "is_email_spoofable": "",
-                "is_most_abused_tld": "",
-                "is_nigeria_country": "",
-                "is_ssl_blacklisted": "",
-                "is_website_popular": "",
-                "is_dmarc_configured": "",
-                "is_email_configured": "",
-                "is_empty_page_title": "",
-                "is_sinkholed_domain": "",
-                "is_defaced_heuristic": "",
-                "is_directory_listing": "",
-                "is_domain_ipv4_valid": "",
-                "is_external_redirect": "",
-                "is_heuristic_pattern": "",
-                "is_http_client_error": "",
-                "is_http_server_error": "",
-                "is_http_status_error": "",
-                "is_suspicious_domain": "",
-                "is_domain_blacklisted": "",
-                "is_domain_very_recent": "",
-                "is_ecommerce_platform": "",
-                "is_empty_page_content": "",
-                "is_risky_geo_location": "",
-                "is_website_accessible": "",
-                "is_domain_ipv4_private": "",
-                "is_domain_ipv4_assigned": "",
-                "is_domain_ipv4_loopback": "",
-                "is_domain_ipv4_reserved": "",
-                "is_uncommon_host_length": "",
-                "is_custom_404_configured": "",
-                "is_uncommon_dot_char_count": "",
-                "is_uncommon_dash_char_count": "",
-                "is_redirect_to_search_engine": ""
-              },
-              "domain_blacklist": {
-                "engines": [
-                  {
-                    "name": "",
-                    "detected": "",
-                    "reference": ""
-                  }
-                ],
-                "detections": ""
-              },
-              "response_headers": {
-                "age": "",
-                "via": "",
-                "code": "",
-                "date": "",
-                "etag": "",
-                "vary": "",
-                "server": "",
-                "status": "",
-                "x-cache": "",
-                "set-cookie": "",
-                "x-amz-id-2": "",
-                "x-amz-cf-id": "",
-                "content-type": "",
-                "x-amz-cf-pop": "",
-                "cache-control": "",
-                "last-modified": "",
-                "content-encoding": "",
-                "x-amz-request-id": "",
-                "x-amz-version-id": "",
-                "x-amz-meta-cf-origin": "",
-                "x-amz-server-side-encryption": ""
-              },
-              "ecommerce_platform": {
-                "is_other": "",
-                "is_shopyy": "",
-                "is_magento": "",
-                "is_shopify": "",
-                "is_ueeshop": "",
-                "is_zencart": "",
-                "is_opencart": "",
-                "is_shoplazza": "",
-                "is_prestashop": "",
-                "is_youcanshop": "",
-                "is_woocommerce": ""
-              }
+        "host": "",
+        "html_info": {
+          "lang": "",
+          "title": "",
+          "robots": "",
+          "keywords": "",
+          "og_image": "",
+          "canonical": "",
+          "generator": "",
+          "description": "",
+          "og_site_name": "",
+          "twitter_site": "",
+          "ld_organization": "",
+          "article_publisher": ""
+        },
+        "url_parts": {
+          "host": "",
+          "path": "",
+          "port": "",
+          "query": "",
+          "scheme": "",
+          "host_nowww": ""
+        },
+        "elapsed_ms": "",
+        "dns_records": {
+          "mx": [],
+          "ns": [
+            {
+              "ip": "",
+              "isp": "",
+              "target": "",
+              "country_code": "",
+              "country_name": ""
             }
-          },
-          "success": "",
-          "elapsed_time": "",
-          "credits_remained": "",
-          "estimated_queries": ""
+          ],
+          "cname": ""
         },
-        "status": ""
+        "redirection": {
+          "url": "",
+          "found": "",
+          "external": ""
+        },
+        "trust_score": {
+          "result": ""
+        },
+        "geo_location": {
+          "countries": [
+            ""
+          ]
+        },
+        "server_details": {
+          "ip": "",
+          "asn": "",
+          "isp": "",
+          "hostname": "",
+          "latitude": "",
+          "city_name": "",
+          "longitude": "",
+          "region_name": "",
+          "country_code": "",
+          "country_name": "",
+          "continent_code": "",
+          "continent_name": ""
+        },
+        "security_checks": {
+          "ssl_type": "",
+          "is_csp_header": "",
+          "is_free_email": "",
+          "is_hsts_header": "",
+          "is_ssl_expired": "",
+          "is_ssl_revoked": "",
+          "is_valid_https": "",
+          "is_fake_socials": "",
+          "is_ipv6_enabled": "",
+          "is_china_country": "",
+          "is_dnssec_signed": "",
+          "is_domain_recent": "",
+          "is_caa_configured": "",
+          "is_dmarc_enforced": "",
+          "is_dnssec_enabled": "",
+          "is_high_discounts": "",
+          "is_robots_noindex": "",
+          "is_suspended_site": "",
+          "domain_age_in_days": "",
+          "is_email_spoofable": "",
+          "is_most_abused_tld": "",
+          "is_nigeria_country": "",
+          "is_ssl_blacklisted": "",
+          "is_website_popular": "",
+          "ssl_issuer_country": "",
+          "domain_age_in_years": "",
+          "is_dmarc_configured": "",
+          "is_email_configured": "",
+          "is_empty_page_title": "",
+          "is_sinkholed_domain": "",
+          "ssl_subject_country": "",
+          "domain_age_in_months": "",
+          "domain_creation_date": "",
+          "is_defaced_heuristic": "",
+          "is_directory_listing": "",
+          "is_domain_ipv4_valid": "",
+          "is_external_redirect": "",
+          "is_heuristic_pattern": "",
+          "is_http_client_error": "",
+          "is_http_server_error": "",
+          "is_http_status_error": "",
+          "is_suspicious_domain": "",
+          "is_domain_blacklisted": "",
+          "is_domain_very_recent": "",
+          "is_ecommerce_platform": "",
+          "is_empty_page_content": "",
+          "is_risky_geo_location": "",
+          "is_website_accessible": "",
+          "is_domain_ipv4_private": "",
+          "is_suspicious_redirect": "",
+          "is_domain_ipv4_assigned": "",
+          "is_domain_ipv4_loopback": "",
+          "is_domain_ipv4_reserved": "",
+          "is_uncommon_host_length": "",
+          "ssl_issuer_organization": "",
+          "is_custom_404_configured": "",
+          "ssl_subject_organization": "",
+          "is_referrer_policy_header": "",
+          "is_x_frame_options_header": "",
+          "is_uncommon_dot_char_count": "",
+          "is_x_xss_protection_header": "",
+          "is_uncommon_dash_char_count": "",
+          "is_permissions_policy_header": "",
+          "is_redirect_to_search_engine": "",
+          "is_content_type_options_header": ""
+        },
+        "domain_blacklist": {
+          "engines": [
+            {
+              "name": "",
+              "detected": "",
+              "reference": ""
+            }
+          ],
+          "detections": "",
+          "engines_count": ""
+        },
+        "response_headers": {
+          "code": "",
+          "date": "",
+          "server": "",
+          "status": "",
+          "connection": "",
+          "transfer-encoding": ""
+        },
+        "ecommerce_platform": {
+          "is_other": "",
+          "is_magento": "",
+          "is_shopify": "",
+          "is_zencart": "",
+          "is_opencart": "",
+          "is_prestashop": "",
+          "is_woocommerce": ""
+        }
       }
     },
     {
-      "operation": "parkeddomain",
+      "operation": "get_domain_parked_status",
       "title": "Get Domain Parked Status",
-      "description": "Retrieves the parked status information, i,e, parked, for sale, or Inactive, for the specified domain from apivoid. ",
+      "description": "Retrieves the parked status information, i,e, parked, for sale, or Inactive, for the specified domain from apivoid.",
       "enabled": true,
       "parameters": [
         {
@@ -794,30 +735,23 @@
           "type": "text",
           "name": "req_value",
           "placeholder": "domain.com",
-          "description": "Name of the domain whose parked status information, i.e., parked, for sale, or inactive, you want to retrieve from apivoid. "
+          "description": "Name of the domain whose parked status information, i.e., parked, for sale, or inactive, you want to retrieve from apivoid.",
+          "tooltip": "Name of the domain whose parked status information, i.e., parked, for sale, or inactive, you want to retrieve from apivoid."
         }
       ],
-      "annotation": "parkeddomain",
+      "annotation": "get_domain_parked_status",
       "category": "investigation",
       "output_schema": {
-        "result": {
-          "data": {
-            "host": "",
-            "parked_domain": "",
-            "a_records_found": ""
-          },
-          "success": "",
-          "elapsed_time": "",
-          "credits_remained": "",
-          "estimated_queries": ""
-        },
-        "status": ""
+        "host": "",
+        "elapsed_ms": "",
+        "parked_domain": "",
+        "a_records_found": ""
       }
     },
     {
-      "operation": "urlstatus",
+      "operation": "get_url_status",
       "title": "Get URL Status",
-      "description": "Retrieves the URL status information, i,e, online or offline (down or not accessible), for the specified URL from apivoid. ",
+      "description": "Retrieves the URL status information, i,e, online or offline (down or not accessible), for the specified URL from apivoid.",
       "enabled": true,
       "parameters": [
         {
@@ -828,82 +762,58 @@
           "type": "text",
           "name": "req_value",
           "placeholder": "https://www.domain.com/en/",
-          "description": "URL whose status information, i.e., online or offline (down or not accessible) you want to retrieve from apivoid. "
+          "description": "URL whose status information, i.e., online or offline (down or not accessible) you want to retrieve from apivoid.",
+          "tooltip": "URL whose status information, i.e., online or offline (down or not accessible) you want to retrieve from apivoid."
         }
       ],
-      "annotation": "urlstatus",
+      "annotation": "get_url_status",
       "category": "investigation",
       "output_schema": {
-        "result": {
-          "data": {
-            "report": {
-              "analysis": {
-                "url_status": "",
-                "suspended_page": "",
-                "url_taken_down": "",
-                "valid_server_ip": "",
-                "http_status_code": "",
-                "sinkholed_domain": "",
-                "http_client_error": "",
-                "http_server_error": ""
-              },
-              "web_page": {
-                "title": "",
-                "keywords": "",
-                "description": ""
-              },
-              "url_parts": {
-                "host": "",
-                "path": "",
-                "port": "",
-                "query": "",
-                "scheme": "",
-                "host_nowww": ""
-              },
-              "redirection": {
-                "url": "",
-                "found": "",
-                "external": ""
-              },
-              "server_details": {
-                "ip": "",
-                "hostname": ""
-              },
-              "response_headers": {
-                "p3p": "",
-                "code": "",
-                "date": "",
-                "server": "",
-                "status": "",
-                "alt-svc": "",
-                "expires": "",
-                "location": "",
-                "report-to": "",
-                "set-cookie": "",
-                "content-type": "",
-                "origin-trial": "",
-                "cache-control": "",
-                "content-length": "",
-                "x-frame-options": "",
-                "x-xss-protection": "",
-                "permissions-policy": "",
-                "cross-origin-opener-policy": "",
-                "content-security-policy-report-only": ""
-              }
-            }
-          },
-          "success": "",
-          "elapsed_time": "",
-          "credits_remained": "",
-          "estimated_queries": ""
+        "url": "",
+        "chain": [
+          {
+            "ip": "",
+            "url": "",
+            "protocol": "",
+            "elapsed_ms": "",
+            "can_resolve": "",
+            "status_code": "",
+            "content_type": "",
+            "status_message": "",
+            "connection_error": ""
+          }
+        ],
+        "final_url": {
+          "url": "",
+          "status": "",
+          "protocol": "",
+          "accessible": "",
+          "status_code": "",
+          "status_message": "",
+          "http_client_error": "",
+          "http_server_error": ""
         },
-        "status": ""
+        "elapsed_ms": "",
+        "debug_message": "",
+        "redirect_stats": {
+          "slow_redirects": "",
+          "total_redirects": "",
+          "connection_errors": "",
+          "external_redirects": "",
+          "same_url_redirects": "",
+          "unresolvable_hosts": "",
+          "invalid_ssl_redirects": "",
+          "same_origin_redirects": "",
+          "unencrypted_redirects": "",
+          "cross_origin_redirects": "",
+          "https_to_http_redirects": ""
+        }
       }
     },
     {
-      "operation": "emailverify",
+      "operation": "get_email_reputation",
       "title": "Get Email Reputation",
-      "description": "Retrieves the reputation for the specified email ID from apivoid, and provides information about the email , i.e., whether the email is disposable, suspicious/risky, has a valid format, etc. ",
+      "description": "Retrieves the reputation for the specified email ID from apivoid, and provides information about the email , i.e., whether the email is disposable, suspicious/risky, has a valid format, etc.",
       "enabled": true,
       "parameters": [
         {
@@ -914,54 +824,50 @@
           "type": "text",
           "name": "req_value",
           "placeholder": "info@somedomain.com",
-          "description": "Email ID whose reputation information you want to retrieve from apivoid."
+          "description": "Email ID whose reputation information you want to retrieve from apivoid.",
+          "tooltip": "Email ID whose reputation information you want to retrieve from apivoid."
         }
       ],
-      "annotation": "emailverify",
+      "annotation": "get_email_reputation",
       "category": "investigation",
       "output_schema": {
-        "result": {
-          "data": {
-            "email": "",
-            "score": "",
-            "domain": "",
-            "username": "",
-            "risky_tld": "",
-            "valid_tld": "",
-            "disposable": "",
-            "free_email": "",
-            "did_you_mean": "",
-            "is_spoofable": "",
-            "role_address": "",
-            "should_block": "",
-            "valid_format": "",
-            "has_a_records": "",
-            "police_domain": "",
-            "dmarc_enforced": "",
-            "domain_popular": "",
-            "has_mx_records": "",
-            "has_spf_records": "",
-            "china_free_email": "",
-            "dmarc_configured": "",
-            "suspicious_email": "",
-            "government_domain": "",
-            "suspicious_domain": "",
-            "dirty_words_domain": "",
-            "educational_domain": "",
-            "russian_free_email": "",
-            "suspicious_username": "",
-            "dirty_words_username": ""
-          },
-          "success": "",
-          "elapsed_time": "",
-          "credits_remained": "",
-          "estimated_queries": ""
-        },
-        "status": ""
+        "email": "",
+        "score": "",
+        "domain": "",
+        "username": "",
+        "risky_tld": "",
+        "valid_tld": "",
+        "disposable": "",
+        "elapsed_ms": "",
+        "free_email": "",
+        "did_you_mean": "",
+        "is_spoofable": "",
+        "role_address": "",
+        "should_block": "",
+        "valid_format": "",
+        "has_a_records": "",
+        "police_domain": "",
+        "dmarc_enforced": "",
+        "domain_popular": "",
+        "has_mx_records": "",
+        "student_domain": "",
+        "email_forwarder": "",
+        "has_spf_records": "",
+        "has_txt_records": "",
+        "china_free_email": "",
+        "dmarc_configured": "",
+        "suspicious_email": "",
+        "government_domain": "",
+        "suspicious_domain": "",
+        "dirty_words_domain": "",
+        "educational_domain": "",
+        "russian_free_email": "",
+        "suspicious_username": "",
+        "dirty_words_username": ""
       }
     },
     {
-      "operation": "dnspropagation",
+      "operation": "get_dns_propagation",
       "title": "Get DNS Propagation",
       "description": "Checks if the DNS records of the specified domain have been propagated globally.",
       "enabled": true,
@@ -974,7 +880,8 @@
           "type": "text",
           "name": "req_value",
           "placeholder": "domain.com",
-          "description": "Name of the domain whose DNS records propagation you want to check in apivoid. "
+          "description": "Name of the domain whose DNS records propagation you want to check in apivoid.",
+          "tooltip": "Name of the domain whose DNS records propagation you want to check in apivoid."
         },
         {
           "title": "Record Type",
@@ -995,75 +902,37 @@
             "CAA"
           ],
           "description": "Type of DNS records you want to check for in apivoid. You can choose from the following options: A, AAAA, NS, MX, TXT, SRV, PTR, SOA, CNAME, SPF, or CAA.",
+          "tooltip": "Type of DNS records you want to check for in apivoid. You can choose from the following options: A, AAAA, NS, MX, TXT, SRV, PTR, SOA, CNAME, SPF, or CAA.",
           "name": "dns_record_type",
           "value": "MX"
         }
       ],
-      "annotation": "dnspropagation",
+      "annotation": "get_dns_propagation",
       "category": "investigation",
       "output_schema": {
-        "result": {
-          "data": {
-            "host": "",
-            "dns_type": "",
-            "propagation": [
+        "host": "",
+        "elapsed_ms": "",
+        "propagation": [
+          {
+            "response": [
               {
-                "service": "",
-                "response": "",
-                "country_code": "",
-                "country_name": ""
+                "records": [],
+                "dns_type": ""
               }
-            ]
-          },
-          "success": "",
-          "elapsed_time": "",
-          "credits_remained": "",
-          "estimated_queries": ""
-        },
-        "status": ""
+            ],
+            "city_name": "",
+            "country_code": "",
+            "country_name": "",
+            "continent_code": "",
+            "continent_name": ""
+          }
+        ]
       }
     },
     {
-      "operation": "urltohtml",
-      "title": "Get URL HTML",
-      "description": "Captures the HTML page source after JavaScript has been executed for a specified URL. ",
-      "enabled": true,
-      "parameters": [
-        {
-          "title": "URL",
-          "required": true,
-          "visible": true,
-          "editable": true,
-          "type": "text",
-          "name": "req_value",
-          "placeholder": "https://www.domain.com/en/",
-          "description": "URL whose HTML page source you want to capture."
-        }
-      ],
-      "annotation": "urltohtml",
-      "category": "investigation",
-      "output_schema": {
-        "result": {
-          "data": {
-            "format": "",
-            "elapsed": "",
-            "base64_file": "",
-            "file_md5_hash": "",
-            "file_size_bytes": "",
-            "file_size_readable": ""
-          },
-          "success": "",
-          "elapsed_time": "",
-          "credits_remained": "",
-          "estimated_queries": ""
-        },
-        "status": ""
-      }
-    },
-    {
-      "operation": "sslinfo",
+      "operation": "get_ssl_info",
       "title": "Get SSL Info",
-      "description": "Retrieves information about the SSL certificate, i.e., whether the certificate is valid, expired, or blacklisted from apivoid, for the specified website. ",
+      "description": "Retrieves information about the SSL certificate, i.e., whether the certificate is valid, expired, or blacklisted from apivoid, for the specified website.",
       "enabled": true,
       "parameters": [
         {
@@ -1074,79 +943,134 @@
           "type": "text",
           "name": "req_value",
           "placeholder": "www.domain.com",
-          "description": "Website whose SSL information, i.e., whether the SSL certificate is valid, expired, or blacklisted, needs to be validated and retrieved from apivoid."
+          "description": "Website whose SSL information, i.e., whether the SSL certificate is valid, expired, or blacklisted, needs to be validated and retrieved from apivoid.",
+          "tooltip": "Website whose SSL information, i.e., whether the SSL certificate is valid, expired, or blacklisted, needs to be validated and retrieved from apivoid."
         }
       ],
-      "annotation": "sslinfo",
+      "annotation": "get_ssl_info",
       "category": "investigation",
       "output_schema": {
-        "result": {
-          "data": {
-            "host": "",
-            "certificate": {
-              "found": "",
-              "valid": "",
-              "details": {
-                "issuer": {
-                  "state": "",
-                  "country": "",
-                  "location": "",
-                  "common_name": "",
-                  "organization": "",
-                  "organization_unit": ""
-                },
-                "subject": {
-                  "name": "",
-                  "state": "",
-                  "street": "",
-                  "country": "",
-                  "category": "",
-                  "location": "",
-                  "common_name": "",
-                  "postal_code": "",
-                  "organization": "",
-                  "alternative_names": "",
-                  "organization_unit": ""
-                },
-                "validity": {
-                  "valid_to": "",
-                  "days_left": "",
-                  "valid_from": "",
-                  "valid_to_timestamp": "",
-                  "valid_from_timestamp": ""
-                },
-                "signature": {
-                  "type": "",
-                  "serial": "",
-                  "serial_hex": ""
-                },
-                "extensions": {
-                  "key_usage": "",
-                  "basic_constraints": "",
-                  "extended_key_usage": "",
-                  "certificate_policies": "",
-                  "authority_info_access": "",
-                  "subject_key_identifier": "",
-                  "crl_distribution_points": "",
-                  "authority_key_identifier": ""
-                }
-              },
-              "expired": "",
-              "name_match": "",
-              "valid_peer": "",
-              "blacklisted": "",
-              "fingerprint": "",
-              "debug_message": "",
-              "deprecated_issuer": ""
-            }
+        "host": "",
+        "elapsed_ms": "",
+        "certificate": {
+          "type": "",
+          "found": "",
+          "valid": "",
+          "details": {
+            "issuer": {
+              "state": "",
+              "country": "",
+              "location": "",
+              "common_name": "",
+              "organization": "",
+              "organization_unit": []
+            },
+            "subject": {
+              "name": "",
+              "state": "",
+              "street": [],
+              "country": "",
+              "category": "",
+              "location": "",
+              "inc_state": "",
+              "common_name": "",
+              "inc_country": "",
+              "postal_code": "",
+              "organization": "",
+              "serial_number": "",
+              "alternative_names": "",
+              "organization_unit": []
+            },
+            "validity": {
+              "valid_to": "",
+              "days_left": "",
+              "valid_from": "",
+              "valid_to_timestamp": "",
+              "valid_from_timestamp": ""
+            },
+            "signature": {
+              "type": "",
+              "serial": "",
+              "serial_hex": ""
+            },
+            "key_usages": [],
+            "public_key": {
+              "size": "",
+              "algorithm": ""
+            },
+            "crl_endpoints": [],
+            "authority_info": [],
+            "subject_key_id": "",
+            "authority_key_id": "",
+            "extended_key_usages": [],
+            "certificate_authority": ""
           },
-          "success": "",
-          "elapsed_time": "",
-          "credits_remained": "",
-          "estimated_queries": ""
-        },
-        "status": ""
+          "expired": "",
+          "revoked": "",
+          "name_match": "",
+          "blacklisted": "",
+          "debug_message": "",
+          "fingerprint_sha1": "",
+          "deprecated_issuer": "",
+          "fingerprint_sha256": ""
+        }
       }
+    },
+    {
+      "operation": "execute_an_api_call",
+      "title": "Execute an API Request",
+      "annotation": "execute_an_api_call",
+      "description": "Sends an API request to an API endpoint based on specified HTTP method, endpoint, and other input parameters that you have specified, enabling flexible API interactions tailored to user needs.",
+      "category": "investigation",
+      "visible": true,
+      "enabled": true,
+      "parameters": [
+        {
+          "name": "method",
+          "title": "HTTP Method",
+          "type": "select",
+          "editable": true,
+          "visible": true,
+          "required": true,
+          "description": "Select an HTTP action for the request. You can select from the following options:  \n\nDELETE \n\nGET \n\nPATCH \n\nPOST \n\nPUT ",
+          "options": [
+            "GET",
+            "POST",
+            "PUT",
+            "PATCH",
+            "DELETE"
+          ]
+        },
+        {
+          "title": "Endpoint",
+          "name": "endpoint",
+          "tooltip": "Specify the target API URL path for example: ip_reputation",
+          "description": "Specify the target API URL path for the request. For example, if the website is https://example.com and URL path is https://example.com/images/pic.jpg, the endpoint would be images/pic.jpg.",
+          "type": "text",
+          "visible": true,
+          "editable": true,
+          "required": true
+        },
+        {
+          "title": "Query Parameters",
+          "name": "query_params",
+          "description": "(Optional) Specify any optional parameters to add to the URL and refine the request.",
+          "type": "json",
+          "visible": true,
+          "editable": true,
+          "required": false
+        },
+        {
+          "name": "payload",
+          "title": "Request Payload",
+          "type": "json",
+          "editable": true,
+          "visible": true,
+          "required": false,
+          "description": "(Optional) Specify data, as JSON, to be sent as the request payload (typically for POST or PUT requests)."
+        }
+      ],
+      "output_schema": {}
     }
   ]
 }

@@ -1,13 +1,14 @@
-""" Copyright start
-  Copyright (C) 2008 - 2020 Fortinet Inc.
-  All rights reserved.
-  FORTINET CONFIDENTIAL & FORTINET PROPRIETARY SOURCE CODE
-  Copyright end """
+"""
+Copyright start
+MIT License
+Copyright (c) 2025 Fortinet Inc
+Copyright end
+"""
 
 from connectors.core.connector import Connector, get_logger, ConnectorError
 from integrations.crudhub import make_request
 from django.conf import settings
-from .operations import operations, _check_health, MACRO_LIST, CONNECTOR_NAME
+from .operations import operations, _check_health, MACRO_LIST
 
 logger = get_logger('apivoid')
 
@@ -15,12 +16,11 @@ logger = get_logger('apivoid')
 class apivoid(Connector):
     def execute(self, config, operation, params, **kwargs):
         try:
-            params.update({"operation": operation})
             operation = operations.get(operation)
             return operation(config, params)
         except Exception as err:
-            logger.error('apivoid:{}'.format(err))
-            raise ConnectorError('apivoid:{}'.format(err))
+            logger.exception("An exception occurred [{}]".format(err))
+            raise ConnectorError("An exception occurred [{}]".format(err))
 
     def check_health(self, config):
         return _check_health(config)
