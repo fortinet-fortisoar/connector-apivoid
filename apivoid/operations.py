@@ -325,16 +325,16 @@ def _check_health(config):
 
 
 operations = {
-    'get_domain_reputation': get_domain_reputation,
-    'get_ip_reputation': get_ip_reputation,
-    'get_url_screenshot': get_url_screenshot,
-    'get_url_reputation': get_url_reputation,
-    'get_domain_age': get_domain_age,
-    'get_domain_trustworthiness': get_domain_trustworthiness,
-    'get_domain_parked_status': get_domain_parked_status,
-    'get_url_status': get_url_status,
-    'get_email_reputation': get_email_reputation,
-    'get_dns_propagation': get_dns_propagation,
-    'get_ssl_info': get_ssl_info,
+    'domainbl': get_domain_reputation,
+    'iprep': get_ip_reputation,
+    'screenshot': get_url_screenshot,
+    'urlrep': get_url_reputation,
+    'domainage': get_domain_age,
+    'sitetrust': get_domain_trustworthiness,
+    'parkeddomain': get_domain_parked_status,
+    'urlstatus': get_url_status,
+    'emailverify': get_email_reputation,
+    'dnspropagation': get_dns_propagation,
+    'sslinfo': get_ssl_info,
     'execute_an_api_call': execute_an_api_call
 }

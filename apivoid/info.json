@@ -55,7 +55,7 @@
   },
   "operations": [
     {
-      "operation": "get_domain_reputation",
+      "operation": "domainbl",
       "title": "Get Domain Reputation",
       "description": "Checks if the specified domain name is blacklisted by trusted sources and retrieves its reputation from apivoid.",
       "enabled": true,
@@ -137,7 +137,7 @@
       }
     },
     {
-      "operation": "get_ip_reputation",
+      "operation": "iprep",
       "title": "Get IP Reputation",
       "description": "Checks and retrieves the reputation and geolocation of the specified IPv4 address from apivoid.",
       "enabled": true,
@@ -226,7 +226,7 @@
       }
     },
     {
-      "operation": "get_url_screenshot",
+      "operation": "screenshot",
       "title": "Get URL Screenshot",
       "description": "Allows you to take high-quality screenshots of any specified web page or URL.",
       "enabled": true,
@@ -317,7 +317,7 @@
       }
     },
     {
-      "operation": "get_url_reputation",
+      "operation": "urlrep",
       "title": "Get URL Reputation",
       "description": "Identifies potentially unsafe and phishing URLs and retrieves the reputation of the specified URL from apivoid.",
       "enabled": true,
@@ -508,7 +508,7 @@
       }
     },
     {
-      "operation": "get_domain_age",
+      "operation": "domainage",
       "title": "Get Domain Age",
       "description": "Retrieves the domain registration date and domain age, in days, from apivoid based on the domain name you have specified.",
       "enabled": true,
@@ -540,7 +540,7 @@
       }
     },
     {
-      "operation": "get_domain_trustworthiness",
+      "operation": "sitetrust",
       "title": "Get Domain Trustworthiness",
       "description": "Retrieves important details about the specified domain from apivoid to check whether the specified domain is legit.",
       "enabled": true,
@@ -722,7 +722,7 @@
       }
     },
     {
-      "operation": "get_domain_parked_status",
+      "operation": "parkeddomain",
       "title": "Get Domain Parked Status",
       "description": "Retrieves the parked status information, i,e, parked, for sale, or Inactive, for the specified domain from apivoid.",
       "enabled": true,
@@ -749,7 +749,7 @@
       }
     },
     {
-      "operation": "get_url_status",
+      "operation": "urlstatus",
       "title": "Get URL Status",
       "description": "Retrieves the URL status information, i,e, online or offline (down or not accessible), for the specified URL from apivoid.",
       "enabled": true,
@@ -811,7 +811,7 @@
       }
     },
     {
-      "operation": "get_email_reputation",
+      "operation": "emailverify",
       "title": "Get Email Reputation",
       "description": "Retrieves the reputation for the specified email ID from apivoid, and provides information about the email , i.e., whether the email is disposable, suspicious/risky, has a valid format, etc.",
       "enabled": true,
@@ -867,7 +867,7 @@
       }
     },
     {
-      "operation": "get_dns_propagation",
+      "operation": "dnspropagation",
       "title": "Get DNS Propagation",
       "description": "Checks if the DNS records of the specified domain have been propagated globally.",
       "enabled": true,
@@ -930,7 +930,7 @@
       }
     },
     {
-      "operation": "get_ssl_info",
+      "operation": "sslinfo",
       "title": "Get SSL Info",
       "description": "Retrieves information about the SSL certificate, i.e., whether the certificate is valid, expired, or blacklisted from apivoid, for the specified website.",
       "enabled": true,
