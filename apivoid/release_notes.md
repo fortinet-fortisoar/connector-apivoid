@@ -1,7 +1,14 @@
-#### What's Improved
-- Updated the 'Compute API Void Summary' step in the following enrichment playbooks to take API Void's inverse threat score into account (100 is good and 0 is bad):
-  - IP Address > API Void > Enrichment
-  - Domain > API Void > Enrichment
-  - Email Address > API Void > Enrichment
-  - URL > API Void > Enrichment
-- Updated the output schema for all the actions.
+#### The following enhancements have been made to the APIVoid connector in version 2.0.0:
+
+- Updated the connector to support the latest Void APIs v2.
+- Removed the following actions, which are deprecated in API v2:
+    - `Get ThreatLog Domain Reputation`
+    - `Get URL HTML`
+- Added the following actions and playbooks:
+    - `Execute an API Request`
+- Updated the `Set Score` step in the following enrichment playbooks to correctly invert the score using jinja:
+    - `IP Address > API Void > Enrichment`
+    - `Domain > API Void > Enrichment`
+    - `Email Address > API Void > Enrichment`
+    - `URL > API Void > Enrichment`
+- Updated `Output Schema` for all the operations.
