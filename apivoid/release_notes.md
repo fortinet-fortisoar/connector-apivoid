@@ -1,7 +1,7 @@
-#### The following enhancements have been made to the APIVoid connector in version 2.0.0:
+#### Following enhancements have been made to the APIVoid connector in version 2.0.0:
 
 - Updated the connector to support the latest Void APIs v2.
-- Removed the following actions, which are deprecated in API v2:
+- Removed the following actions as they are now deprecated in API v2:
     - `Get ThreatLog Domain Reputation`
     - `Get URL HTML`
 - Added the following actions and playbooks:
@@ -11,4 +11,4 @@
     - `Domain > API Void > Enrichment`
     - `Email Address > API Void > Enrichment`
     - `URL > API Void > Enrichment`
-- Updated `Output Schema` for all the operations.
+- Updated Output Schema of all operations.
