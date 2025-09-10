@@ -7,16 +7,21 @@ Copyright end
 
 import requests, json
 import os
-from integrations.crudhub import make_request
-from django.conf import settings
-from integrations.crudhub import maybe_json_or_raise
 from connectors.core.connector import get_logger, ConnectorError
+
+try:
+    from integrations.crudhub import make_request
+    from integrations.crudhub import maybe_json_or_raise
+    from django.conf import settings
+except:
+    pass
 
 logger = get_logger('apivoid')
 
 TMP_LOC = os.path.dirname(os.path.realpath(__file__)) + "/apivoid"
 MACRO_LIST = ["IP_Enrichment_Playbooks_IRIs", "URL_Enrichment_Playbooks_IRIs", "Domain_Enrichment_Playbooks_IRIs",
               "Email_Enrichment_Playbooks_IRIs"]
+
 
 class APIVoid(object):
     def __init__(self, config, *args, **kwargs):
@@ -102,6 +107,7 @@ def get_ip_reputation(config, params):
     except Exception as err:
         raise ConnectorError(str(err))
 
+
 def upload_file_to_cyops(file_name, file_content, file_description):
     try:
         # Conditional import based on the FortiSOAR version.
@@ -132,6 +138,7 @@ def upload_file_to_cyops(file_name, file_content, file_description):
         logger.exception('An exception occurred {0}'.format(str(err)))
         raise ConnectorError('An exception occurred {0}'.format(str(err)))
 
+
 def handle_upload_file_to_cyops(file_details, file_path):
     try:
         file_name = file_details.get("file_name")
@@ -146,6 +153,7 @@ def handle_upload_file_to_cyops(file_details, file_path):
         logger.exception('An exception occurred {0}'.format(str(err)))
         raise ConnectorError('An exception occurred {0}'.format(str(err)))
 
+
 def _save_file(filename, response):
     tmp_path = TMP_LOC
     import base64
@@ -155,6 +163,7 @@ def _save_file(filename, response):
     with open("{0}/{1}".format(tmp_path, filename), "wb") as file_to_write:
         file_to_write.write(imgdata)
     return "{0}/{1}".format(tmp_path, filename)
+
 
 def get_url_screenshot(config, params):
     try:
